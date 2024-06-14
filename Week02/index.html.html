@@ -1,0 +1,187 @@
+<!-- Guilherme dos Santos 06/06/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Assignment 01</title>
+  </head>
+  <body>
+    <header>
+      <h1>Project 01 -- WEB 114</h1>
+      <h2>Guilherme dos Santos</h2>
+    </header>
+    <section>
+      <h3>Questions</h3>
+      <ol>
+        <li>
+          What is the purpose of JavaScript? Answer in general and also provide
+          three specific examples of how JavaScript is commonly used.<br />
+          JavaScript was first created with the purpose of making web pages
+          interactive on the user side. Nowadays, JavaScript is used for a
+          inumerous purposes, such as: Validate forms, create animations, create
+          interactive maps, can be used on the server side, modify webpages,
+          among others.
+        </li>
+        <li>
+          Who invented JavaScript and when?<br />
+          Answer: JavaScript was invented by Brendan Eich in 1995 and it was
+          developed for Netscape.
+        </li>
+        <li>
+          What software program will you be using to write JavaScript?<br />
+          VS Code
+        </li>
+
+        <li>
+          What software program will you be using to run JavaScript?<br />
+          Chrome
+        </li>
+        <li>
+          Why are external scripts preferable to scripts added directly within
+          an HTML file?<br />
+          External scripts are preferable because they can be more easily
+          maintained, they can be cached "(Other pages that reference the same
+          script will take it from the cache instead of downloading it, so the
+          file is actually downloaded only once. That reduces traffic and makes
+          pages faster."
+          <a href="https://javascript.info/hello-world">javascript.info</a> ),
+          and they can be reused in multiple pages.
+        </li>
+        <li>
+          And after you complete the exercises below, answer these questions
+          too..
+          <ul>
+            <li>
+              What's the point of all of those consule.log() statements?<br />
+              The log is a way for us, developer to debug and log what we want
+              to see on the console, the only way to see the logs is opening the
+              inspector and looking at it.
+            </li>
+            <li>
+              What's the difference between how you reference a variable versus
+              a string in a JavaScript statement? <br />
+              To reference a variable we just need to call its name without
+              quotes, either double or single, and to reference a string we need
+              to put it between quotes.
+            </li>
+            <li>
+              What's the difference between a single value and an expression in
+              a JavaScript statement? <br />
+              A single value is a value is only a piece of data, like a number,
+              a string, or a boolean, and an expression is a piece of code that
+              returns a value, like a variable, a function, or a combination of
+              values and operators.
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <script>
+      //   "use strict"; // 3.  In the script created in step 1 and also step 4, include the "use strict": directive as the first line.
+      //   // 1. Add a script that alerts "Hi World!"
+      //   alert("Hi World!");
+      //   // 2. In the script created in step 1, add a statement to console.log("Hi Insert Your Name");
+      //   console.log("Hi Guilherme");
+      //
+    </script>
+    //
+    <script>
+      //   "use strict"; // 3.  In the script created in step 1 and also step 4, include the "use strict": directive as the first line.
+      //   // 4. Add a second script that declares 2 variables:
+      //   const myName = "Guilherme";
+      //   let mySalary = 80000;
+      //   console.log("My name is " + myName + " and my salary is " + mySalary);
+      //   // 5. In the script you created in step 4, but below the first console.log, reassign the mySalary variable to a 150000.
+      //   mySalary = 150000;
+      //   console.log("My name is " + myName + " and my new salary is " + mySalary);
+      //   // 6. In the script you created in step 4, create a Boolean variable named veteran and assign it to true or false depending on whether you are a veteran or not.
+      //   let veteran = false;
+      //   console.log("I am a veteran: " + veteran);
+
+      //   // 7. In the script you created in step 4, add three console.log() statements to determine the data type of the myName, mySalary, and veteran variables.
+      //   console.log("Data type of myName variable is: " + typeof myName);
+      //   console.log("Data type of mySalary variable is: " + typeof mySalary);
+      //   console.log("Data type of veteran variable is: " + typeof veteran);
+
+      //   // 8. Console.log each of these expressions to the console:
+      //   console.log("" + 1 + 0);
+      //   console.log("" - 1 + 0);
+      //   console.log(true + false);
+      //   console.log(6 / "3");
+      //   console.log("2" * "3");
+      //   console.log(4 + 5 + "px");
+      //   console.log("$" + 4 + 5);
+      //   console.log("4" - 2);
+      //   console.log("4px" - 2);
+      //   console.log(7 / 0);
+      //   console.log("  -9  " + 5);
+      //   console.log("  -9  " - 5);
+      //   console.log(null + 1);
+      //   console.log(undefined + 1);
+      //   // 9.In two different statements after these variable declarations, console.log the value of x and y.
+      //   // x is assigned to the number 5
+      //   let x = 5;
+      //   console.log(`x is equal to: ${x}`);
+      //   // ---------------
+      //   // y is assigned to 1 plus the initial value of x multiplied by 2 resulting in 11
+      //   let y = 1 + (x *= 2);
+      //   console.log(`y is equal to: ${y}`);
+      //   console.log(`New x is equal to: ${x}`);
+      //   // After being reassinged x is equal to 10
+      // let number1 = "10";
+
+      // let number2 = "2";
+
+      // let number3 = number1 * number2;
+      // console.log(typeof number3);
+      // alert(5 + 10 * 2);
+      // let students = "15";
+
+      // let candyBars = "30";
+
+      // let candyBarsPerStudent = candyBars + students;
+
+      // alert(candyBarsPerStudent); // yields...
+      // // alert("18" / 2 + 4); // yields....
+      // let students = "15";
+
+      // let candyBars = "30";
+
+      // let candyBarsPerStudent = +candyBars + students;
+
+      // alert(candyBarsPerStudent); // yields...
+      // let counter = 2;
+
+      // alert(++counter); //yields...
+      // alert(+"false"); //  yields...
+      // let a = 3,
+      //   b = 4,
+      //   c = 5;
+
+      // alert(c); // yields...
+      // let students = "15";
+
+      // let candyBars = "30";
+
+      // let candyBarsPerStudent = +candyBars + +students;
+
+      // alert(candyBarsPerStudent); // yields...
+      // let students = "15";
+
+      // let candyBars = "30";
+
+      // let candyBarsPerStudent = candyBars / students;
+
+      // alert(candyBarsPerStudent);
+
+      // // What appears in the alert?
+      let n = 5;
+      n = n + 2;
+      n = n * 3;
+      alert(n); // yields...
+    </script>
+  </body>
+</html>
