@@ -48,22 +48,54 @@
         <li>What, in general, does a property of an object do?<br /></li>
       </ol>
     </section>
-
     <script>
+      // 1.  Copy and paste the following code from the "walking the DOM" lesson just before </body> on your web page.
+      // We haven't covered all of the JavaScript yet, but you should be able to conceptually understand what each statement is doing based on the explanations.
+      //  Add comments as shown below to explain what that statement is doing.
       for (let i = 0; i < document.body.childNodes.length; i++) {
         // add comment here
-        console.log(document.body.childNodes[i]); // add comment here
+        console.log(document.body.childNodes[i]); // Using a simple for loop to iterate over all the nodes inside the body element and display them on the console.
       }
+      console.log(
+        "--------------------Separation-----------------------------"
+      );
       for (let node of document.body.childNodes) {
         // add comment here
-        console.log(node); // add comment here
+        console.log(node); // Using a for of loop to iterate over all the nodes inside the body element and display them on the console.
       }
 
-      //       2.  Use document.body as the starting point, then insert 12 console.log statements into your script to demonstrate the navigation properties found in the Summary section of the Walking the DOM lesson.
+      //Both codes display the same result, but the first one uses a simple for loop and the second one uses a for of loop to iterate over the nodes inside the body element and display them on the console.
 
-      // For all nodes: parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling.
-      // For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
-      // e.g.  console.log(document.body.parentNode);
+      //2.Use document.body as the starting point, then insert 12 console.log statements into your script to demonstrate the
+      // navigation properties found in the Summary section of the Walking the DOM lesson.
+
+      // //Parent Node
+      // console.log(document.body.parentNode); //The console display the html element with all the nodes.
+      // //Child Nodes
+      // console.log(document.body.childNodes); //The console display all the nodes inside the body element on my case with length 10.
+      // //First Child
+      // console.log(document.body.firstChild); //The console display the first node inside the body element being a text (empty text).
+      // //Last Child
+      // console.log(document.body.lastChild); //The console display the last node inside the body element being a script element.
+      // //Previous Sibling
+      // console.log(document.body.previousSibling); //The console display the previous sibling of the body element being a text (empty text).
+      // //Next Sibling
+      // console.log(document.body.nextSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
+      // // <-------------------------------------------------------------------------------------------------------------->
+      // // For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
+      // //Parent Element
+      // console.log(document.body.parentElement); //The console display the html element with all the nodes.
+      // //Children
+      // console.log(document.body.children); //The console display all the nodes inside the body element on my case with length 3.
+      // //First Element Child
+      // console.log(document.body.firstElementChild); //The console display the first node inside the body element being a header element.
+      // //Last Element Child
+      // console.log(document.body.lastElementChild); //The console display the last node inside the body element being a script element.
+      // //Previous Element Sibling
+      // console.log(document.body.previousElementSibling); //The console display the previous sibling of the body element being a head element.
+      // //Next Element Sibling
+      // console.log(document.body.nextElementSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
+      // //With that is possible to see the navigation properties of the body element. The first 6 console.log are for all nodes and the last 6 are for element(tags) nodes only.
     </script>
   </body>
 </html>
