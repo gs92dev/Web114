@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css" />
     <title>Project 02</title>
   </head>
-  <body>
+  <body class="dark">
     <header>
       <h1>Project 02 -- WEB 114</h1>
+      <button id="dark">Light mode</button>
       <h2>Guilherme dos Santos</h2>
     </header>
     <section>
@@ -36,16 +37,27 @@
         <li>
           What specification documents does the author recommend (include the
           link and the description of the specification in your answer.)<br />
-          <a href="https://dom.spec.whatwg.org/">DOM Living Standard</a>
-          -- This is the official specification for the Document Object Model
-          (DOM) and it is maintained by the Web Hypertext Application Technology
-          Working Group (WHATWG). The DOM Living Standard defines the structure
-          and behavior of the DOM, which is used by web browsers to represent
-          web pages as a tree of objects.
+          <a href="https://dom.spec.whatwg.org/">DOM Living Standard</a><br />
+          -- This is the specification for the Document Object Model (DOM) and
+          it is maintained by the Web Hypertext Application Technology Working
+          Group (WHATWG). The DOM Living Standard defines the structure and
+          behavior of the DOM, which is used by web browsers to represent web
+          pages as a tree of objects.<br />
           <a href="https://www.w3.org/TR/cssom-1/"
             >W3C(CSS Object Model (CSSOM))</a
-          >
-          <a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a>
+          ><br />
+          -- The World Wide Web Consortium (W3C) is an international community
+          that develops standards and guidelines to help people build a web base
+          ont he principles of accessibility, internationalization, privacy, and
+          more. The CSS Object Model (CSSOM) specification defines how CSS
+          styles are represented in the DOM and how they can be manipulated
+          using JavaScrip<br />
+          <a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a><br />
+          -- MDN Web Docs is a resource for web developers that provides
+          detailed documentation on web technologies, including HTML, CSS, and
+          JavaScript. It is maintained by the Mozilla Foundation and is widely
+          regarded as a reliable and up-to-date source of information for web
+          developers.<br />
         </li>
         <li>
           What is the document? Choose from the following -- object, method,
@@ -130,6 +142,20 @@
       //Next Element Sibling
       console.log(document.body.nextElementSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
       //With that is possible to see the navigation properties of the body element. The first 6 console.log are for all nodes and the last 6 are for element(tags) nodes only.
+    </script>
+    <script>
+      const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
+      let btnText = darkBtn.innerText; // Get the text content of the button element and store it in the btnText variable.
+      const darkMode = (e) => {
+        e.preventDefault(); // Prevent the default behavior of the button element.
+        // Function to change the color of the page to dark mode.
+        document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        btnText === "Light mode"
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
+        darkBtn.innerText = btnText;
+      };
+      darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
     </script>
   </body>
 </html>

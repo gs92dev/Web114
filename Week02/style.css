@@ -1,13 +1,17 @@
 /* Guilherme dos Santos 06/15/2024*/
 * {
   box-sizing: border-box;
-  background: #161616;
-  color: rgb(223, 221, 221);
 }
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   padding: 1rem 3rem;
+  background: rgb(244, 244, 244);
+  color: rgb(46, 44, 44);
+}
+.dark {
+  background: #1f1e1e;
+  color: rgb(223, 221, 221);
 }
 header {
   display: flex;
@@ -27,7 +31,29 @@ ul {
   list-style: square;
   max-width: 60rem;
 }
-
+a {
+  transition: color 0.3s;
+}
+a:hover {
+  color: #7b77ca;
+}
+a:visited {
+  color: #618185;
+}
+button {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid #7b77ca;
+  border-radius: 0.5rem;
+  background: #1f1e1e;
+  color: rgb(223, 221, 221);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+button:hover {
+  background: #7b77ca;
+  color: #1f1e1e;
+}
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
