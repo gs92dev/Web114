@@ -24,19 +24,37 @@
           Why is the JavaScript textContent property safer than innerHTML?
         </li>
         <li>
-          What is the document? Choose from the following -- object, method,
-          property<br />Object
+          Every HTML element you write as a developer becomes a corresponding
+          DOM object. And remember -- an object is just a fancy storage
+          container. An object contains two things: properties and methods. And
+          each property of the document object may contain a single value or it
+          could contain another object! For example body is a property of the
+          document object. And what does body contain? Another object of
+          properties and methods. So you might write a statement such as this.
         </li>
-        <li>What is a JavaScript property? Define and provide two examples.</li>
-        <li>Why do we rarely, if ever use document.write() ?</li>
-        <li>What is a JavaScript method? Define and provide two examples.</li>
         <li>
-          What, in general, does a property of an object do?<br />Usually, a
-          object property store some kind of data that is related to the object,
-          so if we have an object called "Person", we could give it properties
-          like: "age", "name", "address" etc.
+          Why do we rarely, if ever use document.write() ? (Hint: I have a
+          stand-alone youtube on this subject for details,
         </li>
+        <li>What is a JavaScript method? Define and provide two examples.</li>
+        <li>What is a JavaScript property? Define and provide two examples.</li>
+        <li>
+          We have been working with three "built-in" objects that are already
+          provided for us when we use JavaScript for its initial purpose -- to
+          modify HTML and CSS in response to user interaction on the web page.
+          Provide a sample method for each of these three objects: window,
+          document, and console.
+        </li>
+        <li>What is a CSS selector? Define and provide two examples.</li>
+        <li>What is a CSS property? Define and provide two examples.</li>
+        <li>What is a CSS declaration? Define and provide two examples.</li>
       </ol>
+    </section>
+    <section>
+      <h1>Place Holder</h1>
+      <h2 id="holder1">Place Holder</h2>
+      <h2 id="holder2">Place Holder</h2>
+      <h2 id="holder3">Place Holder</h2>
     </section>
     <script>
       console.log(
@@ -52,39 +70,39 @@
       console.log(
         "--------------------Separation---- Part 2-------------------------"
       );
-      //2.Use document.body as the starting point, then insert 12 console.log statements into your script to demonstrate the
-      // navigation properties found in the Summary section of the Walking the DOM lesson.
-
-      //Parent Node
-      console.log(document.body.parentNode); //The console display the html element with all the nodes.
-      //Child Nodes
-      console.log(document.body.childNodes); //The console display all the nodes inside the body element on my case with length 10.
-      //First Child
-      console.log(document.body.firstChild); //The console display the first node inside the body element being a text (empty text).
-      //Last Child
-      console.log(document.body.lastChild); //The console display the last node inside the body element being a script element.
-      //Previous Sibling
-      console.log(document.body.previousSibling); //The console display the previous sibling of the body element being a text (empty text).
-      //Next Sibling
-      console.log(document.body.nextSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
+      // In the HTML, create an <h1> element with the text content of placeholder.
+      //  Use JavaScript to set its textContent property to "Johnson County Community College".
+      h1 = document.querySelector("h1"); // Select the h1 element.
+      h1.textContent = "Johnson County Community College"; // Set the text content of the h1 element to "Johnson County Community College".
       // // <-------------------------------------------------------------------------------------------------------------->
       console.log(
-        "--------------------Separation-----------------------------"
+        "--------------------Separation-----Part 3------------------------"
       );
-      // // For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
-      //Parent Element
-      console.log(document.body.parentElement); //The console display the html element with all the nodes.
-      //Children
-      console.log(document.body.children); //The console display all the nodes inside the body element on my case with length 3.
-      //First Element Child
-      console.log(document.body.firstElementChild); //The console display the first node inside the body element being a header element.
-      //Last Element Child
-      console.log(document.body.lastElementChild); //The console display the last node inside the body element being a script element.
-      //Previous Element Sibling
-      console.log(document.body.previousElementSibling); //The console display the previous sibling of the body element being a head element.
-      //Next Element Sibling
-      console.log(document.body.nextElementSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
-      //With that is possible to see the navigation properties of the body element. The first 6 console.log are for all nodes and the last 6 are for element(tags) nodes only.
+      // In the HTML, create three <h2> elements with the text content of placeholder.
+      //  Use JavaScript to set their textContent property to 3 different majors available at JCCC.
+      //  (Hint.  If you use HTML id attributes for each element, you can refer to that element directly in the JavaScript as the HTML id value can be automatically accessed as  JavaScript variable with the same name.
+      //  See the examples in the textContent section of the Node properties: type, tag, and contents lesson).
+      holder1.textContent = "Web Development and Digital Media";
+      holder2.textContent = "Computer Science";
+      holder3.textContent = "Business Administration";
+      console.log(
+        "--------------------Separation-----Part 4------------------------"
+      );
+      // Write JavaScript to create and then append three more <h2> elements that contain 3 more JCCC majors.
+      // Now you'll use JavaScript to create, modify, and also append the entire <h2> element versus what you did in steps 2 and 3 where the <h2>placeholder</h2> element was already in the HTML.
+      console.log(
+        "--------------------Separation-----Part 5------------------------"
+      );
+      // Copy the JavaScript from the "Create a list" exercise at the end of the Modifying the document lesson into your script.
+      // We haven't covered all of those JavaScript constructs yet, especially the while loop, but study and run the code to conceptually understand what is going on.
+      // Add a comment behind every statement to explain every line of the code.
+      console.log(
+        "--------------------Separation-----Part 6------------------------"
+      );
+      // Write two JavaScript statements to modify the CSS associated with the <h1> element in your HTML.
+      // In one, use the style property.  In the other, use the classList property.
+      h1.style.fontFamily = "cursive"; // Set the font family of the h1 element to Times using the style property.
+      h1.style.color = "green"; // Set the color of the h1 element to green using the style property.
     </script>
     <script>
       const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
