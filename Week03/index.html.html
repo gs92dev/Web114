@@ -1,0 +1,104 @@
+<!-- Guilherme dos Santos 06/22/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Project 02</title>
+  </head>
+  <body class="dark">
+    <header>
+      <h2>Project 03 -- WEB 114</h2>
+      <button id="dark">Light mode</button>
+      <h3>Guilherme dos Santos</h3>
+    </header>
+    <section>
+      <h3>Questions</h3>
+      <ol>
+        <li>
+          Identify the three major types of nodes found in an HTML document that
+          we work with in JavaScript.
+        </li>
+        <li>
+          Why is the JavaScript textContent property safer than innerHTML?
+        </li>
+        <li>
+          What is the document? Choose from the following -- object, method,
+          property<br />Object
+        </li>
+        <li>What is a JavaScript property? Define and provide two examples.</li>
+        <li>Why do we rarely, if ever use document.write() ?</li>
+        <li>What is a JavaScript method? Define and provide two examples.</li>
+        <li>
+          What, in general, does a property of an object do?<br />Usually, a
+          object property store some kind of data that is related to the object,
+          so if we have an object called "Person", we could give it properties
+          like: "age", "name", "address" etc.
+        </li>
+      </ol>
+    </section>
+    <script>
+      console.log(
+        "--------------------Separation---- Part 1.1-------------------------"
+      );
+      console.log(document.body); //shows the element DOM tree.
+
+      console.log(
+        "--------------------Separation------Part 1.2-----------------------"
+      );
+      console.dir(document.body); // shows the element as a DOM object, good to explore its properties.
+
+      console.log(
+        "--------------------Separation---- Part 2-------------------------"
+      );
+      //2.Use document.body as the starting point, then insert 12 console.log statements into your script to demonstrate the
+      // navigation properties found in the Summary section of the Walking the DOM lesson.
+
+      //Parent Node
+      console.log(document.body.parentNode); //The console display the html element with all the nodes.
+      //Child Nodes
+      console.log(document.body.childNodes); //The console display all the nodes inside the body element on my case with length 10.
+      //First Child
+      console.log(document.body.firstChild); //The console display the first node inside the body element being a text (empty text).
+      //Last Child
+      console.log(document.body.lastChild); //The console display the last node inside the body element being a script element.
+      //Previous Sibling
+      console.log(document.body.previousSibling); //The console display the previous sibling of the body element being a text (empty text).
+      //Next Sibling
+      console.log(document.body.nextSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
+      // // <-------------------------------------------------------------------------------------------------------------->
+      console.log(
+        "--------------------Separation-----------------------------"
+      );
+      // // For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
+      //Parent Element
+      console.log(document.body.parentElement); //The console display the html element with all the nodes.
+      //Children
+      console.log(document.body.children); //The console display all the nodes inside the body element on my case with length 3.
+      //First Element Child
+      console.log(document.body.firstElementChild); //The console display the first node inside the body element being a header element.
+      //Last Element Child
+      console.log(document.body.lastElementChild); //The console display the last node inside the body element being a script element.
+      //Previous Element Sibling
+      console.log(document.body.previousElementSibling); //The console display the previous sibling of the body element being a head element.
+      //Next Element Sibling
+      console.log(document.body.nextElementSibling); //The console display the next sibling of the body element being null since there is no next sibling after body.
+      //With that is possible to see the navigation properties of the body element. The first 6 console.log are for all nodes and the last 6 are for element(tags) nodes only.
+    </script>
+    <script>
+      const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
+      let btnText = darkBtn.innerText; // Get the text content of the button element and store it in the btnText variable.
+      const darkMode = (e) => {
+        e.preventDefault(); // Prevent the default behavior of the button element.
+        // Function to change the color of the page to dark mode.
+        document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        btnText === "Light mode"
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
+        darkBtn.innerText = btnText;
+      };
+      darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
+    </script>
+  </body>
+</html>
