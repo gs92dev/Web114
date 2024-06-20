@@ -106,15 +106,22 @@
     </script>
     <script>
       const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
-      let btnText = darkBtn.innerText; // Get the text content of the button element and store it in the btnText variable.
+      let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
       const darkMode = (e) => {
         e.preventDefault(); // Prevent the default behavior of the button element.
         // Function to change the color of the page to dark mode.
         document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
-        btnText === "Light mode"
-          ? (btnText = "Dark mode")
-          : (btnText = "Light mode");
+
         darkBtn.textContent = btnText;
+        if (document.body.classList.contains("dark")) {
+          darkBtn.style.backgroundColor = "white";
+          darkBtn.style.color = "black";
+          btnText = "Dark mode";
+        } else {
+          darkBtn.style.backgroundColor = "rgb(46, 44, 44)";
+          darkBtn.style.color = "white";
+          btnText = "Light mode";
+        }
       };
       darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
     </script>

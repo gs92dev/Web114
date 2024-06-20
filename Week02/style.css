@@ -45,14 +45,11 @@ button {
   padding: 0.5rem 1rem;
   border: 0.1rem solid #7b77ca;
   border-radius: 0.5rem;
-  background: #1f1e1e;
-  color: rgb(223, 221, 221);
   cursor: pointer;
   transition: all 0.5s;
 }
 button:hover {
-  background: #7b77ca;
-  color: #1f1e1e;
+  background: #7b77ca !important;
 }
 @media screen and (max-width: 768px) {
   header {
