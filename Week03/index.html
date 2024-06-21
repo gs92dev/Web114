@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Project 02</title>
   </head>
   <body class="dark">
@@ -33,7 +33,7 @@
           properties and methods. So you might write a statement such as this.
         </li>
         <li>
-          Why do we rarely, if ever use document.write() ? (Hint: I have a
+          Why do we rarely, if ever use document.write() ? Hint: I have a
           stand-alone youtube on this subject for details,
         </li>
         <li>What is a JavaScript method? Define and provide two examples.</li>
@@ -111,17 +111,12 @@
         e.preventDefault(); // Prevent the default behavior of the button element.
         // Function to change the color of the page to dark mode.
         document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
 
         darkBtn.textContent = btnText;
-        if (document.body.classList.contains("dark")) {
-          darkBtn.style.backgroundColor = "white";
-          darkBtn.style.color = "black";
-          btnText = "Dark mode";
-        } else {
-          darkBtn.style.backgroundColor = "rgb(46, 44, 44)";
-          darkBtn.style.color = "white";
-          btnText = "Light mode";
-        }
+        document.body.classList.contains("dark")
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
       };
       darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
     </script>

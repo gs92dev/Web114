@@ -1,4 +1,4 @@
-/* Guilherme dos Santos 06/22/2024*/
+/* Guilherme dos Santos 06/22/2024
 * {
   box-sizing: border-box;
 }
@@ -40,16 +40,22 @@ a:hover {
 a:visited {
   color: #618185;
 }
-button {
+#dark {
   font-weight: 600;
   padding: 0.5rem 1rem;
   border: 0.1rem solid #7b77ca;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.5s;
+  background: red;
+}
+.buttonLight {
+  background: red;
+  color: white;
+  border: 0.1rem solid #7b77ca;
 }
 button:hover {
-  background: #7b77ca !important;
+  background: #7b77ca;
 }
 @media screen and (max-width: 768px) {
   header {
@@ -59,4 +65,4 @@ button:hover {
   li {
     font-size: 1rem;
   }
-}
+} */
