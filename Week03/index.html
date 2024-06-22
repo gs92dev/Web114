@@ -18,10 +18,20 @@
       <ol>
         <li>
           Identify the three major types of nodes found in an HTML document that
-          we work with in JavaScript.
+          we work with in JavaScript.<br /><br />
+          The three major types of nodes found in an HTML document that we work
+          are: element nodes, text nodes, and the document object.<br />
+          We can use the node nodetype property to determine the type of node we
+          are working with.<br />
+          elem.nodeType == 1 for element nodes<br />
+          elem.nodeType == 3 for text nodes<br />
+          elem.nodeType == 9 for the document object
         </li>
         <li>
-          Why is the JavaScript textContent property safer than innerHTML?
+          Why is the JavaScript textContent property safer than innerHTML? with
+          textContent, you can't insert HTML elements, everything we pass to it
+          its treated as text. While with innerHTML you can insert HTML elements
+          and scripts, which can be a security risk.
         </li>
         <li>
           Every HTML element you write as a developer becomes a corresponding
@@ -105,11 +115,10 @@
       h1.style.color = "green"; // Set the color of the h1 element to green using the style property.
     </script>
     <script>
-      const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
+      const darkBtn = dark; // Get the button element with the id dark.
       let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
+      // Function to change the color of the page to dark mode.
       const darkMode = (e) => {
-        e.preventDefault(); // Prevent the default behavior of the button element.
-        // Function to change the color of the page to dark mode.
         document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
         darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
 
