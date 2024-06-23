@@ -34,33 +34,101 @@
           and scripts, which can be a security risk.
         </li>
         <li>
-          Every HTML element you write as a developer becomes a corresponding
-          DOM object. And remember -- an object is just a fancy storage
-          container. An object contains two things: properties and methods. And
-          each property of the document object may contain a single value or it
-          could contain another object! For example body is a property of the
-          document object. And what does body contain? Another object of
-          properties and methods. So you might write a statement such as this.
+          Now based on this example, what do you notice about JavaScript
+          properties and their corresponding HTML attribute names?<br /><br />
+          JS properties are case sensitive, and they are camelCase, while HTML
+          are usually lowercase and separated by a dash. The class attribute in
+          HTML is the className property in JavaScript, since class is a
+          reserved word in JS. JS properties can be accessed using the dot
+          notation, while HTML attributes can be accessed using the
+          getAttribute() method. Each HTML element has a set of standard
+          properties that can be accessed and modified using JavaScript. One
+          useful method to access the properties of an element is the
+          getAttribute() method, or if we use the condole.dir(elem) we can see
+          all the properties, and information about the element.
         </li>
         <li>
-          Why do we rarely, if ever use document.write() ? Hint: I have a
-          stand-alone youtube on this subject for details,
+          Why do we rarely, if ever use document.write() ? <br /><br />
+          document.write() is used to write directly to the HTML document,
+          depending on when it is called, it can overwrite the entire document.
+          It is not recommended to use it, because it can cause issues with the
+          page, and it is not a good practice to write directly to the document.
+          If we want to see the output of a script, we can use console.log()
+          instead of document.write().
         </li>
-        <li>What is a JavaScript method? Define and provide two examples.</li>
-        <li>What is a JavaScript property? Define and provide two examples.</li>
+        <li>
+          What is a JavaScript method? Define and provide two examples.<br /><br />
+          JavaScript methods are actions that can be performed on objects. They
+          are used to process data and return results. On console.log( ),
+          log("something") is a method that logs a message to the console, its a
+          method of the console object, it display everything its inside the ()
+          on the console. document.getElementById( "id") is a method that
+          returns the element that has the ID attribute with the specified
+          value, its a method of the document object. push() is a method that
+          adds new items to the end of an array, its a method of the array
+          object.
+        </li>
+        <li>
+          What is a JavaScript property? Define and provide two examples.<br /><br />
+          JavaScript properties are values associated with an object. They are
+          defined as key-value pairs where the key is a string, and the value
+          can be any of the JavaScript data types. The properties of an object
+          can be accessed using dot notation (.) or bracket notation ([]).
+          Example 1: DOM Properties document.body is a property that returns the
+          body element of the HTML document. Here, document is the object and
+          body is the property. document.title is a property that returns the
+          title of the HTML document. Here, document is the object and title is
+          the property. heading.textContent is a property that returns the text
+          content of the heading element.
+        </li>
         <li>
           We have been working with three "built-in" objects that are already
           provided for us when we use JavaScript for its initial purpose -- to
           modify HTML and CSS in response to user interaction on the web page.
           Provide a sample method for each of these three objects: window,
-          document, and console.
+          document, and console.<br /><br />
+          The window object represents the browser window and provides methods
+          to interact with it. One of the methods of the window object is
+          alert(), which displays an alert box with a message and an OK button,
+          other methods are confirm() and prompt(). The document object
+          represents the HTML document. One of the methods of the document
+          object is getElementById(), which returns the element with the
+          specified ID attribute. Other methods are appendChild(),
+          removeChild(), and querySelector(). Console object represents the
+          browser console, some methods for the console are log(), dir(), and
+          clear().
         </li>
-        <li>What is a CSS selector? Define and provide two examples.</li>
-        <li>What is a CSS property? Define and provide two examples.</li>
-        <li>What is a CSS declaration? Define and provide two examples.</li>
+        <li>
+          What is a CSS selector? Define and provide two examples.<br /><br />
+          CSS selectors are patterns used to select and style elements, in
+          general we can use the tag name, nested children, class, id, attribute
+          and others.<br />
+          Tag Selector "p"<br />
+          Class Selector ".class"<br />
+          id Selector "#id"<br />
+        </li>
+        <li>
+          What is a CSS property? Define and provide two examples.<br /><br />
+          CSS properties are used to style elements on a webpage. They define
+          the look and feel of an element, such as its color, size, font, and
+          spacing. <br />
+          color <br />
+          font-size <br />
+          background-color <br />
+        </li>
+        <li>
+          What is a CSS declaration? Define and provide two examples.<br /><br />
+          The declaration is the property and its value, separated by a colon.
+          Each declaration is separated by a semicolon.
+          <br />
+          { font-size: 20px;<br />
+          color: red;<br />
+          background-color: blue;<br />
+          }
+        </li>
       </ol>
     </section>
-    <section>
+    <section id="scriptSection">
       <h1>Place Holder</h1>
       <h2 id="holder1">Place Holder</h2>
       <h2 id="holder2">Place Holder</h2>
@@ -77,42 +145,58 @@
       );
       console.dir(document.body); // shows the element as a DOM object, good to explore its properties.
 
-      console.log(
-        "--------------------Separation---- Part 2-------------------------"
-      );
-      // In the HTML, create an <h1> element with the text content of placeholder.
-      //  Use JavaScript to set its textContent property to "Johnson County Community College".
+      // <-------------------------------------------------------------------------------------------------------------->
+      //2- In the HTML, create an <h1> element with the text content of placeholder. Use JavaScript to set its textContent property to "Johnson County Community College
       h1 = document.querySelector("h1"); // Select the h1 element.
       h1.textContent = "Johnson County Community College"; // Set the text content of the h1 element to "Johnson County Community College".
-      // // <-------------------------------------------------------------------------------------------------------------->
-      console.log(
-        "--------------------Separation-----Part 3------------------------"
-      );
-      // In the HTML, create three <h2> elements with the text content of placeholder.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 3- In the HTML, create three <h2> elements with the text content of placeholder.
       //  Use JavaScript to set their textContent property to 3 different majors available at JCCC.
       //  (Hint.  If you use HTML id attributes for each element, you can refer to that element directly in the JavaScript as the HTML id value can be automatically accessed as  JavaScript variable with the same name.
       //  See the examples in the textContent section of the Node properties: type, tag, and contents lesson).
-      holder1.textContent = "Web Development and Digital Media";
-      holder2.textContent = "Computer Science";
-      holder3.textContent = "Business Administration";
-      console.log(
-        "--------------------Separation-----Part 4------------------------"
-      );
-      // Write JavaScript to create and then append three more <h2> elements that contain 3 more JCCC majors.
+      holder1.textContent = "Emergency Medical Science, AAS";
+      holder2.textContent = "Electrical Technology, AAS";
+      holder3.textContent = "Electronics Technology, AAS";
+      // <-------------------------------------------------------------------------------------------------------------->
+      //4- Write JavaScript to create and then append three more <h2> elements that contain 3 more JCCC majors.
       // Now you'll use JavaScript to create, modify, and also append the entire <h2> element versus what you did in steps 2 and 3 where the <h2>placeholder</h2> element was already in the HTML.
-      console.log(
-        "--------------------Separation-----Part 5------------------------"
-      );
-      // Copy the JavaScript from the "Create a list" exercise at the end of the Modifying the document lesson into your script.
+      // Create an array of majors.
+      majors = [
+        "Fashion Merchandising and Marketing, AAS",
+        "Fire Science, AAS",
+        "Game Development, AAS",
+      ];
+      // Loop through the majors array, and create an h2 element for each major.
+      for (let i = 0; i < majors.length; i++) {
+        h2 = document.createElement("h2"); // Create a new h2 element.
+        h2.textContent = majors[i]; // Set the text content of the h2 element to the current major.
+        scriptSection.appendChild(h2); // Append the h2 element to the scriptSection element.
+      }
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 5- Copy the JavaScript from the "Create a list" exercise at the end of the Modifying the document lesson into your script.
       // We haven't covered all of those JavaScript constructs yet, especially the while loop, but study and run the code to conceptually understand what is going on.
       // Add a comment behind every statement to explain every line of the code.
-      console.log(
-        "--------------------Separation-----Part 6------------------------"
-      );
-      // Write two JavaScript statements to modify the CSS associated with the <h1> element in your HTML.
+      let ul = document.createElement("ul"); // Create a new ul element.
+      document.body.append(ul); // Append the ul element to the body element(last element).
+      while (true) {
+        //This while is going to run until the user press cancel or an empty string.
+        let data = prompt("Enter the text for the list item", ""); // Prompt the user to enter the text for the list item.
+
+        if (!data) {
+          // If the user enters an empty string or presses cancel, stops of the loop.
+          break;
+        }
+
+        let li = document.createElement("li"); // Create a new li element.
+        li.textContent = data; // Set the text content of the li element to the user input.
+        ul.append(li); // Append the li element to the ul element.
+      }
+      // <-------------------------------------------------------------------------------------------------------------->
+      //6- Write two JavaScript statements to modify the CSS associated with the <h1> element in your HTML.
       // In one, use the style property.  In the other, use the classList property.
       h1.style.fontFamily = "cursive"; // Set the font family of the h1 element to Times using the style property.
-      h1.style.color = "green"; // Set the color of the h1 element to green using the style property.
+      h1.classList.add("h1Styles"); // Add the heading class to the h1 element using the classList property.
     </script>
     <script>
       const darkBtn = dark; // Get the button element with the id dark.

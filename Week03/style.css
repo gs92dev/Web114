@@ -40,6 +40,10 @@ a:hover {
 a:visited {
   color: #618185;
 }
+.h1Styles {
+  color: #8e41d6;
+  font-size: 2rem;
+}
 button {
   font-weight: 600;
   padding: 0.5rem 1rem;
