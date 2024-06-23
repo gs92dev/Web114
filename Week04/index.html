@@ -1,0 +1,72 @@
+<!-- Guilherme dos Santos 06/30/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Project 03</title>
+  </head>
+  <body class="dark">
+    <header>
+      <h2>Project 03 -- WEB 114</h2>
+      <button id="dark">Light mode</button>
+      <h3>Guilherme dos Santos</h3>
+    </header>
+    <section>
+      <h3>Questions</h3>
+      <ol>
+        <li>alert(), confirm(), and prompt() are methods of which object?</li>
+        <li>
+          Why can we use the alert(), confirm(), and prompt() methods without
+          preceding them with the object. (object dot) syntax??
+        </li>
+        <li>
+          How do we distinguish variable names from strings in JavaScript?
+        </li>
+        <li>
+          Later, we'll gather our input from users in a more elegant way --
+          using <input /> elements on a form. We'll also output information to
+          users in a more elegant way -- by modifying existing or adding new
+          elements and styles to the web page. But for right now we are using
+          popup boxes created with the methods shown in #2. What's the point of
+          learning about these annoying popup boxes?
+        </li>
+      </ol>
+    </section>
+    <script>
+      // 1.   Add a statement that declares a variable named user and assign the variable to the value of the answer given to a JavaScript prompt.
+      //  The prompt should ask the user for his or her name.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 2.  Add a statement that declares a variable named proceed and assign the variable to the value of the answer given to a JavaScript confirm.
+      //   The text should ask the user permission to use his or her name on the web page.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 3.  Write a traditional if - else statement that assigns the value in the user variable as the textContent property of an existing <h1> element on the web page IF the value of the proceed variable is true.
+      //     If the proceed variable is false, the textContent property of that <h1> element  should say "Privacy Please".
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 4.  "Comment out" the if - else structure from step #3 (leave it in the code inside a comment), and rewrite the if - else statement in #3 using the conditional ? operator.
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 5- Prompt the user for his or her age, and store the result in a variable named age.
+      // <-------------------------------------------------------------------------------------------------------------->
+      //6- Add a window.alert() statement that alerts out the person's name and age as a final statement in your JavaScript.
+      // 7. How do we distinguish variable names from strings in JavaScript?
+    </script>
+    <script>
+      const darkBtn = dark; // Get the button element with the id dark.
+      let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
+      // Function to change the color of the page to dark mode.
+      const darkMode = (e) => {
+        document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
+
+        darkBtn.textContent = btnText;
+        document.body.classList.contains("dark")
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
+      };
+      darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
+    </script>
+  </body>
+</html>
