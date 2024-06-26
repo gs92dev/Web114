@@ -16,17 +16,16 @@ body {
   color: rgb(223, 221, 221);
 }
 
-/* body.dark header {
-  background-color: #474444;
-  
-} */
-
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  background-color: #e7e1e1;
+}
+body.dark header {
+  background-color: #474444;
 }
 
 li {

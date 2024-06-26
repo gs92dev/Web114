@@ -16,43 +16,69 @@
     <section>
       <h3>Questions</h3>
       <ol>
-        <li>alert(), confirm(), and prompt() are methods of which object?<br><br>
-        They are all part of the window object</li>
         <li>
-          Why can we use the alert(), confirm(), and prompt() methods without
-          preceding them with the object. (object dot) syntax??
+          alert(), confirm(), and prompt() are methods of which object?<br /><br />
+          They are all part of the window object
         </li>
         <li>
-          How do we distinguish variable names from strings in JavaScript?
+          Why can we use the alert(), confirm(), and prompt() methods without
+          preceding them with the object. (object dot) syntax?<br /><br />
+          Because they are part of the window object, and the window object is
+          the default object in JavaScript. With that those methods are globally
+          available not needing the use of the (".") notation to use it.
+        </li>
+        <li>
+          How do we distinguish variable names from strings in JavaScript?<br /><br />
+          To be a string in JavaScript, the value must be enclosed in quotes,
+          either double ("String"), single quotes('string'), or
+          backticks(`string`). Variables are not enclosed in quotes.
         </li>
         <li>
           Later, we'll gather our input from users in a more elegant way --
-          using <input /> elements on a form. We'll also output information to
-          users in a more elegant way -- by modifying existing or adding new
-          elements and styles to the web page. But for right now we are using
-          popup boxes created with the methods shown in #2. What's the point of
-          learning about these annoying popup boxes?
+          using input elements on a form. We'll also output information to users
+          in a more elegant way -- by modifying existing or adding new elements
+          and styles to the web page. But for right now we are using popup boxes
+          created with the methods shown in #2. What's the point of learning
+          about these annoying popup boxes?
         </li>
       </ol>
     </section>
+    <section>
+      <h1></h1>
+    </section>
     <script>
-      // 1.   Add a statement that declares a variable named user and assign the variable to the value of the answer given to a JavaScript prompt.
-      //  The prompt should ask the user for his or her name.
+       // 1.   Add a statement that declares a variable named user and assign the variable to the value of the answer given to a JavaScript prompt.
+       //  The prompt should ask the user for his or her name.
+       let user = prompt("What is your name?");
 
-      // <-------------------------------------------------------------------------------------------------------------->
-      // 2.  Add a statement that declares a variable named proceed and assign the variable to the value of the answer given to a JavaScript confirm.
-      //   The text should ask the user permission to use his or her name on the web page.
+       // <-------------------------------------------------------------------------------------------------------------->
+       // 2.  Add a statement that declares a variable named proceed and assign the variable to the value of the answer given to a JavaScript confirm.
+       //   The text should ask the user permission to use his or her name on the web page.
+       let proceed = confirm("Can we use your name on the web page?");
 
-      // <-------------------------------------------------------------------------------------------------------------->
-      // 3.  Write a traditional if - else statement that assigns the value in the user variable as the textContent property of an existing <h1> element on the web page IF the value of the proceed variable is true.
-      //     If the proceed variable is false, the textContent property of that <h1> element  should say "Privacy Please".
-      // <-------------------------------------------------------------------------------------------------------------->
-      // 4.  "Comment out" the if - else structure from step #3 (leave it in the code inside a comment), and rewrite the if - else statement in #3 using the conditional ? operator.
-      // <-------------------------------------------------------------------------------------------------------------->
-      // 5- Prompt the user for his or her age, and store the result in a variable named age.
-      // <-------------------------------------------------------------------------------------------------------------->
-      //6- Add a window.alert() statement that alerts out the person's name and age as a final statement in your JavaScript.
-      // 7. How do we distinguish variable names from strings in JavaScript?
+       // <-------------------------------------------------------------------------------------------------------------->
+       /* 3.  Write a traditional if - else statement that assigns the value in the user variable as the textContent property of an existing <h1> element on the web page IF the value of the proceed variable is true.
+            If the proceed variable is false, the textContent property of that <h1> element  should say "Privacy Please".*/
+       // if (proceed) {
+       //   document.querySelector("h1").textContent = user;
+       // } else {
+       //   document.querySelector("h1").textContent = "Privacy Please";
+       // }
+       // <-------------------------------------------------------------------------------------------------------------->
+       // 4.  "Comment out" the if - else structure from step #3 (leave it in the code inside a comment), and rewrite the if - else statement in #3 using the conditional ? operator.
+       proceed
+         ? (document.querySelector("h1").textContent = user)
+         : (document.querySelector("h1").textContent = "Privacy Please");
+       // <-------------------------------------------------------------------------------------------------------------->
+       // 5- Prompt the user for his or her age, and store the result in a variable named age.
+       let age = prompt("What is your age?");
+       // <-------------------------------------------------------------------------------------------------------------->
+       //6- Add a window.alert() statement that alerts out the person's name and age as a final statement in your JavaScript.
+       alert(`Hello ${user}, you are ${age} years old.`);
+       // 7. How do we distinguish variable names from strings in JavaScript?
+      /* To be a string in JavaScript, the value must be enclosed in quotes,
+           either double ("String"), single quotes('string'), or
+           backticks(`string`). Variables are not enclosed in quotes./*
     </script>
     <script>
       const darkBtn = dark; // Get the button element with the id dark.
