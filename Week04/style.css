@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -9,10 +10,17 @@ body {
   background: rgb(244, 244, 244);
   color: rgb(46, 44, 44);
 }
+
 .dark {
   background: #1f1e1e;
   color: rgb(223, 221, 221);
 }
+
+/* body.dark header {
+  background-color: #474444;
+  
+} */
+
 header {
   display: flex;
   justify-content: space-around;
@@ -20,6 +28,7 @@ header {
   gap: 1rem;
   padding: 1rem;
 }
+
 li {
   padding: 0.5rem 0;
   line-height: 1.5;
@@ -27,16 +36,20 @@ li {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+
 ul {
   list-style: square;
   max-width: 60rem;
 }
+
 a {
   transition: color 0.3s;
 }
+
 a:hover {
   color: #7b77ca;
 }
+
 a:visited {
   color: #618185;
 }
@@ -52,20 +65,24 @@ button {
   transition: all 0.5s;
   box-shadow: 3px 2px 2px #8e41d6;
 }
+
 .buttonLight {
   background: #1f1e1e;
   color: rgb(223, 221, 221);
 }
+
 button:hover {
   background: #8b5ab9;
   color: white;
   box-shadow: 1px 0.5px 0.5px #8e41d6;
 }
+
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
     gap: 0;
   }
+
   li {
     font-size: 1rem;
   }
