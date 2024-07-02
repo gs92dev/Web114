@@ -1,0 +1,88 @@
+/* Guilherme dos Santos 07/07/2024 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem 3rem;
+  background: rgb(244, 244, 244);
+  color: rgb(46, 44, 44);
+}
+
+.dark {
+  background: #1f1e1e;
+  color: rgb(223, 221, 221);
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #e7e1e1;
+}
+body.dark header {
+  background-color: #474444;
+}
+
+li {
+  padding: 0.5rem 0;
+  line-height: 1.5;
+  max-width: 70rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: square;
+  max-width: 60rem;
+}
+
+a {
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #7b77ca;
+}
+
+a:visited {
+  color: #618185;
+}
+
+button {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 0.15rem solid #8e41d6;
+  border-radius: 0.5rem;
+  background: white;
+  color: #1f1e1e;
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: 3px 2px 2px #8e41d6;
+}
+
+.buttonLight {
+  background: #1f1e1e;
+  color: rgb(223, 221, 221);
+}
+
+button:hover {
+  background: #8b5ab9;
+  color: white;
+  box-shadow: 1px 0.5px 0.5px #8e41d6;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  li {
+    font-size: 1rem;
+  }
+}

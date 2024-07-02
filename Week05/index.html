@@ -1,0 +1,155 @@
+<!-- Guilherme dos Santos 07/07/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Project 04</title>
+  </head>
+  <body class="dark">
+    <header>
+      <h2>Project 05 -- WEB 114</h2>
+      <button id="dark">Light mode</button>
+      <h3>Guilherme dos Santos</h3>
+    </header>
+    <section>
+      <h3>Questions</h3>
+      <ol>
+        <li>
+          What is the difference between a function declaration and a function
+          expression?
+        </li>
+        <li>
+          Why do we create functions in the first place? There are two big
+          reasons. One has to do with WHEN the statements in a function run. The
+          other has to do with how often the statements in a function are run.
+        </li>
+      </ol>
+    </section>
+    <script>
+      // 1- Use window methods to gather two pieces of information from a user, their age and also whether they want to proceed (true or false).
+      // Then, write a traditional if statement that checks whether the age value is greater than or equal to 18 as well as the proceed variable is TRUE.
+      // If both conditions are true, change the textContent property of a <p> that is already in the HTML to  their name plus the text " is legal" such as:  Lisa is legal.
+      // You'll have to prompt for their name after you determine that both their age is > 18 and also that they want to proceed.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 2.  Copy the "Check the login" code from the Logical Operators exercise, but change the words/case to create a two-step test to identify your favorite sport and team
+      //  (for example, if baseball, then Royals)...use whatever sport and team you like.
+      // Add console.log statements that sensibly respond to all 5 possible outcomes based on user interaction.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 3.  Create a variable named secret assigned to a number between 1 and 10.  Write a while loop that keeps prompting a user to enter a number between 1 and 10.
+      //  Stop prompting the user once the secret number is guessed.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 4.  Write #3 again, but this time, use a do while loop.
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 5- Write a for loop to console.log numbers between 1 and 31 that are evenly divided by 3.
+      for (let i = 1; i <= 31; i++) {
+        if (i % 3 === 0) {
+          console.log(i);
+        }
+      }
+
+      // <-------------------------------------------------------------------------------------------------------------->
+      //6- Create a variable named house that is assigned to the value of a prompts for the user's Hogwart's House (Gryffindor, Slytherin, Ravenclaw, Hufflepuff).
+      // Create a switch statement to console.log out an appropriate message based on the user's input.
+      const house = prompt(
+        "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+      );
+      switch (house) {
+        case "Gryffindor":
+          console.log("You are brave and chivalrous.");
+          break;
+        case "Slytherin":
+          console.log("You are ambitious and cunning.");
+          break;
+        case "Ravenclaw":
+          console.log("You are intelligent and creative.");
+          break;
+        case "Hufflepuff":
+          console.log("You are loyal and hardworking.");
+          break;
+        default:
+          console.log("You are a muggle.");
+      }
+
+      // 7. Write #6 again, using if statements and different console.log messages.  Use house2 as the variable name.
+      const house2 = prompt(
+        "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+      );
+      if (house2 === "Gryffindor") {
+        console.log("You are brave and chivalrous.");
+      } else if (house2 === "Slytherin") {
+        console.log("You are ambitious and cunning.");
+      } else if (house2 === "Ravenclaw") {
+        console.log("You are intelligent and creative.");
+      } else if (house2 === "Hufflepuff") {
+        console.log("You are loyal and hardworking.");
+      } else {
+        console.log("You are a muggle.");
+      }
+      // <-------------------------------------------------------------------------------------------------------------->
+      // 8.  Wrap #6 in  a function named sortingHat() using a function declaration.
+      function sortingHat() {
+        const house = prompt(
+          "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+        );
+        switch (house) {
+          case "Gryffindor":
+            console.log("You are brave and chivalrous.");
+            break;
+          case "Slytherin":
+            console.log("You are ambitious and cunning.");
+            break;
+          case "Ravenclaw":
+            console.log("You are intelligent and creative.");
+            break;
+          case "Hufflepuff":
+            console.log("You are loyal and hardworking.");
+            break;
+          default:
+            console.log("You are a muggle.");
+        }
+      }
+      // 9-  Create a variable named sortingHat2 and assign it to a function expression that wraps the code in #7.
+      const sortingHat2 = function () {
+        const house2 = prompt(
+          "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+        );
+        if (house2 === "Gryffindor") {
+          console.log("You are brave and chivalrous.");
+        } else if (house2 === "Slytherin") {
+          console.log("You are ambitious and cunning.");
+        } else if (house2 === "Ravenclaw") {
+          console.log("You are intelligent and creative.");
+        } else if (house2 === "Hufflepuff") {
+          console.log("You are loyal and hardworking.");
+        } else {
+          console.log("You are a muggle.");
+        }
+      };
+
+      // 10- Execute both the sortingHat and sortingHat2 functions as the last two statements in the script.
+      sortingHat();
+      sortingHat2();
+    </script>
+    <script>
+      const darkBtn = dark; // Get the button element with the id dark.
+      let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
+      // Function to change the color of the page to dark mode.
+      const darkMode = (e) => {
+        document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
+
+        darkBtn.textContent = btnText;
+        document.body.classList.contains("dark")
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
+      };
+      darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
+    </script>
+  </body>
+</html>
