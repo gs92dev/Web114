@@ -9,6 +9,9 @@ body {
   padding: 1rem 3rem;
   background: rgb(244, 244, 244);
   color: rgb(46, 44, 44);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .dark {
@@ -74,6 +77,19 @@ button:hover {
   background: #8b5ab9;
   color: white;
   box-shadow: 1px 0.5px 0.5px #8e41d6;
+}
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+footer p {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 768px) {
