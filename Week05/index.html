@@ -21,9 +21,12 @@
           expression? <br /><br />
           Function declaration is a statement that defines a function with the
           specified parameters and statements. It is hoisted to the top of the
-          scope in which it is defined.<br />
+          scope (can be called before is written) in which it is defined.
+          function functionName (parameters){ What the function does.}<br />
           A function expression is a function that is assigned to a variable. It
-          is not hoisted to the top of the scope in which it is defined.
+          is not hoisted to the top of the scope in which it is defined (can't
+          be used before is written). let Name = function
+          (parameter){something}.
         </li>
         <li>
           Why do we create functions in the first place? There are two big
@@ -34,8 +37,8 @@
           run(call or invoke the function) or in other words, the piece of code
           is going to execute only when we want to execute it.<br />
           We can run the same block of code multiple times without having to
-          write it out each time. That saves time and makes our code easier to
-          maintain and debug.
+          write it out each time (the code can be used as many times as we want
+          to). That saves time and makes our code easier to maintain and debug.
         </li>
       </ol>
     </section>
@@ -50,29 +53,47 @@
       // Then, write a traditional if statement that checks whether the age value is greater than or equal to 18 as well as the proceed variable is TRUE.
       // If both conditions are true, change the textContent property of a <p> that is already in the HTML to  their name plus the text " is legal" such as:  Lisa is legal.
       // You'll have to prompt for their name after you determine that both their age is > 18 and also that they want to proceed.
-      // const age = parseInt(prompt("Enter your age: "));
-      // const proceed = confirm("Do you want to proceed?");
-      // const ageProceed = age >= 18 && proceed;
-      // if (ageProceed) {
-      //   const name = prompt("Enter your name: ");
-      //   legal.textContent = `${name} is legal`;
-      // } else {
-      //   legal.textContent = "Not authorized to proceed.";
-      // }
+      const age = parseInt(prompt("Enter your age: "));
+      const proceed = confirm("Do you want to proceed?");
+      const ageProceed = age >= 18 && proceed;
+      if (ageProceed) {
+        const name = prompt("Enter your name: ");
+        legal.textContent = `${name} is legal`;
+      } else {
+        legal.textContent = "Not authorized to proceed.";
+      }
 
       // <-------------------------------------------------------------------------------------------------------------->
       // 2.  Copy the "Check the login" code from the Logical Operators exercise, but change the words/case to create a two-step test to identify your favorite sport and team
       //  (for example, if baseball, then Royals)...use whatever sport and team you like.
       // Add console.log statements that sensibly respond to all 5 possible outcomes based on user interaction.
+      let userName = prompt("Can you guess my favorite sport?", "");
+
+      if (userName === "Soccer") {
+        alert("Great! Now, can you guess my favorite team?");
+        let pass = prompt("Favorite team", "");
+
+        if (pass === "Palmeiras") {
+          console.log("Yes you guessed it right!");
+        } else if (pass === "" || pass === null) {
+          console.log("Canceled, you didn't enter a team.");
+        } else {
+          console.log("Sorry, you guessed the wrong team.");
+        }
+      } else if (userName === "" || userName === null) {
+        console.log("Canceled, you didn't enter a sport");
+      } else {
+        console.log("See you later!");
+      }
 
       // <-------------------------------------------------------------------------------------------------------------->
       // 3.  Create a variable named secret assigned to a number between 1 and 10.  Write a while loop that keeps prompting a user to enter a number between 1 and 10.
       //  Stop prompting the user once the secret number is guessed.
       const secret = 5;
-      // let guess;
-      // while (guess !== secret) {
-      //   guess = parseInt(prompt("Enter a number between 1 and 10: "));
-      // }
+      let guess;
+      while (guess !== secret) {
+        guess = parseInt(prompt("Enter a number between 1 and 10: "));
+      }
 
       // <-------------------------------------------------------------------------------------------------------------->
       // 4.  Write #3 again, but this time, use a do while loop.
@@ -96,85 +117,85 @@
       // <-------------------------------------------------------------------------------------------------------------->
       // //6- Create a variable named house that is assigned to the value of a prompts for the user's Hogwart's House (Gryffindor, Slytherin, Ravenclaw, Hufflepuff).
       // // Create a switch statement to console.log out an appropriate message based on the user's input.
-      // const house = prompt(
-      //   "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
-      // );
-      // switch (house) {
-      //   case "Gryffindor":
-      //     console.log("You are brave and chivalrous.");
-      //     break;
-      //   case "Slytherin":
-      //     console.log("You are ambitious and cunning.");
-      //     break;
-      //   case "Ravenclaw":
-      //     console.log("You are intelligent and creative.");
-      //     break;
-      //   case "Hufflepuff":
-      //     console.log("You are loyal and hardworking.");
-      //     break;
-      //   default:
-      //     console.log("You are a muggle.");
-      // }
+      const house = prompt(
+        "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+      );
+      switch (house) {
+        case "Gryffindor":
+          console.log("You are brave and chivalrous.");
+          break;
+        case "Slytherin":
+          console.log("You are ambitious and cunning.");
+          break;
+        case "Ravenclaw":
+          console.log("You are intelligent and creative.");
+          break;
+        case "Hufflepuff":
+          console.log("You are loyal and hardworking.");
+          break;
+        default:
+          console.log("You are a muggle.");
+      }
 
       // // 7. Write #6 again, using if statements and different console.log messages.  Use house2 as the variable name.
-      // const house2 = prompt(
-      //   "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
-      // );
-      // if (house2 === "Gryffindor") {
-      //   console.log("You are brave and chivalrous.");
-      // } else if (house2 === "Slytherin") {
-      //   console.log("You are ambitious and cunning.");
-      // } else if (house2 === "Ravenclaw") {
-      //   console.log("You are intelligent and creative.");
-      // } else if (house2 === "Hufflepuff") {
-      //   console.log("You are loyal and hardworking.");
-      // } else {
-      //   console.log("You are a muggle.");
-      // }
+      const house2 = prompt(
+        "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+      );
+      if (house2 === "Gryffindor") {
+        console.log("You are brave and chivalrous.");
+      } else if (house2 === "Slytherin") {
+        console.log("You are ambitious and cunning.");
+      } else if (house2 === "Ravenclaw") {
+        console.log("You are intelligent and creative.");
+      } else if (house2 === "Hufflepuff") {
+        console.log("You are loyal and hardworking.");
+      } else {
+        console.log("You are a muggle.");
+      }
       // // <-------------------------------------------------------------------------------------------------------------->
       // // 8.  Wrap #6 in  a function named sortingHat() using a function declaration.
-      // function sortingHat() {
-      //   const house = prompt(
-      //     "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
-      //   );
-      //   switch (house) {
-      //     case "Gryffindor":
-      //       console.log("You are brave and chivalrous.");
-      //       break;
-      //     case "Slytherin":
-      //       console.log("You are ambitious and cunning.");
-      //       break;
-      //     case "Ravenclaw":
-      //       console.log("You are intelligent and creative.");
-      //       break;
-      //     case "Hufflepuff":
-      //       console.log("You are loyal and hardworking.");
-      //       break;
-      //     default:
-      //       console.log("You are a muggle.");
-      //   }
-      // }
+      function sortingHat() {
+        const house = prompt(
+          "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+        );
+        switch (house) {
+          case "Gryffindor":
+            console.log("You are brave and chivalrous.");
+            break;
+          case "Slytherin":
+            console.log("You are ambitious and cunning.");
+            break;
+          case "Ravenclaw":
+            console.log("You are intelligent and creative.");
+            break;
+          case "Hufflepuff":
+            console.log("You are loyal and hardworking.");
+            break;
+          default:
+            console.log("You are a muggle.");
+        }
+      }
       // // 9-  Create a variable named sortingHat2 and assign it to a function expression that wraps the code in #7.
-      // const sortingHat2 = function () {
-      //   const house2 = prompt(
-      //     "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
-      //   );
-      //   if (house2 === "Gryffindor") {
-      //     console.log("You are brave and chivalrous.");
-      //   } else if (house2 === "Slytherin") {
-      //     console.log("You are ambitious and cunning.");
-      //   } else if (house2 === "Ravenclaw") {
-      //     console.log("You are intelligent and creative.");
-      //   } else if (house2 === "Hufflepuff") {
-      //     console.log("You are loyal and hardworking.");
-      //   } else {
-      //     console.log("You are a muggle.");
-      //   }
-      // };
+      const sortingHat2 = function () {
+        const house2 = prompt(
+          "Enter your Hogwarts House: (Gryffindor, Slytherin, Ravenclaw, Hufflepuff) "
+        );
+        if (house2 === "Gryffindor") {
+          console.log("You are courageous and honorable");
+        } else if (house2 === "Slytherin") {
+          console.log("You are driven and resourceful.");
+        } else if (house2 === "Ravenclaw") {
+          console.log("You are Smart and have a lot of creativity");
+        } else if (house2 === "Hufflepuff") {
+          console.log("You demonstrate loyalty and dedication");
+        } else {
+          console.log("You are a non-magical person.");
+        }
+      };
 
       // // 10- Execute both the sortingHat and sortingHat2 functions as the last two statements in the script.
-      // sortingHat();
-      // sortingHat2();
+      sortingHat();
+      sortingHat2();
     </script>
     <script>
       const darkBtn = dark; // Get the button element with the id dark.
