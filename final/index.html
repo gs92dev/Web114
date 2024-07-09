@@ -1,0 +1,47 @@
+<!-- Guilherme dos Santos 07/07/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./final.js" defer></script>
+    <title>Final Project</title>
+  </head>
+  <body class="dark">
+    <div id="mainWrapper">
+      <header>
+        <h1>Final Project -- WEB 114</h1>
+        <button id="dark">Light mode</button>
+        <h2>Guilherme dos Santos</h2>
+      </header>
+      <section>
+        <form action="" id="compareForm">
+          <label for="compare">
+            Compare two numbers:
+            <input data-input1 type="number" step="0.001" required />
+            <select data-selection name="compare" id="compare">
+              <option selected value="greater">></option>
+              <option value="greaterequal">>=</option>
+              <option value="less"><</option>
+              <option value="lessequal"><=</option>
+              <option value="equal">==</option>
+              <option value="notequal">!==</option>
+            </select>
+            <input
+              data-input2
+              type="number"
+              type="number"
+              step="0.001"
+              required
+            />
+          </label>
+          <button type="submit" data-compare>Compare</button>
+        </form>
+      </section>
+      <footer>
+        <p>Guilherme dos Santos WEB 114 2024</p>
+      </footer>
+    </div>
+  </body>
+</html>
