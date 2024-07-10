@@ -11,74 +11,78 @@
   <body class="dark">
     <div id="mainWrapper">
       <header>
-        <h1>Midterm -- WEB 114</h1>
+        <h1>Midterm/ Project-6 -- WEB 114</h1>
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
-      <section id="firstSection">
-        <h2>Compare two numbers</h2>
-        <form action="post" id="compareForm">
-          <fieldset>
-            <legend>Compare two numbers:</legend>
-            <div>
-              <label for="input1">First number:</label>
-              <input
-                data-input1
-                type="number"
-                step="0.001"
-                required
-                id="input1"
-              />
-            </div>
-            <div>
-              <label for="compare">Comparison operator:</label>
-              <select data-selection name="compare" id="compare">
-                <option selected value="greater">></option>
-                <option value="greaterequal">>=</option>
-                <option value="less">&lt;</option>
-                <option value="lessequal">&lt;=</option>
-                <option value="equal">==</option>
-                <option value="notequal">!==</option>
-              </select>
-            </div>
-            <div>
-              <label for="input2">Second number:</label>
-              <input
-                data-input2
-                type="number"
-                step="0.001"
-                required
-                id="input2"
-              />
-            </div>
-            <button type="submit" data-compare>Compare</button>
-          </fieldset>
-        </form>
-      </section>
-      <section>
-        <h2>Compare two Strings</h2>
-        <form action="post" id="compareStringForm">
-          <fieldset>
-            <legend>Compare two numbers:</legend>
-            <div>
-              <label for="input3">First number:</label>
-              <input data-input3 type="text" required id="input3" />
-            </div>
-            <div>
-              <label for="input4">Second number:</label>
-              <input data-input4 type="text" required id="input4" />
-            </div>
-            <div>
-              <label for="compareString">Comparison operator:</label>
-              <select data-selection name="compareString" id="compareString">
-                <option value="strictEqual">==</option>
-                <option value="equal">===</option>
-              </select>
-            </div>
-            <button type="submit" data-compare>Compare</button>
-          </fieldset>
-        </form>
-      </section>
+      <div class="flexRow" id="firstSection">
+        <section>
+          <h2>Compare two numbers</h2>
+          <form action="post" id="compareForm">
+            <fieldset>
+              <div class="flexColumn">
+                <label for="input1">First number:</label>
+                <input
+                  data-input1
+                  type="number"
+                  step="0.001"
+                  required
+                  id="input1"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="input2">Second number:</label>
+                <input
+                  data-input2
+                  type="number"
+                  step="0.001"
+                  required
+                  id="input2"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="compare">Comparison operator:</label>
+                <select data-selection name="compare" id="compare">
+                  <option selected value="greater">></option>
+                  <option value="greaterequal">>=</option>
+                  <option value="less">&lt;</option>
+                  <option value="lessequal">&lt;=</option>
+                  <option value="equal">==</option>
+                  <option value="notequal">!==</option>
+                </select>
+              </div>
+              <button type="submit" data-compare>Compare</button>
+            </fieldset>
+          </form>
+        </section>
+        <section>
+          <h2>Compare two Strings</h2>
+          <form action="post" id="compareStringForm">
+            <fieldset>
+              <div class="flexColumn">
+                <label for="input3">First string</label>
+                <input data-input3 type="text" required id="input3" />
+              </div>
+              <div class="flexColumn">
+                <label for="input4">Second string:</label>
+                <input data-input4 type="text" required id="input4" />
+              </div>
+              <div class="flexColumn">
+                <label for="compareString">Comparison operator:</label>
+                <select
+                  data-selectionString
+                  name="compareString"
+                  id="compareString"
+                >
+                  <option value="strictEqual">==</option>
+                  <option value="equal">===</option>
+                </select>
+              </div>
+              <button type="submit" data-compareString>Compare</button>
+            </fieldset>
+          </form>
+        </section>
+      </div>
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>
       </footer>

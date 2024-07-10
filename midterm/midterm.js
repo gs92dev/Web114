@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const h2 = document.createElement("h2"); // Create a new h2 element.
     h2.textContent = "Welcome to my midterm Exam"; // Set the text content of the h2 element to "Midterm Exam".
-    h2.style.textAlign = "center"; // Set the color of the h2 element to red.
-    firstSection.prepend(h2); // Prepend the second section element to the first section element.
+    h2.style.textAlign = "center";
+    firstSection.parentNode.insertBefore(h2, firstSection); // Prepend the second section element to the first section element.
   }, 3000);
 });
 
-//Compare exercise
+//Compare numbers exercise
 const compare = (a, b, selection) => {
   switch (selection) {
     case "greater":
@@ -53,6 +53,34 @@ const selection = document.querySelector("[data-selection]");
 compareForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const compared = compare(input1.value, input2.value, selection.value);
+  if (compared) {
+    document.body.style.backgroundColor = "green";
+  } else {
+    document.body.style.backgroundColor = "red";
+  }
+  setTimeout(() => {
+    document.body.style.backgroundColor = "";
+  }, 1500);
+});
+
+// Compare string
+//Compare numbers exercise
+const compareStrings = (a, b, selection) => {
+  if (selection === "equal") {
+    return a == b;
+  } else {
+    return a === b;
+  }
+};
+
+const compareString = document.querySelector("[data-compareString]");
+const input3 = document.querySelector("[data-input3]");
+const input4 = document.querySelector("[data-input4]");
+const selectionString = document.querySelector("[data-selection]");
+
+compareStringForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const compared = compareStrings(input3.value, input4.value, selection.value);
   if (compared) {
     document.body.style.backgroundColor = "green";
   } else {
