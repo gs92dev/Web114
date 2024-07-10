@@ -55,6 +55,30 @@
           </fieldset>
         </form>
       </section>
+      <section>
+        <h2>Compare two Strings</h2>
+        <form action="post" id="compareStringForm">
+          <fieldset>
+            <legend>Compare two numbers:</legend>
+            <div>
+              <label for="input3">First number:</label>
+              <input data-input3 type="text" required id="input3" />
+            </div>
+            <div>
+              <label for="input4">Second number:</label>
+              <input data-input4 type="text" required id="input4" />
+            </div>
+            <div>
+              <label for="compareString">Comparison operator:</label>
+              <select data-selection name="compareString" id="compareString">
+                <option value="strictEqual">==</option>
+                <option value="equal">===</option>
+              </select>
+            </div>
+            <button type="submit" data-compare>Compare</button>
+          </fieldset>
+        </form>
+      </section>
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>
       </footer>
