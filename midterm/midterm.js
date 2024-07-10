@@ -12,6 +12,14 @@ const darkMode = (e) => {
 };
 darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
 
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const h2 = document.createElement("h2"); // Create a new h2 element.
+    h2.textContent = "Welcome to my midterm Exam"; // Set the text content of the h2 element to "Midterm Exam".
+    firstSection.prepend(h2); // Prepend the second section element to the first section element.
+  }, 3000);
+});
+
 //Compare exercise
 const compare = (a, b, selection) => {
   switch (selection) {
