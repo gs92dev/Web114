@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const h2 = document.createElement("h2"); // Create a new h2 element.
     h2.textContent = "Welcome to my midterm Exam"; // Set the text content of the h2 element to "Midterm Exam".
+    h2.style.textAlign = "center"; // Set the color of the h2 element to red.
     firstSection.prepend(h2); // Prepend the second section element to the first section element.
   }, 3000);
 });
