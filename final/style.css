@@ -16,6 +16,25 @@ body {
   display: flex;
   flex-direction: column;
 }
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  transition: all 1s;
+  justify-content: flex-start;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.flexRow {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+}
 
 .dark {
   background: #1f1e1e;
@@ -79,12 +98,20 @@ input {
 }
 input:focus {
   outline: none;
-  border: 0.15rem solid rgb(11, 235, 243);
+  border: 0.15rem solid rgb(124, 124, 124);
 }
 select {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 0.15rem solid #8e41d6;
+}
+fieldset {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+#finalResult {
+  font-size: 1em;
 }
 footer {
   margin-top: auto;

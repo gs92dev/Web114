@@ -5,56 +5,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./final.js" defer></script>
-    <title>Final Project</title>
+    <script src="./finaljs" defer></script>
+    <title>Final</title>
   </head>
   <body class="dark">
     <div id="mainWrapper">
       <header>
-        <h1>Final Project -- WEB 114</h1>
+        <h1>Midterm/ Project-6 -- WEB 114</h1>
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
-      <section>
-        <h2>Compare two numbers</h2>
-        <form action="post" id="compareForm">
-          <fieldset>
-            <legend>Compare two numbers:</legend>
-            <div>
-              <label for="input1">First number:</label>
-              <input
-                data-input1
-                type="number"
-                step="0.001"
-                required
-                id="input1"
-              />
-            </div>
-            <div>
-              <label for="compare">Comparison operator:</label>
-              <select data-selection name="compare" id="compare">
-                <option selected value="greater">></option>
-                <option value="greaterequal">>=</option>
-                <option value="less">&lt;</option>
-                <option value="lessequal">&lt;=</option>
-                <option value="equal">==</option>
-                <option value="notequal">!==</option>
-              </select>
-            </div>
-            <div>
-              <label for="input2">Second number:</label>
-              <input
-                data-input2
-                type="number"
-                step="0.001"
-                required
-                id="input2"
-              />
-            </div>
-            <button type="submit" data-compare>Compare</button>
-          </fieldset>
-        </form>
-      </section>
+      <div class="flexRow" id="firstSection">
+        <section>
+          <h2>Compare two numbers</h2>
+          <form action="post" id="compareForm">
+            <fieldset>
+              <div class="flexColumn">
+                <label for="input1">First number:</label>
+                <input
+                  data-input1
+                  type="number"
+                  step="0.001"
+                  required
+                  id="input1"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="input2">Second number:</label>
+                <input
+                  data-input2
+                  type="number"
+                  step="0.001"
+                  required
+                  id="input2"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="compare">Comparison operator:</label>
+                <select data-selection name="compare" id="compare">
+                  <option selected value="greater">></option>
+                  <option value="greaterequal">>=</option>
+                  <option value="less">&lt;</option>
+                  <option value="lessequal">&lt;=</option>
+                  <option value="equal">==</option>
+                  <option value="notequal">!==</option>
+                </select>
+              </div>
+              <button type="submit" data-compare>Compare</button>
+            </fieldset>
+          </form>
+        </section>
+      </div>
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>
       </footer>

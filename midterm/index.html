@@ -83,8 +83,10 @@
                   data-selectionCalc
                   name="calculatorSelect"
                   id="calculatorSelect"
+                  required
                 >
-                  <option selected value="add">Sum +</option>
+                  <option selected value="" disabled>Operator</option>
+                  <option value="add">Sum +</option>
                   <option value="subtract">Sub -</option>
                   <option value="multiply">Mult *</option>
                   <option value="divide">Div /</option>
@@ -92,7 +94,13 @@
                   <option value="exponent">Power **</option>
                 </select>
               </div>
-              <button type="submit" data-calc>Calculate</button>
+              <div class="flexRow">
+                <button type="submit" data-calc>Calculate</button>
+                <div class="flexColumn">
+                  <span>Result:</span>
+                  <span id="finalResult"></span>
+                </div>
+              </div>
             </fieldset>
           </form>
         </section>

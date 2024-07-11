@@ -74,9 +74,17 @@ const calculate = (a, b, selection) => {
     case "multiply":
       return a * b;
     case "divide":
-      return a / b;
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a / b;
+      }
     case "remainder":
-      return a % b;
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a % b;
+      }
     case "exponent":
       return a ** b;
     default:
@@ -86,7 +94,7 @@ const calculate = (a, b, selection) => {
 
 const calculator = document.querySelector("#calculator");
 const calculator1 = document.querySelector("[data-calculator1]");
-const calculator2 = document.querySelector("[data-calculator1]");
+const calculator2 = document.querySelector("[data-calculator2]");
 const selectionCalc = document.querySelector("[data-selectionCalc]");
 
 calculator.addEventListener("submit", (e) => {
@@ -96,13 +104,7 @@ calculator.addEventListener("submit", (e) => {
     Number(calculator2.value),
     selectionCalc.value
   );
-
-  if (result) {
-    document.body.style.backgroundColor = "green";
-  } else {
-    document.body.style.backgroundColor = "red";
-  }
-  setTimeout(() => {
-    document.body.style.backgroundColor = "";
-  }, 1500);
+  finalResult.textContent = "";
+  calculator.reset();
+  finalResult.textContent = result;
 });
