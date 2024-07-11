@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--Lisa Friedrichsen 11-6-2020-->
+<html lang="en">
+	<head>
+		<title>Math and JavaScript</title>
+		<meta charset="utf-8">
+		<style>
+		/* I'm using an embedded style sheet here just to keep this all in one file. */
+			#outerwrapper { width: 70%;
+			                margin: 0 auto 0 auto;
+							padding: 2em;
+							background-color: #fffee0;
+							}
+		</style>
+	</head>
+	<body>
+		<div id="outerwrapper">
+			<p>In this project, you will use HTML elements such as input, select, and option to gather data from the user instead of those annoying (but handy) alert() and prompt() popups.</p>
+			<p>To send information to the user, you'll modify HTML elements on the web page instead of using the annoying alert() popup.  You've already done that using the textContent property of an HTML element.</p>
+			<p>But because some of you are probably in WEB 110 and may not have used the select and option elements to create a drop-down list yet, I thought I'd give you a little example as a starting point.  </p>
+			<p>Also, now that you know how to wrap your statements in a function to protect them from immediately running when the browser reads those statements, we're going to add one more skill, and that is how to trigger/execute/call/run (4 words that mean the same thing) your function when a button is clicked!  We can trigger it on many different events, but clicking a button on a web page is quite intuitive for your user!</p>
+			<p>
+			<p>This little example will ask the user for two numbers and a math operator of + (add) or - (subtract) and after those three choices, when the user clicks the Calculate! button, the result will be put in the paragraph with the id="result".</p>
+			<label for="num1">Number 1:</label><input id="num1" type="number">
+			<label for="num2">Number 2:</label><input id="num2" type="number">
+			<p>Pick an operator:</p>
+				<select id="operators">  <!-- this creates the drop-down list -->
+					<option value="add">+ add</option>
+					<option value="sub">- subtract</option>
+					<!-- more option elements could be added here as desired-->
+				<select>
+
+			<button id="calculate">Calculate!</button>
+			<p id="result">The answer is... </p>
+		</div>
+	   <script> 
+	   
+	function math(){
+		//step 1 -- decide what pieces of information you need to do the calculation and identify them with variables
+		//I'm going to need 3 pieces of information -- the 2 numbers as well as the operator from the drop-down
+		
+		let n1 = +document.getElementById('num1').value;  //it is common to make the variable name the same as the id value
+		                //when learning, though, I like to keep every little piece of data 
+						//separated so it's super clear what each piece refers to
+						//Note that when pulling a piece of data from an input or select element, you use the value property
+		let n2 = +document.getElementById('num2').value;
+		let mathOperator = document.getElementById('operators').value;
+		
+		//step 2 -- console.log() out all variables just to make SURE you know what they contain
+		
+		console.log('n1: ' + n1);  // note that you can REALLY clearly identify your variables with a string
+		console.log('n2: ' + n2);
+		console.log('mathOperator: ' + mathOperator);
+		
+		//step 3
+		//OOPS, n1 and n2 are completely empty given that all of this code runs immediately when the page is loaded
+		//At that point, we haven't allowed our user to enter any data into the input boxes yet.
+		//So...time to go back and wrap all of those statements with a function I called math
+	
+		//step 6 now that we have all of the pieces working, we have to finish the task of adding or subtracting the numbers
+		//and putting the result on the web page!
+		//I will use an if - else structure.  You could also use a switch structure.
+		let answer = 0;  // Create a variable that will contain the answer of the calculation
+		if (mathOperator === 'add') {   //Note that 'add' comes from the value attribute of the <option> element
+			answer = n1 + n2;
+		} else if (mathOperator === 'sub') {
+			answer = n1 - n2;
+		}
+		
+		document.getElementById('result').textContent = answer;   // Put the answer on the web page!!
+		//step 7 -- In testing you see that 5 + 5 results in 55 because all values from a web page 
+		//come into the JavaScript environment as a string and '5' + '5' results in '55'
+		//so you have to convert any data that comes into the environment to a number
+		//there are many ways, but probably the easiest way is to simply convert each value to a number using the 
+		//+ symbol on lines 42 and 46 where we get the numbers from the user. 
+		//Those + symbols will convert whatever value comes into the environment from those two 
+		//input boxes from a string into a number!
+		//In my youtubes, I sometimes wrap the whole value in the JavaScript Number() function or 
+		//use the parseInt() function.  Both of those techniques work as well, but the little + symbol is the shortest
+		//way to convert a string that contains a numeric character from a web page into a true number in JavaScript
+	}
+		//step 4 test the math function in the console by opening the page, entering data into the two 
+		//input boxes and running the math function in the console:  math();
+		
+		//step 5 hook the math function to the calculate button. There are two ways in my youtubes.  Either is acceptable.
+			//option 1 -- assign the math function to the onclick event of the button as follows:
+			document.getElementById('calculate').onclick = math;
+			
+			//option 2 -- use the addEventListener() method.  This method is preferred given it has more flexibility that we 
+			//don't need to get weighed down with yet, but BOTH ways are quite common, so use either way:
+			document.getElementById('calculate').addEventListener('click', math);
+	
+	
+	   </script>
+			
+		
+	</body>
+</html>

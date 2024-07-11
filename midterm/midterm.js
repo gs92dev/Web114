@@ -63,25 +63,41 @@ compareForm.addEventListener("submit", (e) => {
   }, 1500);
 });
 
-// Compare string
-//Compare numbers exercise
-const compareStrings = (a, b, selection) => {
-  if (selection === "equal") {
-    return a == b;
-  } else {
-    return a === b;
+// Calculator
+
+const calculate = (a, b, selection) => {
+  switch (selection) {
+    case "add":
+      return a + b;
+    case "subtract":
+      return a - b;
+    case "multiply":
+      return a * b;
+    case "divide":
+      return a / b;
+    case "remainder":
+      return a % b;
+    case "exponent":
+      return a ** b;
+    default:
+      return false;
   }
 };
 
-const compareString = document.querySelector("[data-compareString]");
-const input3 = document.querySelector("[data-input3]");
-const input4 = document.querySelector("[data-input4]");
-const selectionString = document.querySelector("[data-selection]");
+const calculator = document.querySelector("#calculator");
+const calculator1 = document.querySelector("[data-calculator1]");
+const calculator2 = document.querySelector("[data-calculator1]");
+const selectionCalc = document.querySelector("[data-selectionCalc]");
 
-compareStringForm.addEventListener("submit", (e) => {
+calculator.addEventListener("submit", (e) => {
   e.preventDefault();
-  const compared = compareStrings(input3.value, input4.value, selection.value);
-  if (compared) {
+  const result = calculate(
+    Number(calculator1.value),
+    Number(calculator2.value),
+    selectionCalc.value
+  );
+
+  if (result) {
     document.body.style.backgroundColor = "green";
   } else {
     document.body.style.backgroundColor = "red";

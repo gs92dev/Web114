@@ -56,29 +56,43 @@
           </form>
         </section>
         <section>
-          <h2>Compare two Strings</h2>
-          <form action="post" id="compareStringForm">
+          <h2>Simple Calculator</h2>
+          <form action="post" id="calculator">
             <fieldset>
               <div class="flexColumn">
-                <label for="input3">First string</label>
-                <input data-input3 type="text" required id="input3" />
+                <label for="calculator1">Enter the first number:</label>
+                <input
+                  data-calculator1
+                  type="number"
+                  required
+                  id="calculator1"
+                />
               </div>
               <div class="flexColumn">
-                <label for="input4">Second string:</label>
-                <input data-input4 type="text" required id="input4" />
+                <label for="calculator2">Enter the second number:</label>
+                <input
+                  data-calculator2
+                  type="number"
+                  required
+                  id="calculator2"
+                />
               </div>
               <div class="flexColumn">
-                <label for="compareString">Comparison operator:</label>
+                <label for="calculatorSelect">Choose the operator</label>
                 <select
-                  data-selectionString
-                  name="compareString"
-                  id="compareString"
+                  data-selectionCalc
+                  name="calculatorSelect"
+                  id="calculatorSelect"
                 >
-                  <option value="strictEqual">==</option>
-                  <option value="equal">===</option>
+                  <option selected value="add">Sum +</option>
+                  <option value="subtract">Sub -</option>
+                  <option value="multiply">Mult *</option>
+                  <option value="divide">Div /</option>
+                  <option value="remainder">Rema %</option>
+                  <option value="exponent">Power **</option>
                 </select>
               </div>
-              <button type="submit" data-compareString>Compare</button>
+              <button type="submit" data-calc>Calculate</button>
             </fieldset>
           </form>
         </section>
