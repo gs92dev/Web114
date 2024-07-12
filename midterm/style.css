@@ -2,7 +2,15 @@
 * {
   box-sizing: border-box;
 }
-
+#expression {
+  background-color: aliceblue;
+  color: #8b5ab9;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
 #mainWrapper {
   background-color: #8b5ab9;
 }

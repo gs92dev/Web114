@@ -17,8 +17,8 @@
       </header>
       <div class="flexRow" id="firstSection">
         <section>
-          <h2>Diferents =</h2>
-          <!-- Create a string Length comparitor -->
+          <h2>Differences</h2>
+          <!-- Create a string Length comparator -->
           <form action="post" id="equalForm">
             <fieldset>
               <div class="flexColumn">
@@ -30,9 +30,9 @@
                   <option data-option="strict" value="strict">===</option>
                 </select>
               </div>
-              <div class="flexColumn hidden">
+              <div class="flexColumn">
                 <div class="flexColumn">
-                  <label for="type1">Select data type</label>
+                  <label for="type1">Select type 1:</label>
                   <select data-type1 name="type1">
                     <option selected value="" disabled>Type</option>
                     <option data-option="string" value="string">String</option>
@@ -43,17 +43,31 @@
                   </select>
                 </div>
                 <label for="input1" id="label1">Enter your first data:</label>
-                <input
-                  data-input1
-                  type="number"
-                  step="0.001"
-                  required
-                  id="input1"
-                />
-              </div>
-              <div class="flexColumn hidden">
+                <input data-input1 type="text" id="input1" required />
                 <div class="flexColumn">
-                  <label for="type2">Enter your second data:</label>
+                  <div data-radiogroup class="flexColumn">
+                    <label for="true1">True</label>
+                    <input
+                      type="radio"
+                      id="true1"
+                      name="boolean1"
+                      value="true"
+                      required
+                    />
+                    <label for="false1">False</label>
+                    <input
+                      type="radio"
+                      id="false1"
+                      name="boolean1"
+                      value="false"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="flexColumn">
+                <div class="flexColumn">
+                  <label for="type2">Select type 2:</label>
                   <select data-type2 name="type2">
                     <option selected value="" disabled>Type</option>
                     <option data-option="string" value="string">String</option>
@@ -63,19 +77,109 @@
                     </option>
                   </select>
                 </div>
-                <label for="input2" id="label2">Second number:</label>
-                <input
-                  data-input2
-                  type="number"
-                  step="0.001"
-                  required
-                  id="input2"
-                />
+                <label for="input2" id="label2">Enter your second data:</label>
+                <input data-input2 type="text" id="input2" required />
+                <div class="flexColumn">
+                  <div data-radiogroup class="flexColumn">
+                    <label for="true2">True</label>
+                    <input
+                      type="radio"
+                      id="true2"
+                      name="boolean2"
+                      value="true"
+                      required
+                    />
+                    <label for="false2">False</label>
+                    <input
+                      type="radio"
+                      id="false2"
+                      name="boolean2"
+                      value="false"
+                      required
+                    />
+                  </div>
+                </div>
               </div>
-              <button type="submit" data-equal>Select First</button>
+              <button type="submit" data-equal>Submit</button>
             </fieldset>
           </form>
         </section>
+        <section>
+          <h2>Find out if you know the right order of the operation</h2>
+          <form id="valueForm">
+            <fieldset>
+              <div class="flexColumn">
+                <p id="expression">5 + 3 * x - (y/2)</p>
+                <label for="x">Enter a value for x:</label>
+                <input type="number" id="x" required />
+
+                <label for="y">Enter a value for y:</label>
+                <input type="number" id="y" required />
+
+                <label for="result">What is the result?</label>
+                <input type="number" id="result" required />
+              </div>
+              <button type="submit">Submit</button>
+            </fieldset>
+          </form>
+          <p id="feedback"></p>
+        </section>
+
+        <script>
+          const expressions = [
+            "5 + 3 * x - (y / 2)",
+            "(x + y) * 2 - 4 / 2",
+            "10 / (2 + x) * y",
+            "x * y + 3 - 5 / 2",
+            "(3 + x) * (y - 2)",
+          ];
+
+          let currentExpressionIndex = 0;
+          const expressionElement = document.getElementById("expression");
+          const feedbackElement = document.getElementById("feedback");
+          const form = document.getElementById("valueForm");
+
+          function evaluateExpression(expr, x, y) {
+            return Function("x", "y", `return ${expr}`)(x, y);
+          }
+
+          function loadNextExpression() {
+            if (currentExpressionIndex < expressions.length) {
+              expressionElement.textContent =
+                expressions[currentExpressionIndex];
+            } else {
+              expressionElement.textContent =
+                "You've completed all expressions!";
+              form.style.display = "none";
+            }
+          }
+
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const x = parseFloat(document.getElementById("x").value);
+            const y = parseFloat(document.getElementById("y").value);
+            const guessedResult = parseFloat(
+              document.getElementById("result").value
+            );
+
+            const correctResult = evaluateExpression(
+              expressions[currentExpressionIndex],
+              x,
+              y
+            );
+
+            if (guessedResult === correctResult) {
+              feedbackElement.textContent = "Correct! Well done!";
+            } else {
+              feedbackElement.textContent = `Incorrect. The correct result was ${correctResult}.`;
+            }
+
+            currentExpressionIndex++;
+            loadNextExpression();
+          });
+
+          loadNextExpression();
+        </script>
         <!-- <section>
           <h2>Simple Calculator</h2>
           <form action="post" id="calculator">
