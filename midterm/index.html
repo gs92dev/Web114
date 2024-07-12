@@ -17,12 +17,32 @@
       </header>
       <div class="flexRow" id="firstSection">
         <section>
-          <h2>String Length</h2>
+          <h2>Diferents =</h2>
           <!-- Create a string Length comparitor -->
-          <form action="post" id="compareForm">
+          <form action="post" id="equalForm">
             <fieldset>
               <div class="flexColumn">
-                <label for="input1">First number:</label>
+                <label for="compare">Select operator:</label>
+                <select data-equal name="equal">
+                  <option selected value="" disabled>Operator</option>
+                  <option data-option="assign" value="assign">=</option>
+                  <option data-option="equal" value="equal">==</option>
+                  <option data-option="strict" value="strict">===</option>
+                </select>
+              </div>
+              <div class="flexColumn hidden">
+                <div class="flexColumn">
+                  <label for="type1">Select data type</label>
+                  <select data-type1 name="type1">
+                    <option selected value="" disabled>Type</option>
+                    <option data-option="string" value="string">String</option>
+                    <option data-option="number" value="number">Number</option>
+                    <option data-option="boolean" value="boolean">
+                      Boolean
+                    </option>
+                  </select>
+                </div>
+                <label for="input1" id="label1">Enter your first data:</label>
                 <input
                   data-input1
                   type="number"
@@ -31,8 +51,19 @@
                   id="input1"
                 />
               </div>
-              <div class="flexColumn">
-                <label for="input2">Second number:</label>
+              <div class="flexColumn hidden">
+                <div class="flexColumn">
+                  <label for="type2">Enter your second data:</label>
+                  <select data-type2 name="type2">
+                    <option selected value="" disabled>Type</option>
+                    <option data-option="string" value="string">String</option>
+                    <option data-option="number" value="number">Number</option>
+                    <option data-option="boolean" value="boolean">
+                      Boolean
+                    </option>
+                  </select>
+                </div>
+                <label for="input2" id="label2">Second number:</label>
                 <input
                   data-input2
                   type="number"
@@ -41,22 +72,11 @@
                   id="input2"
                 />
               </div>
-              <div class="flexColumn">
-                <label for="compare">Comparison operator:</label>
-                <select data-selection name="compare" id="compare">
-                  <option selected value="greater">></option>
-                  <option value="greaterequal">>=</option>
-                  <option value="less">&lt;</option>
-                  <option value="lessequal">&lt;=</option>
-                  <option value="equal">==</option>
-                  <option value="notequal">!==</option>
-                </select>
-              </div>
-              <button type="submit" data-compare>Compare</button>
+              <button type="submit" data-equal>Select First</button>
             </fieldset>
           </form>
         </section>
-        <section>
+        <!-- <section>
           <h2>Simple Calculator</h2>
           <form action="post" id="calculator">
             <fieldset>
@@ -104,7 +124,7 @@
               </div>
             </fieldset>
           </form>
-        </section>
+        </section> -->
       </div>
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>

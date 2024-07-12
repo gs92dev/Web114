@@ -127,6 +127,10 @@ footer p {
   font-weight: 600;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
