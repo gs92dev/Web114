@@ -12,90 +12,78 @@ const darkMode = (e) => {
 };
 darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
 
-// ------------------------- Equal Sign Calculator ----------------------------
+// ------------------------- Compare =, ==, and === ----------------------------
 
-//Compare numbers exercise
-const equalSign = (a, b, selection) => {
-  switch (selection) {
-    case "assign":
-      return a > b;
+const submitButton = document.querySelector("[data-submit]");
 
-    case "greaterequal":
-      return a >= b;
-
-    case "equal":
-      return a < b;
-
-    case "strict":
-      return a <= b;
-
-    default:
-      return false;
+// Function to change the form based on the selection
+function assignment() {
+  // If assignment is selected, show the assignment form
+  if (assignmentForm.classList.contains("hidden")) {
+    assignmentForm.classList.remove("hidden");
+    equalOrStricForm.classList.add("hidden");
   }
-};
+  // gater all inputs with required that are hidden and remove the required attribute
+  const hiddenInputs = document.querySelectorAll(".hidden input[required]");
+  // Remove the required attribute from each hidden input so I can submit the form
+  hiddenInputs.forEach((input) => input.removeAttribute("required"));
+}
 
-//variables declaration
-const compareBtn = document.querySelector("[data-compare]");
-const label1 = document.querySelector("label[for='input1']");
-const label2 = document.querySelector("label[for='input2']");
-const input1 = document.querySelector("[data-input1]");
-const input2 = document.querySelector("[data-input2]");
-const selection = document.querySelector("[data-equal]");
-const option = document.querySelector("[data-option]");
-const type1 = document.querySelector("[data-type1]");
-const type2 = document.querySelector("[data-type2]");
+function equal() {
+  if (equalOrStricForm.classList.contains("hidden")) {
+    assignmentForm.classList.add("hidden");
+    equalOrStricForm.classList.remove("hidden");
+  }
+  type1.addEventListener("change", () => {
+    if (type1.value === "boolean") {
+      input1Wrapper.classList.add("hidden");
+      radio1Wrapper.classList.remove("hidden");
+    }
+  });
+  type2.addEventListener("change", () => {
+    if (type2.value === "boolean") {
+      input2Wrapper.classList.add("hidden");
+      radio2Wrapper.classList.remove("hidden");
+    }
+  });
+}
+function strict() {}
 
-// Function to submit form
-compareForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const compared = equalSign(input1.value, input2.value, selection.value);
-  if (compared) {
-    document.body.style.backgroundColor = "green";
+// Event listener to change the form based on the selection
+operatorCompare.addEventListener("change", () => {
+  const option = operatorCompare.value;
+  if (option === "assign") {
+    assignment();
+  } else if (option === "equal") {
+    equal();
   } else {
-    document.body.style.backgroundColor = "red";
+    strict();
   }
+
   setTimeout(() => {
     document.body.style.backgroundColor = "";
   }, 1500);
 });
 
-// Function to change the form based on the selection
-function assigment() {
-  document.body.style.backgroundColor = "green";
-  if (!input1.classList.contains("hidden")) {
-    input1.classList.add("hidden");
-  } else {
-    console.log("outside");
+// Function to submit form
+compareForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  switch (operatorCompare.value) {
+    case "assign":
+      const varName = variableName.value;
+      const varValue = variableValue.value;
+      answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue} <br> <br> ${varName} = ${varValue}`;
+      compareForm.reset();
+      submitButton.blur();
+      assignmentForm.classList.add("hidden");
+      break;
+    case "equal":
+      alert("equal");
+      break;
+    case "strict":
+      alert("strict");
+      break;
   }
-}
-
-function equal() {
-  input1.type = "text";
-  input2.type = "text";
-  document.body.style.backgroundColor = "red";
-  input1.removeAttribute("pattern");
-  input1.removeAttribute("title");
-  input1.setAttribute("pattern", "^(true|false)$");
-  input1.setAttribute("title", "Must be either true or false.");
-  input2.setAttribute("pattern", "^(true|false)$");
-  input2.setAttribute("title", "Must be either true or false.");
-  document.body.style.backgroundColor = "red";
-}
-compareForm.addEventListener("change", () => {
-  const option = selection.value;
-  if (option === "assign") {
-    assigment();
-  } else if (option === "equal") {
-    equal();
-  } else if (option === "strict") {
-    input1.removeAttribute("pattern");
-    input1.removeAttribute("title");
-    document.body.style.backgroundColor = "yellow";
-  }
-
-  setTimeout(() => {
-    document.body.style.backgroundColor = "";
-  }, 1500);
 });
 
 // Calculator
