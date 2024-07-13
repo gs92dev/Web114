@@ -30,6 +30,7 @@ section {
   padding: 1rem;
   transition: all 1s;
   justify-content: flex-start;
+  min-width: 25rem;
 }
 .flexColumn {
   display: flex;
