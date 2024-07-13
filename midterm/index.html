@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./midterm.js" defer></script>
+    <!-- <script src="./midterm.js" defer></script> -->
     <title>Midterm</title>
   </head>
   <body class="dark">
@@ -110,73 +110,112 @@
               <div class="flexColumn">
                 <p id="expression">5 + 3 * x - (y/2)</p>
                 <label for="x">Enter a value for x:</label>
-                <input type="number" id="x" required />
+                <input type="number" step="0.1" id="xValue" required />
 
                 <label for="y">Enter a value for y:</label>
-                <input type="number" id="y" required />
+                <input type="number" step="0.1" id="yValue" required />
 
                 <label for="result">What is the result?</label>
-                <input type="number" id="result" required />
+                <input type="number" step="0.1" id="result" required />
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit" id="submitButton">
+                Find out the result
+              </button>
+              <button type="button" class="hidden" id="reloadGame">
+                Restart
+              </button>
             </fieldset>
           </form>
           <p id="feedback"></p>
         </section>
 
         <script>
-          const expressions = [
-            "5 + 3 * x - (y / 2)",
+          //Array with the expressions to display
+          const expressionStrings = [
+            "5 + 3 ** x - y / 2",
             "(x + y) * 2 - 4 / 2",
-            "10 / (2 + x) * y",
+            "10 / (2 + x) ** y",
             "x * y + 3 - 5 / 2",
-            "(3 + x) * (y - 2)",
+            "(3 + x) * (y ** 2 - 2)",
           ];
+          // Array of arrow functions expressions to evaluate
+          const expressions = [
+            (x, y) => 5 + 3 ** x - y / 2,
+            (x, y) => (x + y) * 2 - 4 / 2,
+            (x, y) => 10 / (2 + x) ** y,
+            (x, y) => x * y + 3 - 5 / 2,
+            (x, y) => (3 + x) * (y ** 2 - 2),
+          ];
+          //Function called with the values of x, y, and i [index] to evaluate the expression
+          const evaluateExpression = (x, y, i) => {
+            return expressions[i](x, y);
+          };
 
           let currentExpressionIndex = 0;
           const expressionElement = document.getElementById("expression");
           const feedbackElement = document.getElementById("feedback");
-          const form = document.getElementById("valueForm");
-
-          function evaluateExpression(expr, x, y) {
-            return Function("x", "y", `return ${expr}`)(x, y);
-          }
+          const expressionForm = document.getElementById("valueForm");
 
           function loadNextExpression() {
-            if (currentExpressionIndex < expressions.length) {
+            if (currentExpressionIndex < expressionStrings.length) {
               expressionElement.textContent =
-                expressions[currentExpressionIndex];
+                expressionStrings[currentExpressionIndex];
+              expressionForm.reset();
+              xValue.focus();
             } else {
               expressionElement.textContent =
                 "You've completed all expressions!";
-              form.style.display = "none";
+              xValue.setAttribute("disabled", true);
+              yValue.setAttribute("disabled", true);
+              result.setAttribute("disabled", true);
+              submitButton.classList.add("hidden");
+              reloadGame.classList.remove("hidden");
             }
           }
 
-          form.addEventListener("submit", function (event) {
+          expressionForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            const x = parseFloat(document.getElementById("x").value);
-            const y = parseFloat(document.getElementById("y").value);
-            const guessedResult = parseFloat(
-              document.getElementById("result").value
-            );
+            //Get the values from the form after submit is clicked
+            const xInput = parseFloat(xValue.value);
+            const yInput = parseFloat(yValue.value);
+            const guessedResult = parseFloat(result.value);
 
             const correctResult = evaluateExpression(
-              expressions[currentExpressionIndex],
-              x,
-              y
+              xInput,
+              yInput,
+              currentExpressionIndex
             );
 
             if (guessedResult === correctResult) {
               feedbackElement.textContent = "Correct! Well done!";
             } else {
-              feedbackElement.textContent = `Incorrect. The correct result was ${correctResult}.`;
+              const formattedResult = correctResult.toFixed(3);
+              feedbackElement.innerHTML = `Incorrect. The correct result was <b>${formattedResult}</b>.<br>
+              <br>
+              Remember The order of operations:<br> 
+               Parentheses, Exponents, Multiplication and Division, Addition and Subtraction.<br>
+              P<br>
+              E<br>
+              M<br>
+              D<br>
+              A<br>
+              S<br>
+            `;
             }
-
             currentExpressionIndex++;
             loadNextExpression();
+            reloadGame.addEventListener("click", function () {
+              currentExpressionIndex = 0;
+              reloadGame.classList.add("hidden");
+              loadNextExpression();
+              xValue.removeAttribute("disabled");
+              yValue.removeAttribute("disabled");
+              result.removeAttribute("disabled");
+              submitButton.classList.remove("hidden");
+              feedbackElement.textContent = "";
+            });
           });
-
+          //Starts the first expression
           loadNextExpression();
         </script>
         <!-- <section>
