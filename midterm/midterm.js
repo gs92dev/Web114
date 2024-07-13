@@ -61,16 +61,12 @@ compareForm.addEventListener("submit", (e) => {
 
 // Function to change the form based on the selection
 function assigment() {
-  label1.textContent = "Variable name:";
-  label2.textContent = "Give the variable a value:";
-  input1.type = "text";
-  input2.type = "text";
-  input1.setAttribute("pattern", "^[a-zA-Z_$][a-zA-Z_$0-9]*$");
-  input1.setAttribute(
-    "title",
-    "Must be a valid JavaScript variable name (letters, digits, underscores, or dollar signs, and must start with a letter, underscore, or dollar sign)."
-  );
   document.body.style.backgroundColor = "green";
+  if (!input1.classList.contains("hidden")) {
+    input1.classList.add("hidden");
+  } else {
+    console.log("outside");
+  }
 }
 
 function equal() {
@@ -86,7 +82,6 @@ function equal() {
   document.body.style.backgroundColor = "red";
 }
 compareForm.addEventListener("change", () => {
-  alert("Form changed");
   const option = selection.value;
   if (option === "assign") {
     assigment();

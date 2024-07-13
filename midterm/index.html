@@ -20,6 +20,7 @@
           <h2>Differences</h2>
           <form action="post" id="compareForm">
             <fieldset>
+              <!------------ First Step selecting the type of operation-------------->
               <div class="flexColumn">
                 <label for="operatorCompare">Select operator:</label>
                 <select data-equal name="equal" id="operatorCompare">
@@ -30,7 +31,57 @@
                 </select>
               </div>
               <div class="flexColumn">
-                <div class="flexColumn">
+                <!--------------- Begin the assignment form------------ -->
+                <div class="flexColumn" id="assignmentForm">
+                  <label for="variableName">Give the variable a name:</label>
+                  <input
+                    name="variableName"
+                    type="text"
+                    id="variableName"
+                    title="Must be a valid JavaScript variable name"
+                    required
+                  />
+                  <label for="variableType">What type?</label>
+                  <select
+                    data-variableType
+                    name="variableType"
+                    id="variableType"
+                  >
+                    <option selected value="" disabled>Type</option>
+                    <option data-option="string" value="string">String</option>
+                    <option data-option="number" value="number">Number</option>
+                    <option data-option="boolean" value="boolean">
+                      Boolean
+                    </option>
+                  </select>
+                  <label for="input1" id="label1">Enter your first data:</label>
+                  <input data-input1 type="text" id="input1" required />
+                  <div class="flexRow" id="variableRadio">
+                    <div class="flexColumn">
+                      <label for="variableTrue">True</label>
+                      <input
+                        type="radio"
+                        id="variableTrue"
+                        name="boolean"
+                        value="true"
+                        required
+                      />
+                    </div>
+                    <div class="flexColumn">
+                      <label for="variableFalse">False</label>
+                      <input
+                        type="radio"
+                        id="variableFalse"
+                        name="boolean"
+                        value="false"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!------------------------ End assignment form ------------->
+                <div class="flexColumn hidden">
                   <label for="type1">Select type 1:</label>
                   <select data-type1 name="type1" id="type1">
                     <option selected value="" disabled>Type</option>
@@ -40,62 +91,69 @@
                       Boolean
                     </option>
                   </select>
-                </div>
-                <label for="input1" id="label1">Enter your first data:</label>
-                <input data-input1 type="text" id="input1" required />
-                <div class="flexColumn">
-                  <div data-radiogroup class="flexColumn">
-                    <label for="true1">True</label>
-                    <input
-                      type="radio"
-                      id="true1"
-                      name="boolean1"
-                      value="true"
-                      required
-                    />
-                    <label for="false1">False</label>
-                    <input
-                      type="radio"
-                      id="false1"
-                      name="boolean1"
-                      value="false"
-                      required
-                    />
+
+                  <label for="input1" id="label1">Enter your first data:</label>
+                  <input data-input1 type="text" id="input1" required />
+                  <div class="flexColumn hidden radiogroup">
+                    <div data-radio="1" class="flexColumn">
+                      <label for="true1">True</label>
+                      <input
+                        type="radio"
+                        id="true1"
+                        name="boolean1"
+                        value="true"
+                        required
+                      />
+                      <label for="false1">False</label>
+                      <input
+                        type="radio"
+                        id="false1"
+                        name="boolean1"
+                        value="false"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flexColumn">
-                <div class="flexColumn">
-                  <label for="type2">Select type 2:</label>
-                  <select data-type2 name="type2" id="type2">
-                    <option selected value="" disabled>Type</option>
-                    <option data-option="string" value="string">String</option>
-                    <option data-option="number" value="number">Number</option>
-                    <option data-option="boolean" value="boolean">
-                      Boolean
-                    </option>
-                  </select>
-                </div>
-                <label for="input2" id="label2">Enter your second data:</label>
-                <input data-input2 type="text" id="input2" required />
-                <div class="flexColumn">
-                  <div data-radiogroup class="flexColumn">
-                    <label for="true2">True</label>
-                    <input
-                      type="radio"
-                      id="true2"
-                      name="boolean2"
-                      value="true"
-                      required
-                    />
-                    <label for="false2">False</label>
-                    <input
-                      type="radio"
-                      id="false2"
-                      name="boolean2"
-                      value="false"
-                      required
-                    />
+                <div class="flexColumn hidden">
+                  <div class="flexColumn">
+                    <label for="type2">Select type 2:</label>
+                    <select data-type2 name="type2" id="type2">
+                      <option selected value="" disabled>Type</option>
+                      <option data-option="string" value="string">
+                        String
+                      </option>
+                      <option data-option="number" value="number">
+                        Number
+                      </option>
+                      <option data-option="boolean" value="boolean">
+                        Boolean
+                      </option>
+                    </select>
+                  </div>
+                  <label for="input2" id="label2"
+                    >Enter your second data:</label
+                  >
+                  <input data-input2 type="text" id="input2" required />
+                  <div class="flexColumn">
+                    <div data-radio="1" class="flexColumn hidden">
+                      <label for="true2">True</label>
+                      <input
+                        type="radio"
+                        id="true2"
+                        name="boolean2"
+                        value="true"
+                        required
+                      />
+                      <label for="false2">False</label>
+                      <input
+                        type="radio"
+                        id="false2"
+                        name="boolean2"
+                        value="false"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -103,6 +161,7 @@
             </fieldset>
           </form>
         </section>
+        <!-- -------------------------Next form ------------------------>
         <section>
           <h2>Find out if you know the right order of the operation</h2>
           <form id="valueForm">
