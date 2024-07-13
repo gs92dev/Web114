@@ -109,51 +109,51 @@ equalForm.addEventListener("change", () => {
   }, 1500);
 });
 
-// // Calculator
+// Calculator
 
-// const calculate = (a, b, selection) => {
-//   switch (selection) {
-//     case "add":
-//       return a + b;
-//     case "subtract":
-//       return a - b;
-//     case "multiply":
-//       return a * b;
-//     case "divide":
-//       if (b === 0) {
-//         return "Cannot divide by zero";
-//       } else {
-//         return a / b;
-//       }
-//     case "remainder":
-//       if (b === 0) {
-//         return "Cannot divide by zero";
-//       } else {
-//         return a % b;
-//       }
-//     case "exponent":
-//       return a ** b;
-//     default:
-//       return false;
-//   }
-// };
+const calculate = (a, b, selection) => {
+  switch (selection) {
+    case "add":
+      return a + b;
+    case "subtract":
+      return a - b;
+    case "multiply":
+      return a * b;
+    case "divide":
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a / b;
+      }
+    case "remainder":
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a % b;
+      }
+    case "exponent":
+      return a ** b;
+    default:
+      return false;
+  }
+};
 
-// const calculator = document.querySelector("#calculator");
-// const calculator1 = document.querySelector("[data-calculator1]");
-// const calculator2 = document.querySelector("[data-calculator2]");
-// const selectionCalc = document.querySelector("[data-selectionCalc]");
+const calculator = document.querySelector("#calculator");
+const calculator1 = document.querySelector("[data-calculator1]");
+const calculator2 = document.querySelector("[data-calculator2]");
+const selectionCalc = document.querySelector("[data-selectionCalc]");
 
-// calculator.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const result = calculate(
-//     Number(calculator1.value),
-//     Number(calculator2.value),
-//     selectionCalc.value
-//   );
-//   finalResult.textContent = "";
-//   calculator.reset();
-//   finalResult.textContent = result;
-// });
+calculator.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const result = calculate(
+    Number(calculator1.value),
+    Number(calculator2.value),
+    selectionCalc.value
+  );
+  finalResult.textContent = "";
+  calculator.reset();
+  finalResult.textContent = result;
+});
 
 //  ------------------------- Expression Calculator ----------------------------
 //Array with the expressions to display
