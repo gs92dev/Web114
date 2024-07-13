@@ -22,7 +22,7 @@
             <fieldset>
               <div class="flexColumn">
                 <label for="compare">Select operator:</label>
-                <select data-equal name="equal">
+                <select data-equal name="equal" id="compare">
                   <option selected value="" disabled>Operator</option>
                   <option data-option="assign" value="assign">=</option>
                   <option data-option="equal" value="equal">==</option>
@@ -32,7 +32,7 @@
               <div class="flexColumn">
                 <div class="flexColumn">
                   <label for="type1">Select type 1:</label>
-                  <select data-type1 name="type1">
+                  <select data-type1 name="type1" id="type1">
                     <option selected value="" disabled>Type</option>
                     <option data-option="string" value="string">String</option>
                     <option data-option="number" value="number">Number</option>
@@ -67,7 +67,7 @@
               <div class="flexColumn">
                 <div class="flexColumn">
                   <label for="type2">Select type 2:</label>
-                  <select data-type2 name="type2">
+                  <select data-type2 name="type2" id="type2">
                     <option selected value="" disabled>Type</option>
                     <option data-option="string" value="string">String</option>
                     <option data-option="number" value="number">Number</option>
@@ -109,10 +109,10 @@
             <fieldset>
               <div class="flexColumn">
                 <p id="expression">5 + 3 * x - (y/2)</p>
-                <label for="x">Enter a value for x:</label>
+                <label for="xValue">Enter a value for x:</label>
                 <input type="number" step="0.1" id="xValue" required />
 
-                <label for="y">Enter a value for y:</label>
+                <label for="yValue">Enter a value for y:</label>
                 <input type="number" step="0.1" id="yValue" required />
 
                 <label for="result">What is the result?</label>
