@@ -154,3 +154,91 @@ equalForm.addEventListener("change", () => {
 //   calculator.reset();
 //   finalResult.textContent = result;
 // });
+
+//  ------------------------- Expression Calculator ----------------------------
+//Array with the expressions to display
+const expressionStrings = [
+  "5 + 3 ** x - y / 2",
+  "(x + y) * 2 - 4 / 2",
+  "10 / (2 + x) ** y",
+  "x * y + 3 - 5 / 2",
+  "(3 + x) * (y ** 2 - 2)",
+];
+// Array of arrow functions expressions to evaluate
+const expressions = [
+  (x, y) => 5 + 3 ** x - y / 2,
+  (x, y) => (x + y) * 2 - 4 / 2,
+  (x, y) => 10 / (2 + x) ** y,
+  (x, y) => x * y + 3 - 5 / 2,
+  (x, y) => (3 + x) * (y ** 2 - 2),
+];
+//Function called with the values of x, y, and i [index] to evaluate the expression
+const evaluateExpression = (x, y, i) => {
+  return expressions[i](x, y);
+};
+
+let currentExpressionIndex = 0;
+const expressionElement = document.getElementById("expression");
+const feedbackElement = document.getElementById("feedback");
+const expressionForm = document.getElementById("valueForm");
+
+function loadNextExpression() {
+  if (currentExpressionIndex < expressionStrings.length) {
+    expressionElement.textContent = expressionStrings[currentExpressionIndex];
+    expressionForm.reset();
+    xValue.focus();
+  } else {
+    expressionElement.textContent = "You've completed all expressions!";
+    xValue.setAttribute("disabled", true);
+    yValue.setAttribute("disabled", true);
+    result.setAttribute("disabled", true);
+    submitButton.classList.add("hidden");
+    reloadGame.classList.remove("hidden");
+    reloadGame.focus();
+  }
+}
+
+expressionForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  //Get the values from the form after submit is clicked
+  const xInput = parseFloat(xValue.value);
+  const yInput = parseFloat(yValue.value);
+  const guessedResult = parseFloat(result.value);
+
+  const correctResult = evaluateExpression(
+    xInput,
+    yInput,
+    currentExpressionIndex
+  );
+
+  if (guessedResult === correctResult) {
+    feedbackElement.textContent = "Correct! Well done!";
+  } else {
+    const formattedResult = correctResult.toFixed(3);
+    feedbackElement.innerHTML = `Incorrect. The correct result was <b>${formattedResult}</b>.<br>
+              <br>
+              Remember The order of operations:<br> 
+               Parentheses, Exponents, Multiplication and Division, Addition and Subtraction.<br>
+              P<br>
+              E<br>
+              M<br>
+              D<br>
+              A<br>
+              S<br>
+            `;
+  }
+  currentExpressionIndex++;
+  loadNextExpression();
+  reloadGame.addEventListener("click", function () {
+    currentExpressionIndex = 0;
+    reloadGame.classList.add("hidden");
+    loadNextExpression();
+    xValue.removeAttribute("disabled");
+    yValue.removeAttribute("disabled");
+    result.removeAttribute("disabled");
+    submitButton.classList.remove("hidden");
+    feedbackElement.textContent = "";
+  });
+});
+//Starts the first expression
+loadNextExpression();

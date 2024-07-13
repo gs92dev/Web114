@@ -1,4 +1,4 @@
-<!-- Guilherme dos Santos 07/07/2024-->
+Guilherme dos Santos 07/07/2024
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +16,7 @@
         <h2>Guilherme dos Santos</h2>
       </header>
       <div class="flexRow" id="firstSection">
-        <!-- <section>
+        <section>
           <h2>Differences</h2>
           <form action="post" id="equalForm">
             <fieldset>
@@ -102,7 +102,7 @@
               <button type="submit" data-equal>Submit</button>
             </fieldset>
           </form>
-        </section> -->
+        </section>
         <section>
           <h2>Find out if you know the right order of the operation</h2>
           <form id="valueForm">
@@ -128,97 +128,7 @@
           </form>
           <p id="feedback"></p>
         </section>
-
-        <script>
-          //Array with the expressions to display
-          const expressionStrings = [
-            "5 + 3 ** x - y / 2",
-            "(x + y) * 2 - 4 / 2",
-            "10 / (2 + x) ** y",
-            "x * y + 3 - 5 / 2",
-            "(3 + x) * (y ** 2 - 2)",
-          ];
-          // Array of arrow functions expressions to evaluate
-          const expressions = [
-            (x, y) => 5 + 3 ** x - y / 2,
-            (x, y) => (x + y) * 2 - 4 / 2,
-            (x, y) => 10 / (2 + x) ** y,
-            (x, y) => x * y + 3 - 5 / 2,
-            (x, y) => (3 + x) * (y ** 2 - 2),
-          ];
-          //Function called with the values of x, y, and i [index] to evaluate the expression
-          const evaluateExpression = (x, y, i) => {
-            return expressions[i](x, y);
-          };
-
-          let currentExpressionIndex = 0;
-          const expressionElement = document.getElementById("expression");
-          const feedbackElement = document.getElementById("feedback");
-          const expressionForm = document.getElementById("valueForm");
-
-          function loadNextExpression() {
-            if (currentExpressionIndex < expressionStrings.length) {
-              expressionElement.textContent =
-                expressionStrings[currentExpressionIndex];
-              expressionForm.reset();
-              xValue.focus();
-            } else {
-              expressionElement.textContent =
-                "You've completed all expressions!";
-              xValue.setAttribute("disabled", true);
-              yValue.setAttribute("disabled", true);
-              result.setAttribute("disabled", true);
-              submitButton.classList.add("hidden");
-              reloadGame.classList.remove("hidden");
-            }
-          }
-
-          expressionForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            //Get the values from the form after submit is clicked
-            const xInput = parseFloat(xValue.value);
-            const yInput = parseFloat(yValue.value);
-            const guessedResult = parseFloat(result.value);
-
-            const correctResult = evaluateExpression(
-              xInput,
-              yInput,
-              currentExpressionIndex
-            );
-
-            if (guessedResult === correctResult) {
-              feedbackElement.textContent = "Correct! Well done!";
-            } else {
-              const formattedResult = correctResult.toFixed(3);
-              feedbackElement.innerHTML = `Incorrect. The correct result was <b>${formattedResult}</b>.<br>
-              <br>
-              Remember The order of operations:<br> 
-               Parentheses, Exponents, Multiplication and Division, Addition and Subtraction.<br>
-              P<br>
-              E<br>
-              M<br>
-              D<br>
-              A<br>
-              S<br>
-            `;
-            }
-            currentExpressionIndex++;
-            loadNextExpression();
-            reloadGame.addEventListener("click", function () {
-              currentExpressionIndex = 0;
-              reloadGame.classList.add("hidden");
-              loadNextExpression();
-              xValue.removeAttribute("disabled");
-              yValue.removeAttribute("disabled");
-              result.removeAttribute("disabled");
-              submitButton.classList.remove("hidden");
-              feedbackElement.textContent = "";
-            });
-          });
-          //Starts the first expression
-          loadNextExpression();
-        </script>
-        <!-- <section>
+        <section>
           <h2>Simple Calculator</h2>
           <form action="post" id="calculator">
             <fieldset>
@@ -266,7 +176,7 @@
               </div>
             </fieldset>
           </form>
-        </section> -->
+        </section>
       </div>
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>
