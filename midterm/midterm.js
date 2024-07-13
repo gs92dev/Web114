@@ -12,14 +12,7 @@ const darkMode = (e) => {
 };
 darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
 
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    const h2 = document.createElement("h2"); // Create a new h2 element.
-    h2.textContent = "Welcome to my midterm Exam"; // Set the text content of the h2 element to "Midterm Exam".
-    h2.style.textAlign = "center";
-    firstSection.parentNode.insertBefore(h2, firstSection); // Prepend the second section element to the first section element.
-  }, 3000);
-});
+// ------------------------- Equal Sign Calculator ----------------------------
 
 //Compare numbers exercise
 const equalSign = (a, b, selection) => {
@@ -53,7 +46,7 @@ const type1 = document.querySelector("[data-type1]");
 const type2 = document.querySelector("[data-type2]");
 
 // Function to submit form
-equalForm.addEventListener("submit", (e) => {
+compareForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const compared = equalSign(input1.value, input2.value, selection.value);
   if (compared) {
@@ -92,7 +85,8 @@ function equal() {
   input2.setAttribute("title", "Must be either true or false.");
   document.body.style.backgroundColor = "red";
 }
-equalForm.addEventListener("change", () => {
+compareForm.addEventListener("change", () => {
+  alert("Form changed");
   const option = selection.value;
   if (option === "assign") {
     assigment();
