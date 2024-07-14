@@ -17,18 +17,15 @@ darkBtn.addEventListener("click", darkMode); // Add an event listener to the but
 const assignmentForm = document.getElementById("assignmentForm");
 const variableName = document.getElementById("variableName");
 const variableValue = document.getElementById("variableValue");
-const feedback = document.getElementById("feedback");
+const answer = document.getElementById("answer");
 
 // Function to handle form submission for assignment
 function assign() {
   const varName = variableName.value;
   const varValue = variableValue.value;
-
   // Display feedback or result
-  feedback.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue}`;
-
-  // Optionally, perform further operations with the variable
-
+  answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue}<br>
+  ${varName} = ${varValue} `;
   // Reset the form
   assignmentForm.reset();
 }
@@ -36,14 +33,122 @@ function assign() {
 // Event listener for form submission
 assignmentForm.addEventListener("submit", function (e) {
   e.preventDefault(); // Prevent default form submission
+  assign(); // Call the assign function
+});
 
-  // Validate form inputs if needed
-  if (assignmentForm.checkValidity()) {
-    assign(); // Call the assign function if form is valid
-  } else {
-    // Handle validation errors or provide feedback
-    feedback.textContent = "Please fill out all required fields.";
+// ------------- Equal and strict equal form
+
+const equalityForm = document.getElementById("equalityForm");
+const type1 = document.getElementById("type1");
+const type2 = document.getElementById("type2");
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+const radio1Wrapper = document.getElementById("radio1Wrapper");
+const radio2Wrapper = document.getElementById("radio2Wrapper");
+const true1 = document.getElementById("true1");
+const false1 = document.getElementById("false1");
+const true2 = document.getElementById("true2");
+const false2 = document.getElementById("false2");
+
+type1.addEventListener("change", function () {
+  switch (type1.value) {
+    case "boolean":
+      input1.setAttribute("disabled", true);
+      input1.classList.add("hidden");
+      radio1Wrapper.classList.remove("hidden");
+      true1.removeAttribute("disabled");
+      false1.removeAttribute("disabled");
+      break;
+    case "string":
+    case "number":
+      input1.removeAttribute("disabled");
+      input1.classList.remove("hidden");
+      radio1Wrapper.classList.add("hidden");
+      true1.setAttribute("disabled", true);
+      false1.setAttribute("disabled", true);
+      input1.type = type1.value === "string" ? "text" : "number";
+      break;
   }
+});
+
+type2.addEventListener("change", function () {
+  switch (type2.value) {
+    case "boolean":
+      input2.setAttribute("disabled", true);
+      input2.classList.add("hidden");
+      radio2Wrapper.classList.remove("hidden");
+      true2.removeAttribute("disabled");
+      false2.removeAttribute("disabled");
+      break;
+    case "string":
+    case "number":
+      input2.removeAttribute("disabled");
+      input2.classList.remove("hidden");
+      radio2Wrapper.classList.add("hidden");
+      true2.setAttribute("disabled", true);
+      false2.setAttribute("disabled", true);
+      input2.type = type2.value === "string" ? "text" : "number";
+      break;
+  }
+});
+
+function checkSelectsAndParse() {
+  const type1Value = type1.value;
+  const type2Value = type2.value;
+
+  let value1, value2;
+
+  switch (type1Value) {
+    case "boolean":
+      value1 = true1.checked ? true : false;
+      break;
+    case "string":
+      value1 = input1.value;
+      break;
+    case "number":
+      value1 = parseFloat(input1.value);
+      break;
+  }
+
+  switch (type2Value) {
+    case "boolean":
+      value2 = true2.checked ? true : false;
+      break;
+    case "string":
+      value2 = input2.value;
+      break;
+    case "number":
+      value2 = parseFloat(input2.value);
+      break;
+  }
+
+  return { value1, value2 };
+}
+
+equalityForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const { value1, value2 } = checkSelectsAndParse();
+
+  const equal = value1 == value2;
+  const strict = value1 === value2;
+
+  answer.innerHTML = `The comparison ${type1.value} ${value1} == ${type2.value} ${value2} is ${equal}<br>
+   The comparison ${type1.value} ${value1} === ${type2.value} ${value2} is ${strict}`;
+
+  // Reset form and restore initial state
+  equalityForm.reset();
+  input1.removeAttribute("disabled");
+  input1.classList.remove("hidden");
+  input1.type = "text";
+  input2.removeAttribute("disabled");
+  input2.classList.remove("hidden");
+  input2.type = "text";
+  radio1Wrapper.classList.add("hidden");
+  radio2Wrapper.classList.add("hidden");
+  true1.setAttribute("disabled", true);
+  false1.setAttribute("disabled", true);
+  true2.setAttribute("disabled", true);
+  false2.setAttribute("disabled", true);
 });
 
 //------------------------------ Calculator
