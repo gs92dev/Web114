@@ -36,19 +36,30 @@ let removedRequiredAttributes = [];
 // Function to temporarily remove required attributes from hidden inputs
 function removeRequiredAttributes() {
   const hiddenInputs = compareForm.querySelectorAll(".hidden input[required]");
+  const hiddenSelects = compareForm.querySelectorAll(
+    ".hidden select[required]"
+  );
+
   removedRequiredAttributes = [];
+
   hiddenInputs.forEach((input) => {
     removedRequiredAttributes.push(input);
     input.removeAttribute("required");
+  });
+
+  hiddenSelects.forEach((select) => {
+    removedRequiredAttributes.push(select);
+    select.removeAttribute("required");
   });
 }
 
 // Function to restore required attributes to previously hidden inputs
 function restoreRequiredAttributes() {
-  removedRequiredAttributes.forEach((input) =>
-    input.setAttribute("required", "")
-  );
+  removedRequiredAttributes.forEach((elem) => {
+    elem.setAttribute("required", "");
+  });
   removedRequiredAttributes = [];
+  console.log("restoredRequiredAttributes");
 }
 
 // Function to change the form based on the selection
@@ -111,6 +122,7 @@ function equalOrStrict() {
   });
 }
 
+// Function to parse values based on type
 function parseValue(type, value) {
   switch (type) {
     case "string":
@@ -118,18 +130,56 @@ function parseValue(type, value) {
     case "number":
       return Number(value);
     case "boolean":
-      return value === "true";
+      // Adjust parsing for boolean based on radio button value
+      return value === "true"; // Assuming radio button values are "true" or "false"
     default:
       return value;
   }
 }
 
+function assign() {
+  const varName = variableName.value;
+  const varValue = variableValue.value;
+  answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue} <br> <br> ${varName} = ${varValue}`;
+  assignmentForm.classList.add("hidden");
+}
+
 function equal() {
   const type1Value = type1.value;
-  const value1 = parseValue(type1Value, input1.value);
+  let value1;
+
+  if (type1Value === "boolean") {
+    const radio1Checked = document.querySelector(
+      'input[name="boolean1"]:checked'
+    );
+    if (radio1Checked) {
+      value1 = parseValue("boolean", radio1Checked.value);
+    } else {
+      // Handle case where no radio button is checked
+      console.error("Please select true or false for type 1");
+      return;
+    }
+  } else {
+    value1 = parseValue(type1Value, input1.value);
+  }
 
   const type2Value = type2.value;
-  const value2 = parseValue(type2Value, input2.value);
+  let value2;
+
+  if (type2Value === "boolean") {
+    const radio2Checked = document.querySelector(
+      'input[name="boolean2"]:checked'
+    );
+    if (radio2Checked) {
+      value2 = parseValue("boolean", radio2Checked.value);
+    } else {
+      // Handle case where no radio button is checked
+      console.error("Please select true or false for type 2");
+      return;
+    }
+  } else {
+    value2 = parseValue(type2Value, input2.value);
+  }
 
   const result = value1 == value2;
   answer.innerHTML = `Result of ${value1} == ${value2} is: ${result}`;
@@ -137,10 +187,40 @@ function equal() {
 
 function strictEqual() {
   const type1Value = type1.value;
-  const value1 = parseValue(type1Value, input1.value);
+  let value1;
+
+  if (type1Value === "boolean") {
+    const radio1Checked = document.querySelector(
+      'input[name="boolean1"]:checked'
+    );
+    if (radio1Checked) {
+      value1 = parseValue("boolean", radio1Checked.value);
+    } else {
+      // Handle case where no radio button is checked
+      console.error("Please select true or false for type 1");
+      return;
+    }
+  } else {
+    value1 = parseValue(type1Value, input1.value);
+  }
 
   const type2Value = type2.value;
-  const value2 = parseValue(type2Value, input2.value);
+  let value2;
+
+  if (type2Value === "boolean") {
+    const radio2Checked = document.querySelector(
+      'input[name="boolean2"]:checked'
+    );
+    if (radio2Checked) {
+      value2 = parseValue("boolean", radio2Checked.value);
+    } else {
+      // Handle case where no radio button is checked
+      console.error("Please select true or false for type 2");
+      return;
+    }
+  } else {
+    value2 = parseValue(type2Value, input2.value);
+  }
 
   const result = value1 === value2;
   answer.innerHTML = `Result of ${value1} === ${value2} is: ${result}`;
@@ -152,38 +232,46 @@ operatorCompare.addEventListener("change", () => {
   const option = operatorCompare.value;
   if (option === "assign") {
     assignment();
-    removeRequiredAttributes();
-  } else if (option === "equal") {
-    equalOrStrict();
   } else {
     equalOrStrict();
   }
 });
 
-// Function to submit form
+// Remove required attributes before form submission
+submitButton.addEventListener("mousedown", () => {
+  removeRequiredAttributes();
+});
+
+// Function to clean up and reset the form after submission
+function cleanAndReset() {
+  compareForm.reset();
+  restoreRequiredAttributes();
+  equalOrStricForm.classList.add("hidden");
+  assignmentForm.classList.add("hidden");
+  radio1Wrapper.classList.add("hidden");
+  radio2Wrapper.classList.add("hidden");
+  input2Wrapper.classList.remove("hidden");
+  input1Wrapper.classList.remove("hidden");
+}
+
+// Submit event listener for the form
 compareForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   switch (operatorCompare.value) {
     case "assign":
-      const varName = variableName.value;
-      const varValue = variableValue.value;
-      answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue} <br> <br> ${varName} = ${varValue}`;
-      assignmentForm.classList.add("hidden");
-      compareForm.reset();
-      submitButton.blur();
+      assign();
+      cleanAndReset();
       break;
     case "equal":
       equal();
+      cleanAndReset();
       break;
     case "strict":
       strictEqual();
+      cleanAndReset();
       break;
   }
-
-  setTimeout(() => {
-    restoreRequiredAttributes();
-  }, 0);
 });
 
 // Calculator

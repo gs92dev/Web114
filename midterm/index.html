@@ -15,25 +15,17 @@
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
-      <div class="flexRow" id="firstSection">
+      <div class="flexColumn" id="firstSection">
         <section>
           <h2>Differences</h2>
-          <form action="post" id="compareForm">
-            <fieldset>
-              <!------------ First Step selecting the type of operation -------------->
-              <div class="flexColumn">
-                <label for="operatorCompare">Select operator:</label>
-                <select name="operator" id="operatorCompare">
-                  <option selected value="" disabled>Operator</option>
-                  <option data-option="assign" value="assign">=</option>
-                  <option data-option="equal" value="equal">==</option>
-                  <option data-option="strict" value="strict">===</option>
-                </select>
-              </div>
-              <div class="flexColumn" id="optionsWrapper">
-                <!--------------- Begin the assignment form ------------ -->
-                <div class="flexColumn hidden" id="assignmentForm">
-                  <p>(assignment) operator</p>
+          <div class="flexRow">
+            <form action="post" id="assingForm">
+              <fieldset>
+                <!------------ First Step selecting the type of operation -------------->
+                <div class="flexColumn">
+                  <!--------------- Begin the assignment form ------------ -->
+
+                  <h3>Assignment operator (=)</h3>
                   <label for="variableName">Name the variable:</label>
                   <input
                     name="variableName"
@@ -43,72 +35,61 @@
                     title="Must be a valid JavaScript variable name (letters, digits, underscores, or dollar signs, and must start with a letter, underscore, or dollar sign)."
                     required
                   />
-                  <div id="dataWraWrapper" class="flexColumn">
-                    <label for="variableValue">Assign value:</label>
+
+                  <label for="variableValue">Assign value:</label>
+                  <input
+                    name="variableValue"
+                    type="text"
+                    id="variableValue"
+                    required
+                  />
+
+                  <!------------------------ End assignment form ------------->
+                </div>
+                <button type="submit" data-submit>Submit</button>
+              </fieldset>
+            </form>
+            <form action="post">
+              <fieldset>
+                <!------------ First Step selecting the type of operation -------------->
+                <div class="flexColumn">
+                  <label for="operatorCompare">Select operator:</label>
+                  <select name="operator" required id="operatorCompare">
+                    <option selected value="" disabled>Operator</option>
+                    <option data-option="assign" value="assign">=</option>
+                    <option data-option="equal" value="equal">==</option>
+                    <option data-option="strict" value="strict">===</option>
+                  </select>
+                </div>
+                <div class="flexColumn" id="optionsWrapper">
+                  <!--------------- Begin the assignment form ------------ -->
+                  <div class="flexColumn" id="assignmentForm">
+                    <p>(assignment) operator</p>
+                    <label for="variableName">Name the variable:</label>
                     <input
-                      name="variableValue"
+                      name="variableName"
                       type="text"
-                      id="variableValue"
+                      id="variableName"
+                      pattern="^[a-zA-Z_$][a-zA-Z_$0-9]*$"
+                      title="Must be a valid JavaScript variable name (letters, digits, underscores, or dollar signs, and must start with a letter, underscore, or dollar sign)."
                       required
                     />
-                  </div>
-                </div>
-                <!------------------------ End assignment form ------------->
-                <!------------------------ Begin equal form --------------->
-                <div class="hidden" id="equalOrStricForm">
-                  <div class="flexColumn">
-                    <label for="type1">Select type 1:</label>
-                    <select data-type1 name="type1" id="type1">
-                      <option selected value="" disabled>Type</option>
-                      <option data-option="string" value="string">
-                        String
-                      </option>
-                      <option data-option="number" value="number">
-                        Number
-                      </option>
-                      <option data-option="boolean" value="boolean">
-                        Boolean
-                      </option>
-                    </select>
-                    <div class="flexColumn" id="input1Wrapper">
-                      <label for="input1">Enter your first data:</label>
+                    <div id="dataWraWrapper" class="flexColumn">
+                      <label for="variableValue">Assign value:</label>
                       <input
-                        data-input1
+                        name="variableValue"
                         type="text"
-                        id="input1"
-                        name="input1"
+                        id="variableValue"
                         required
                       />
                     </div>
-                    <div class="hidden" id="radio1Wrapper">
-                      <div data-radio="1" class="flexRow">
-                        <div class="flexColumn">
-                          <label for="true1">True</label>
-                          <input
-                            type="radio"
-                            id="true1"
-                            name="boolean1"
-                            value="true"
-                            required
-                          />
-                        </div>
-                        <div class="flexColumn">
-                          <label for="false1">False</label>
-                          <input
-                            type="radio"
-                            id="false1"
-                            name="boolean1"
-                            value="false"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                  <div class="flexColumn">
+                  <!------------------------ End assignment form ------------->
+                  <!------------------------ Begin equal form --------------->
+                  <div class="hidden" id="equalOrStricForm">
                     <div class="flexColumn">
-                      <label for="type2">Select type 2:</label>
-                      <select name="type2" id="type2">
+                      <label for="type1">Select type 1:</label>
+                      <select data-type1 required name="type1" id="type1">
                         <option selected value="" disabled>Type</option>
                         <option data-option="string" value="string">
                           String
@@ -120,48 +101,241 @@
                           Boolean
                         </option>
                       </select>
-                    </div>
-                    <div class="flexColumn" id="input2Wrapper">
-                      <label for="input2">Enter your second data:</label>
-                      <input
-                        data-input2
-                        type="text"
-                        id="input2"
-                        name="input2"
-                        required
-                      />
-                    </div>
-                    <div class="flexColumn hidden" id="radio2Wrapper">
-                      <div data-radio="1" class="flexRow">
-                        <div class="flexColumn">
-                          <label for="true2">True</label>
-                          <input
-                            type="radio"
-                            id="true2"
-                            name="boolean2"
-                            value="true"
-                            required
-                          />
+                      <div class="flexColumn" id="input1Wrapper">
+                        <label for="input1">Enter your first data:</label>
+                        <input
+                          data-input1
+                          type="text"
+                          id="input1"
+                          name="input1"
+                          required
+                        />
+                      </div>
+                      <div class="hidden" id="radio1Wrapper">
+                        <div data-radio="1" class="flexRow">
+                          <div class="flexColumn">
+                            <label for="true1">True</label>
+                            <input
+                              type="radio"
+                              id="true1"
+                              name="boolean1"
+                              value="true"
+                              required
+                            />
+                          </div>
+                          <div class="flexColumn">
+                            <label for="false1">False</label>
+                            <input
+                              type="radio"
+                              id="false1"
+                              name="boolean1"
+                              value="false"
+                              required
+                            />
+                          </div>
                         </div>
-                        <div class="flexColumn">
-                          <label for="false2">False</label>
-                          <input
-                            type="radio"
-                            id="false2"
-                            name="boolean2"
-                            value="false"
-                            required
-                          />
+                      </div>
+                    </div>
+                    <div class="flexColumn">
+                      <div class="flexColumn">
+                        <label for="type2">Select type 2:</label>
+                        <select name="type2" required id="type2">
+                          <option selected value="" disabled>Type</option>
+                          <option data-option="string" value="string">
+                            String
+                          </option>
+                          <option data-option="number" value="number">
+                            Number
+                          </option>
+                          <option data-option="boolean" value="boolean">
+                            Boolean
+                          </option>
+                        </select>
+                      </div>
+                      <div class="flexColumn" id="input2Wrapper">
+                        <label for="input2">Enter your second data:</label>
+                        <input
+                          data-input2
+                          type="text"
+                          id="input2"
+                          name="input2"
+                          required
+                        />
+                      </div>
+                      <div class="flexColumn hidden" id="radio2Wrapper">
+                        <div data-radio="1" class="flexRow">
+                          <div class="flexColumn">
+                            <label for="true2">True</label>
+                            <input
+                              type="radio"
+                              id="true2"
+                              name="boolean2"
+                              value="true"
+                              required
+                            />
+                          </div>
+                          <div class="flexColumn">
+                            <label for="false2">False</label>
+                            <input
+                              type="radio"
+                              id="false2"
+                              name="boolean2"
+                              value="false"
+                              required
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <button type="submit" class="hidden" data-submit>Submit</button>
-            </fieldset>
-          </form>
-
+                <button type="submit" data-submit>Submit</button>
+              </fieldset>
+            </form>
+            <form action="post">
+              <fieldset>
+                <!------------ First Step selecting the type of operation -------------->
+                <div class="flexColumn">
+                  <label for="operatorCompare">Select operator:</label>
+                  <select name="operator" required id="operatorCompare">
+                    <option selected value="" disabled>Operator</option>
+                    <option data-option="assign" value="assign">=</option>
+                    <option data-option="equal" value="equal">==</option>
+                    <option data-option="strict" value="strict">===</option>
+                  </select>
+                </div>
+                <div class="flexColumn" id="optionsWrapper">
+                  <!--------------- Begin the assignment form ------------ -->
+                  <div class="flexColumn" id="assignmentForm">
+                    <p>(assignment) operator</p>
+                    <label for="variableName">Name the variable:</label>
+                    <input
+                      name="variableName"
+                      type="text"
+                      id="variableName"
+                      pattern="^[a-zA-Z_$][a-zA-Z_$0-9]*$"
+                      title="Must be a valid JavaScript variable name (letters, digits, underscores, or dollar signs, and must start with a letter, underscore, or dollar sign)."
+                      required
+                    />
+                    <div id="dataWraWrapper" class="flexColumn">
+                      <label for="variableValue">Assign value:</label>
+                      <input
+                        name="variableValue"
+                        type="text"
+                        id="variableValue"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!------------------------ End assignment form ------------->
+                  <!------------------------ Begin equal form --------------->
+                  <div class="hidden" id="equalOrStricForm">
+                    <div class="flexColumn">
+                      <label for="type1">Select type 1:</label>
+                      <select data-type1 required name="type1" id="type1">
+                        <option selected value="" disabled>Type</option>
+                        <option data-option="string" value="string">
+                          String
+                        </option>
+                        <option data-option="number" value="number">
+                          Number
+                        </option>
+                        <option data-option="boolean" value="boolean">
+                          Boolean
+                        </option>
+                      </select>
+                      <div class="flexColumn" id="input1Wrapper">
+                        <label for="input1">Enter your first data:</label>
+                        <input
+                          data-input1
+                          type="text"
+                          id="input1"
+                          name="input1"
+                          required
+                        />
+                      </div>
+                      <div class="hidden" id="radio1Wrapper">
+                        <div data-radio="1" class="flexRow">
+                          <div class="flexColumn">
+                            <label for="true1">True</label>
+                            <input
+                              type="radio"
+                              id="true1"
+                              name="boolean1"
+                              value="true"
+                              required
+                            />
+                          </div>
+                          <div class="flexColumn">
+                            <label for="false1">False</label>
+                            <input
+                              type="radio"
+                              id="false1"
+                              name="boolean1"
+                              value="false"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flexColumn">
+                      <div class="flexColumn">
+                        <label for="type2">Select type 2:</label>
+                        <select name="type2" required id="type2">
+                          <option selected value="" disabled>Type</option>
+                          <option data-option="string" value="string">
+                            String
+                          </option>
+                          <option data-option="number" value="number">
+                            Number
+                          </option>
+                          <option data-option="boolean" value="boolean">
+                            Boolean
+                          </option>
+                        </select>
+                      </div>
+                      <div class="flexColumn" id="input2Wrapper">
+                        <label for="input2">Enter your second data:</label>
+                        <input
+                          data-input2
+                          type="text"
+                          id="input2"
+                          name="input2"
+                          required
+                        />
+                      </div>
+                      <div class="flexColumn hidden" id="radio2Wrapper">
+                        <div data-radio="1" class="flexRow">
+                          <div class="flexColumn">
+                            <label for="true2">True</label>
+                            <input
+                              type="radio"
+                              id="true2"
+                              name="boolean2"
+                              value="true"
+                              required
+                            />
+                          </div>
+                          <div class="flexColumn">
+                            <label for="false2">False</label>
+                            <input
+                              type="radio"
+                              id="false2"
+                              name="boolean2"
+                              value="false"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" data-submit>Submit</button>
+              </fieldset>
+            </form>
+          </div>
           <p id="answer"></p>
         </section>
         <!-- -------------------------Next form ------------------------>
