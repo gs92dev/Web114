@@ -1,3 +1,5 @@
+// Guilherme dos Santos 07/14/2024
+
 const darkBtn = dark; // Get the button element with the id dark.
 let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
 
