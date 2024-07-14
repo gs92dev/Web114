@@ -1,9 +1,11 @@
 const darkBtn = dark; // Get the button element with the id dark.
 let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
+
 // Function to change the color of the page to dark mode.
 const darkMode = () => {
   document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
   darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
+  mainWrapper.classList.toggle("darkMain"); // Toggle the dark class on the body element to change the color of the page.
 
   darkBtn.textContent = btnText;
   document.body.classList.contains("dark")

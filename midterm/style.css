@@ -11,9 +11,13 @@
   width: 100%;
   text-align: center;
 }
-#mainWrapper {
-  background-color: #8b5ab9;
+.mainWrapper {
+  background-color: #b98fe2;
 }
+.darkMain {
+  background-color: #30253b;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
