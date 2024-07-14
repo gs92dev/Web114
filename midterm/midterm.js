@@ -14,267 +14,39 @@ darkBtn.addEventListener("click", darkMode); // Add an event listener to the but
 
 // ------------------------- Compare =, ==, and === ----------------------------
 
-const submitButton = document.querySelector("[data-submit]");
-const compareForm = document.getElementById("compareForm");
-const operatorCompare = document.getElementById("operatorCompare");
 const assignmentForm = document.getElementById("assignmentForm");
-const equalOrStricForm = document.getElementById("equalOrStricForm");
-const type1 = document.getElementById("type1");
-const type2 = document.getElementById("type2");
-const input1 = document.getElementById("input1");
-const input2 = document.getElementById("input2");
-const input1Wrapper = document.getElementById("input1Wrapper");
-const input2Wrapper = document.getElementById("input2Wrapper");
-const radio1Wrapper = document.getElementById("radio1Wrapper");
-const radio2Wrapper = document.getElementById("radio2Wrapper");
-const answer = document.getElementById("answer");
 const variableName = document.getElementById("variableName");
 const variableValue = document.getElementById("variableValue");
+const feedback = document.getElementById("feedback");
 
-let removedRequiredAttributes = [];
-
-// Function to temporarily remove required attributes from hidden inputs
-function removeRequiredAttributes() {
-  const hiddenInputs = compareForm.querySelectorAll(".hidden input[required]");
-  const hiddenSelects = compareForm.querySelectorAll(
-    ".hidden select[required]"
-  );
-
-  removedRequiredAttributes = [];
-
-  hiddenInputs.forEach((input) => {
-    removedRequiredAttributes.push(input);
-    input.removeAttribute("required");
-  });
-
-  hiddenSelects.forEach((select) => {
-    removedRequiredAttributes.push(select);
-    select.removeAttribute("required");
-  });
-}
-
-// Function to restore required attributes to previously hidden inputs
-function restoreRequiredAttributes() {
-  removedRequiredAttributes.forEach((elem) => {
-    elem.setAttribute("required", "");
-  });
-  removedRequiredAttributes = [];
-  console.log("restoredRequiredAttributes");
-}
-
-// Function to change the form based on the selection
-function assignment() {
-  if (assignmentForm.classList.contains("hidden")) {
-    assignmentForm.classList.remove("hidden");
-    equalOrStricForm.classList.add("hidden");
-  }
-}
-
-// Change the input type based on the selection
-function numberOrString1() {
-  type1.addEventListener("change", () => {
-    if (type1.value === "number") {
-      input1.setAttribute("type", "number");
-      input1.setAttribute("step", "0.01");
-    } else {
-      input1.setAttribute("type", "text");
-      input1.removeAttribute("step");
-    }
-  });
-}
-
-function numberOrString2() {
-  type2.addEventListener("change", () => {
-    if (type2.value === "number") {
-      input2.setAttribute("type", "number");
-      input2.setAttribute("step", "0.01");
-    } else {
-      input2.removeAttribute("step");
-      input2.setAttribute("type", "text");
-    }
-  });
-}
-
-function equalOrStrict() {
-  if (equalOrStricForm.classList.contains("hidden")) {
-    assignmentForm.classList.add("hidden");
-    equalOrStricForm.classList.remove("hidden");
-  }
-  type1.addEventListener("change", () => {
-    if (type1.value === "boolean") {
-      input1Wrapper.classList.add("hidden");
-      radio1Wrapper.classList.remove("hidden");
-    } else {
-      input1Wrapper.classList.remove("hidden");
-      radio1Wrapper.classList.add("hidden");
-      numberOrString1();
-    }
-  });
-  type2.addEventListener("change", () => {
-    if (type2.value === "boolean") {
-      input2Wrapper.classList.add("hidden");
-      radio2Wrapper.classList.remove("hidden");
-    } else {
-      input2Wrapper.classList.remove("hidden");
-      radio2Wrapper.classList.add("hidden");
-      numberOrString2();
-    }
-  });
-}
-
-// Function to parse values based on type
-function parseValue(type, value) {
-  switch (type) {
-    case "string":
-      return value;
-    case "number":
-      return Number(value);
-    case "boolean":
-      // Adjust parsing for boolean based on radio button value
-      return value === "true"; // Assuming radio button values are "true" or "false"
-    default:
-      return value;
-  }
-}
-
+// Function to handle form submission for assignment
 function assign() {
   const varName = variableName.value;
   const varValue = variableValue.value;
-  answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue} <br> <br> ${varName} = ${varValue}`;
-  assignmentForm.classList.add("hidden");
+
+  // Display feedback or result
+  feedback.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue}`;
+
+  // Optionally, perform further operations with the variable
+
+  // Reset the form
+  assignmentForm.reset();
 }
 
-function equal() {
-  const type1Value = type1.value;
-  let value1;
+// Event listener for form submission
+assignmentForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent default form submission
 
-  if (type1Value === "boolean") {
-    const radio1Checked = document.querySelector(
-      'input[name="boolean1"]:checked'
-    );
-    if (radio1Checked) {
-      value1 = parseValue("boolean", radio1Checked.value);
-    } else {
-      // Handle case where no radio button is checked
-      console.error("Please select true or false for type 1");
-      return;
-    }
+  // Validate form inputs if needed
+  if (assignmentForm.checkValidity()) {
+    assign(); // Call the assign function if form is valid
   } else {
-    value1 = parseValue(type1Value, input1.value);
-  }
-
-  const type2Value = type2.value;
-  let value2;
-
-  if (type2Value === "boolean") {
-    const radio2Checked = document.querySelector(
-      'input[name="boolean2"]:checked'
-    );
-    if (radio2Checked) {
-      value2 = parseValue("boolean", radio2Checked.value);
-    } else {
-      // Handle case where no radio button is checked
-      console.error("Please select true or false for type 2");
-      return;
-    }
-  } else {
-    value2 = parseValue(type2Value, input2.value);
-  }
-
-  const result = value1 == value2;
-  answer.innerHTML = `Result of ${value1} == ${value2} is: ${result}`;
-}
-
-function strictEqual() {
-  const type1Value = type1.value;
-  let value1;
-
-  if (type1Value === "boolean") {
-    const radio1Checked = document.querySelector(
-      'input[name="boolean1"]:checked'
-    );
-    if (radio1Checked) {
-      value1 = parseValue("boolean", radio1Checked.value);
-    } else {
-      // Handle case where no radio button is checked
-      console.error("Please select true or false for type 1");
-      return;
-    }
-  } else {
-    value1 = parseValue(type1Value, input1.value);
-  }
-
-  const type2Value = type2.value;
-  let value2;
-
-  if (type2Value === "boolean") {
-    const radio2Checked = document.querySelector(
-      'input[name="boolean2"]:checked'
-    );
-    if (radio2Checked) {
-      value2 = parseValue("boolean", radio2Checked.value);
-    } else {
-      // Handle case where no radio button is checked
-      console.error("Please select true or false for type 2");
-      return;
-    }
-  } else {
-    value2 = parseValue(type2Value, input2.value);
-  }
-
-  const result = value1 === value2;
-  answer.innerHTML = `Result of ${value1} === ${value2} is: ${result}`;
-}
-
-// Event listener to change the form based on the selection
-operatorCompare.addEventListener("change", () => {
-  answer.textContent = "";
-  const option = operatorCompare.value;
-  if (option === "assign") {
-    assignment();
-  } else {
-    equalOrStrict();
+    // Handle validation errors or provide feedback
+    feedback.textContent = "Please fill out all required fields.";
   }
 });
 
-// Remove required attributes before form submission
-submitButton.addEventListener("mousedown", () => {
-  removeRequiredAttributes();
-});
-
-// Function to clean up and reset the form after submission
-function cleanAndReset() {
-  compareForm.reset();
-  restoreRequiredAttributes();
-  equalOrStricForm.classList.add("hidden");
-  assignmentForm.classList.add("hidden");
-  radio1Wrapper.classList.add("hidden");
-  radio2Wrapper.classList.add("hidden");
-  input2Wrapper.classList.remove("hidden");
-  input1Wrapper.classList.remove("hidden");
-}
-
-// Submit event listener for the form
-compareForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  switch (operatorCompare.value) {
-    case "assign":
-      assign();
-      cleanAndReset();
-      break;
-    case "equal":
-      equal();
-      cleanAndReset();
-      break;
-    case "strict":
-      strictEqual();
-      cleanAndReset();
-      break;
-  }
-});
-
-// Calculator
+//------------------------------ Calculator
 
 const calculate = (a, b, selection) => {
   switch (selection) {
