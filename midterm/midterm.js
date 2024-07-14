@@ -1,7 +1,7 @@
 const darkBtn = dark; // Get the button element with the id dark.
 let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
 // Function to change the color of the page to dark mode.
-const darkMode = (e) => {
+const darkMode = () => {
   document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
   darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
 
@@ -38,6 +38,7 @@ assignmentForm.addEventListener("submit", function (e) {
 
 // ------------- Equal and strict equal form
 
+//Declaring variables
 const equalityForm = document.getElementById("equalityForm");
 const type1 = document.getElementById("type1");
 const type2 = document.getElementById("type2");
@@ -50,6 +51,7 @@ const false1 = document.getElementById("false1");
 const true2 = document.getElementById("true2");
 const false2 = document.getElementById("false2");
 
+// Each time the user selects a type, the form will change accordingly
 type1.addEventListener("change", function () {
   switch (type1.value) {
     case "boolean":
@@ -70,7 +72,7 @@ type1.addEventListener("change", function () {
       break;
   }
 });
-
+// Each time the user selects a type, the form will change accordingly
 type2.addEventListener("change", function () {
   switch (type2.value) {
     case "boolean":
@@ -92,6 +94,7 @@ type2.addEventListener("change", function () {
   }
 });
 
+// Function to check the selected values and parse them accordingly
 function checkSelectsAndParse() {
   const type1Value = type1.value;
   const type2Value = type2.value;
@@ -125,15 +128,16 @@ function checkSelectsAndParse() {
   return { value1, value2 };
 }
 
+// Event listener for form submission
 equalityForm.addEventListener("submit", function (e) {
   e.preventDefault();
   const { value1, value2 } = checkSelectsAndParse();
 
   const equal = value1 == value2;
   const strict = value1 === value2;
-
-  answer.innerHTML = `The comparison ${type1.value} ${value1} == ${type2.value} ${value2} is ${equal}<br>
-   The comparison ${type1.value} ${value1} === ${type2.value} ${value2} is ${strict}`;
+  // Final result printed below the forms
+  answer.innerHTML = `The comparison "${type1.value}" ${value1} == ${value2} "${type2.value}" is: ${equal}<br>
+   The comparison "${type1.value}" ${value1} ===  ${value2} "${type2.value}" is: ${strict}`;
 
   // Reset form and restore initial state
   equalityForm.reset();
@@ -151,7 +155,13 @@ equalityForm.addEventListener("submit", function (e) {
   false2.setAttribute("disabled", true);
 });
 
-//------------------------------ Calculator
+//-----------------// Simple calculator
+
+// Define variables
+const calculator = document.querySelector("#calculator");
+const calculator1 = document.querySelector("[data-calculator1]");
+const calculator2 = document.querySelector("[data-calculator2]");
+const selectionCalc = document.querySelector("[data-selectionCalc]");
 
 const calculate = (a, b, selection) => {
   switch (selection) {
@@ -180,11 +190,7 @@ const calculate = (a, b, selection) => {
   }
 };
 
-const calculator = document.querySelector("#calculator");
-const calculator1 = document.querySelector("[data-calculator1]");
-const calculator2 = document.querySelector("[data-calculator2]");
-const selectionCalc = document.querySelector("[data-selectionCalc]");
-
+//Submit form
 calculator.addEventListener("submit", (e) => {
   e.preventDefault();
   const result = calculate(
@@ -198,6 +204,11 @@ calculator.addEventListener("submit", (e) => {
 });
 
 //  ------------------------- Expression Calculator ----------------------------
+//Define variables
+let currentExpressionIndex = 0;
+const expressionElement = document.getElementById("expression");
+const feedbackElement = document.getElementById("feedback");
+const expressionForm = document.getElementById("valueForm");
 //Array with the expressions to display
 const expressionStrings = [
   "5 + 3 ** x - y / 2",
@@ -219,11 +230,7 @@ const evaluateExpression = (x, y, i) => {
   return expressions[i](x, y);
 };
 
-let currentExpressionIndex = 0;
-const expressionElement = document.getElementById("expression");
-const feedbackElement = document.getElementById("feedback");
-const expressionForm = document.getElementById("valueForm");
-
+//Function to load the next expression
 function loadNextExpression() {
   if (currentExpressionIndex < expressionStrings.length) {
     expressionElement.textContent = expressionStrings[currentExpressionIndex];
@@ -240,6 +247,7 @@ function loadNextExpression() {
   }
 }
 
+//Submit form
 expressionForm.addEventListener("submit", function (event) {
   event.preventDefault();
   //Get the values from the form after submit is clicked
@@ -256,7 +264,7 @@ expressionForm.addEventListener("submit", function (event) {
   if (guessedResult === correctResult) {
     feedbackElement.textContent = "Correct! Well done!";
   } else {
-    const formattedResult = correctResult.toFixed(3);
+    const formattedResult = correctResult.toFixed(3); //Round the result to 3 decimal places
     feedbackElement.innerHTML = `Incorrect. The correct result was <b>${formattedResult}</b>.<br>
               <br>
               Remember The order of operations:<br> 
