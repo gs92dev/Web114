@@ -20,7 +20,7 @@
           <h2>Differences</h2>
           <form action="post" id="compareForm">
             <fieldset>
-              <!------------ First Step selecting the type of operation-------------->
+              <!------------ First Step selecting the type of operation -------------->
               <div class="flexColumn">
                 <label for="operatorCompare">Select operator:</label>
                 <select name="operator" id="operatorCompare">
@@ -31,22 +31,20 @@
                 </select>
               </div>
               <div class="flexColumn" id="optionsWrapper">
-                <!--------------- Begin the assignment form------------ -->
+                <!--------------- Begin the assignment form ------------ -->
                 <div class="flexColumn hidden" id="assignmentForm">
                   <p>(assignment) operator</p>
-                  <label for="variableName">Give the variable a name:</label>
+                  <label for="variableName">Name the variable:</label>
                   <input
                     name="variableName"
                     type="text"
                     id="variableName"
                     pattern="^[a-zA-Z_$][a-zA-Z_$0-9]*$"
-                    title="Must be a valid JavaScript variable name 
-                    (letters, digits, underscores, or dollar signs, and must start with a letter,
-                     underscore, or dollar sign)."
+                    title="Must be a valid JavaScript variable name (letters, digits, underscores, or dollar signs, and must start with a letter, underscore, or dollar sign)."
                     required
                   />
                   <div id="dataWraWrapper" class="flexColumn">
-                    <label for="variableValue">Enter data:</label>
+                    <label for="variableValue">Assign value:</label>
                     <input
                       name="variableValue"
                       type="text"
@@ -55,9 +53,7 @@
                     />
                   </div>
                 </div>
-
                 <!------------------------ End assignment form ------------->
-
                 <!------------------------ Begin equal form --------------->
                 <div class="hidden" id="equalOrStricForm">
                   <div class="flexColumn">
@@ -76,7 +72,13 @@
                     </select>
                     <div class="flexColumn" id="input1Wrapper">
                       <label for="input1">Enter your first data:</label>
-                      <input data-input1 type="text" id="input1" required />
+                      <input
+                        data-input1
+                        type="text"
+                        id="input1"
+                        name="input1"
+                        required
+                      />
                     </div>
                     <div class="hidden" id="radio1Wrapper">
                       <div data-radio="1" class="flexRow">
@@ -95,7 +97,7 @@
                           <input
                             type="radio"
                             id="false1"
-                            name="boolean2"
+                            name="boolean1"
                             value="false"
                             required
                           />
@@ -121,34 +123,45 @@
                     </div>
                     <div class="flexColumn" id="input2Wrapper">
                       <label for="input2">Enter your second data:</label>
-                      <input data-input2 type="text" id="input2" required />
+                      <input
+                        data-input2
+                        type="text"
+                        id="input2"
+                        name="input2"
+                        required
+                      />
                     </div>
                     <div class="flexColumn hidden" id="radio2Wrapper">
-                      <div data-radio="1" class="flexColumn">
-                        <label for="true2">True</label>
-                        <input
-                          type="radio"
-                          id="true2"
-                          name="boolean2"
-                          value="true"
-                          required
-                        />
-                        <label for="false2">False</label>
-                        <input
-                          type="radio"
-                          id="false2"
-                          name="boolean2"
-                          value="false"
-                          required
-                        />
+                      <div data-radio="1" class="flexRow">
+                        <div class="flexColumn">
+                          <label for="true2">True</label>
+                          <input
+                            type="radio"
+                            id="true2"
+                            name="boolean2"
+                            value="true"
+                            required
+                          />
+                        </div>
+                        <div class="flexColumn">
+                          <label for="false2">False</label>
+                          <input
+                            type="radio"
+                            id="false2"
+                            name="boolean2"
+                            value="false"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <button type="submit" data-submit>Submit</button>
+              <button type="submit" class="hidden" data-submit>Submit</button>
             </fieldset>
           </form>
+
           <p id="answer"></p>
         </section>
         <!-- -------------------------Next form ------------------------>

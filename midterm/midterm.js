@@ -15,21 +15,76 @@ darkBtn.addEventListener("click", darkMode); // Add an event listener to the but
 // ------------------------- Compare =, ==, and === ----------------------------
 
 const submitButton = document.querySelector("[data-submit]");
+const compareForm = document.getElementById("compareForm");
+const operatorCompare = document.getElementById("operatorCompare");
+const assignmentForm = document.getElementById("assignmentForm");
+const equalOrStricForm = document.getElementById("equalOrStricForm");
+const type1 = document.getElementById("type1");
+const type2 = document.getElementById("type2");
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+const input1Wrapper = document.getElementById("input1Wrapper");
+const input2Wrapper = document.getElementById("input2Wrapper");
+const radio1Wrapper = document.getElementById("radio1Wrapper");
+const radio2Wrapper = document.getElementById("radio2Wrapper");
+const answer = document.getElementById("answer");
+const variableName = document.getElementById("variableName");
+const variableValue = document.getElementById("variableValue");
+
+let removedRequiredAttributes = [];
+
+// Function to temporarily remove required attributes from hidden inputs
+function removeRequiredAttributes() {
+  const hiddenInputs = compareForm.querySelectorAll(".hidden input[required]");
+  removedRequiredAttributes = [];
+  hiddenInputs.forEach((input) => {
+    removedRequiredAttributes.push(input);
+    input.removeAttribute("required");
+  });
+}
+
+// Function to restore required attributes to previously hidden inputs
+function restoreRequiredAttributes() {
+  removedRequiredAttributes.forEach((input) =>
+    input.setAttribute("required", "")
+  );
+  removedRequiredAttributes = [];
+}
 
 // Function to change the form based on the selection
 function assignment() {
-  // If assignment is selected, show the assignment form
   if (assignmentForm.classList.contains("hidden")) {
     assignmentForm.classList.remove("hidden");
     equalOrStricForm.classList.add("hidden");
   }
-  // gater all inputs with required that are hidden and remove the required attribute
-  const hiddenInputs = document.querySelectorAll(".hidden input[required]");
-  // Remove the required attribute from each hidden input so I can submit the form
-  hiddenInputs.forEach((input) => input.removeAttribute("required"));
 }
 
-function equal() {
+// Change the input type based on the selection
+function numberOrString1() {
+  type1.addEventListener("change", () => {
+    if (type1.value === "number") {
+      input1.setAttribute("type", "number");
+      input1.setAttribute("step", "0.01");
+    } else {
+      input1.setAttribute("type", "text");
+      input1.removeAttribute("step");
+    }
+  });
+}
+
+function numberOrString2() {
+  type2.addEventListener("change", () => {
+    if (type2.value === "number") {
+      input2.setAttribute("type", "number");
+      input2.setAttribute("step", "0.01");
+    } else {
+      input2.removeAttribute("step");
+      input2.setAttribute("type", "text");
+    }
+  });
+}
+
+function equalOrStrict() {
   if (equalOrStricForm.classList.contains("hidden")) {
     assignmentForm.classList.add("hidden");
     equalOrStricForm.classList.remove("hidden");
@@ -38,52 +93,97 @@ function equal() {
     if (type1.value === "boolean") {
       input1Wrapper.classList.add("hidden");
       radio1Wrapper.classList.remove("hidden");
+    } else {
+      input1Wrapper.classList.remove("hidden");
+      radio1Wrapper.classList.add("hidden");
+      numberOrString1();
     }
   });
   type2.addEventListener("change", () => {
     if (type2.value === "boolean") {
       input2Wrapper.classList.add("hidden");
       radio2Wrapper.classList.remove("hidden");
+    } else {
+      input2Wrapper.classList.remove("hidden");
+      radio2Wrapper.classList.add("hidden");
+      numberOrString2();
     }
   });
 }
-function strict() {}
+
+function parseValue(type, value) {
+  switch (type) {
+    case "string":
+      return value;
+    case "number":
+      return Number(value);
+    case "boolean":
+      return value === "true";
+    default:
+      return value;
+  }
+}
+
+function equal() {
+  const type1Value = type1.value;
+  const value1 = parseValue(type1Value, input1.value);
+
+  const type2Value = type2.value;
+  const value2 = parseValue(type2Value, input2.value);
+
+  const result = value1 == value2;
+  answer.innerHTML = `Result of ${value1} == ${value2} is: ${result}`;
+}
+
+function strictEqual() {
+  const type1Value = type1.value;
+  const value1 = parseValue(type1Value, input1.value);
+
+  const type2Value = type2.value;
+  const value2 = parseValue(type2Value, input2.value);
+
+  const result = value1 === value2;
+  answer.innerHTML = `Result of ${value1} === ${value2} is: ${result}`;
+}
 
 // Event listener to change the form based on the selection
 operatorCompare.addEventListener("change", () => {
+  answer.textContent = "";
   const option = operatorCompare.value;
   if (option === "assign") {
     assignment();
+    removeRequiredAttributes();
   } else if (option === "equal") {
-    equal();
+    equalOrStrict();
   } else {
-    strict();
+    equalOrStrict();
   }
-
-  setTimeout(() => {
-    document.body.style.backgroundColor = "";
-  }, 1500);
 });
 
 // Function to submit form
 compareForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   switch (operatorCompare.value) {
     case "assign":
       const varName = variableName.value;
       const varValue = variableValue.value;
       answer.innerHTML = `You have created a variable named: ${varName} with the value of: ${varValue} <br> <br> ${varName} = ${varValue}`;
+      assignmentForm.classList.add("hidden");
       compareForm.reset();
       submitButton.blur();
-      assignmentForm.classList.add("hidden");
       break;
     case "equal":
-      alert("equal");
+      equal();
       break;
     case "strict":
-      alert("strict");
+      strictEqual();
       break;
   }
+
+  setTimeout(() => {
+    restoreRequiredAttributes();
+  }, 0);
 });
 
 // Calculator
