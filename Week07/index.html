@@ -1,0 +1,222 @@
+<!-- Guilherme dos Santos 22/22/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Project 05</title>
+  </head>
+  <body class="dark">
+    <header>
+      <h2>Project 05 -- WEB 114</h2>
+      <button id="dark">Light mode</button>
+      <h3>Guilherme dos Santos</h3>
+    </header>
+    <section>
+      <h3>Questions</h3>
+      <ol>
+        <li>Identify a common JavaScript style guide, and hyperlink to it.</li>
+        <li>
+          Identify three distinct "best practice" programming practices and
+          explain how they create better code.
+        </li>
+        <li>
+          Identify three distinct sloppy programming practices and explain the
+          problems they each create.
+        </li>
+        <li>
+          Explain the difference between a primitive, an array, and an object
+          and include an example of each.
+        </li>
+        <li>
+          Explain the phrase "Fractions divided by powers of 2 are exactly
+          represented in the binary system" and what universal problem this is
+          referring to in all programming languages. (You might want to view my
+          YouTube on why 0.1 + 0.2 is not equal to 0.3). Another way to think
+          about this is to ask yourself these questions -- can all decimal
+          integers (the numbering system we use that uses values of 0-9) be
+          accurately represented by the binary (the numbering system the
+          computer uses with values of 0 and 1)? Can all decimal fractions be
+          accurately represented by the binary numbering system? Which ones can?
+          Which ones cannot?
+        </li>
+      </ol>
+    </section>
+    <footer>
+      <p>Guilherme dos Santos WEB 114 2024</p>
+    </footer>
+    <script>
+      // // 1. Create a function declaration that prompts the visitor to enter two numbers and an operator (+ - * /)
+      // //  and evaluates the expression based on the numbers and the operator.
+      // // You'll want to use three different prompts for those three different pieces of information.
+      // // For example, entries of 3 5 and + would result in the expression, 3 + 5.
+      // // Console.log the result of the expression in the function.
+      // //  Run the function.  ** Do not use the eval() method in your function or ever.
+      // // It is considered a security hole given it runs the code without question which lends itself to injection attacks.
+      // // Errors created by the code running within an eval() method are also nightmares to debug. **
+
+      // function calculate() {
+      //   let num1 = prompt("Enter the first number");
+      //   let num2 = prompt("Enter the second number");
+      //   let operator = prompt("Enter the operator (+ - * / %)");
+
+      //   let result;
+      //   switch (operator) {
+      //     case "+":
+      //       result = Number(num1) + Number(num2);
+      //       break;
+      //     case "-":
+      //       result = Number(num1) - Number(num2);
+      //       break;
+      //     case "*":
+      //       result = Number(num1) * Number(num2);
+      //       break;
+      //     case "/":
+      //       result = Number(num1) / Number(num2);
+      //       break;
+      //     case "%":
+      //       result = Number(num1) % Number(num2);
+      //       break;
+      //     default:
+      //       result = "Invalid operator";
+      //   }
+      //   console.log("The result of:", num1, operator, num2, "=", result);
+      // }
+      // calculate();
+
+      // // 2-Create a function expression with the variable name of cheery that uses Math.random() to randomly select and console.log a cheery message from an array of at least 5 cheery messages.
+
+      // const cheery = function () {
+      //   const messages = [
+      //     "You are awesome!",
+      //     "You are doing great!",
+      //     "You are wonderful!",
+      //     "You are fantastic!",
+      //     "You are amazing!",
+      //   ];
+      //   const randomIndex = Math.floor(Math.random() * messages.length);
+      //   console.log(messages[randomIndex]);
+      // };
+      // cheery();
+
+      // // 3.  Copy the code for the second solution to "Uppercase the first character" in the String lesson and add an explanatory comment to the end of each line.
+      // // function that accepts a string as a argument and returns the string with the first letter capitalized.
+      // function ucFirst(str) {
+      //   if (!str) return str; // if the string is empty return the string
+
+      //   return str[0].toUpperCase() + str.slice(1); // return the first letter of the string capitalized and concatenate it with the rest of the string.
+      // }
+
+      // alert(ucFirst("john")); //Alert the result of the function with the string "john" as argument.
+
+      // //4.  Copy the code for the checkSpam function in the String lesson and add an explanatory comment to the end of each line.
+      // //Function that accepts a string as an argument and returns true if the string contains the words "viagra" or "xxx" and false otherwise.
+      // function checkSpam(str) {
+      //   let lowerStr = str.toLowerCase(); // Convert the string to lowercase and store it in the lowerStr variable.
+
+      //   return lowerStr.includes("viagra") || lowerStr.includes("xxx"); // Return true if the string contains the words "viagra" or "xxx" and false otherwise.
+      // }
+
+      // alert(checkSpam("buy ViAgRA now")); //call the function with the string "buy ViAgRA now" as argument. true
+      // alert(checkSpam("free xxxxx")); //call the function with the string "free xxxxx" as argument. true
+      // alert(checkSpam("innocent rabbit")); //call the function with the string "innocent rabbit" as argument. false
+
+      // //5. Copy the code for the truncate function in the String lesson and add an explanatory comment to the end of each line.
+      // //Function that accepts a string and a number as arguments and returns the string truncated to the specified length.
+      // function truncate(str, maxlength) {
+      //   return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str; //Return the string truncated to the specified length if the string is longer than the specified length, otherwise return the string.
+      // }
+
+      // alert(truncate("What I'd like to tell on this topic is:", 15)); //call the function with the string "What I'd like to tell on this topic is:" and the number 20 as arguments.
+
+      // 6.  Modify the Sum input numbers exercise in the Array lesson to average the values vs. sum them.
+      // Add code to constrain the acceptable values between 0 and 100. Modify the prompt to clarify this limitation as well.
+      // Name the function averageInput.  Use a function declaration.
+      // function averageInput() {
+      //   let numbers = [];
+
+      //   while (true) {
+      //     let value = prompt("A number between 0 and 100 please?", 0);
+      //     value = Number(value);
+      //     // should we cancel?
+      //     if (
+      //       value === "" ||
+      //       value === null ||
+      //       !isFinite(value) ||
+      //       value < 0 ||
+      //       value > 100
+      //     )
+      //       break;
+
+      //     numbers.push(+value);
+      //   }
+      //   console.log(numbers);
+      //   let sum = 0;
+      //   for (let number of numbers) {
+      //     sum += number;
+      //   }
+      //   const avg = sum / numbers.length;
+      //   return avg;
+      // }
+
+      // alert(averageInput());
+      // 7.  Modify the maximal subarray in the Array lesson to add the two largest numbers in the array with one argument named arr.
+      // Name the function addTwo using a function expression.  Also declare two arrays:
+      // let arr1 = [0, 1, 2, 5];
+      // let arr2 = [10, 20, 4, 1];
+      let arr1 = [0, 1, 2, 5];
+      let arr2 = [10, 20, 4, 1];
+
+      const addTwo = function (arr) {
+        // Sort the array in descending order and take the first two elements
+        let sortedArr = arr.slice().sort((a, b) => b - a);
+        let largest = sortedArr[0];
+        let secondLargest = sortedArr[1];
+
+        return largest + secondLargest;
+      };
+
+      alert(addTwo(arr1)); // Should alert 7 (5 + 2)
+      alert(addTwo(arr2)); // Should alert 30 (20 + 10)
+
+      // 8.  Rewrite the sortByAge function in the Array methods lesson using traditional function syntax vs. arrow syntax.
+      //  (This example uses the sort() function, a "higher order" callback function in that it is "called back" against every item in the array.
+      //  Big concept!!!  We get deeper into callback functions in WEB 124, JavaScript II).
+      function sortByAge(arr) {
+        //traditional function syntax instead of arrow syntax
+        arr.sort(function (a, b) {
+          return a.age - b.age;
+        });
+      }
+
+      let john = { name: "John", age: 25 };
+      let pete = { name: "Pete", age: 30 };
+      let mary = { name: "Mary", age: 28 };
+
+      let arr = [pete, john, mary];
+
+      sortByAge(arr);
+
+      // now sorted is: [john, mary, pete]
+      alert(arr[0].name); // John
+      alert(arr[1].name); // Mary
+      alert(arr[2].name); // Pete
+    </script>
+    <script>
+      const darkBtn = dark; // Get the button element with the id dark.
+      let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.
+      // Function to change the color of the page to dark mode.
+      const darkMode = (e) => {
+        document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
+        darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
+
+        darkBtn.textContent = btnText;
+        document.body.classList.contains("dark")
+          ? (btnText = "Dark mode")
+          : (btnText = "Light mode");
+      };
+      darkBtn.addEventListener("click", darkMode); // Add an event listener to the button element that listens for a click event and calls the darkMode function when the button is clicked.
+    </script>
+  </body>
+</html>
