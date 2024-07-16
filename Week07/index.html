@@ -5,29 +5,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Project 05</title>
+    <title>Project 07</title>
   </head>
   <body class="dark">
     <header>
-      <h2>Project 05 -- WEB 114</h2>
+      <h2>Project 07 -- WEB 114</h2>
       <button id="dark">Light mode</button>
       <h3>Guilherme dos Santos</h3>
     </header>
     <section>
       <h3>Questions</h3>
       <ol>
-        <li>Identify a common JavaScript style guide, and hyperlink to it.</li>
+        <li>
+          Identify a common JavaScript style guide, and hyperlink to it.<br />
+          This repository on GitHub seems interesting:
+          <a
+            href="https://github.com/airbnb/javascript"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Airbnb JavaScript Style Guide</a
+          >
+          and this one too:
+          <a
+            href="https://github.com/standard/standard"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Standard JS</a
+          >
+        </li>
         <li>
           Identify three distinct "best practice" programming practices and
-          explain how they create better code.
+          explain how they create better code.<br />
+          1- The use of ";" makes the code more readable and less error-prone.
+          With that, it is easier to identify where the statement is
+          finishing.<br />
+          2-The use of const instead of var and let makes it easier to identify
+          variables that should not be changed. In case another developer
+          working on the same team, for example, tries to modify it, they will
+          get an error.<br />
+          3-Using version control systems like Git, it is possible to keep track
+          of each change made in the code, even if the change is really small,
+          like a comma . This way, it is possible to go back to a previous
+          version if necessary.
         </li>
         <li>
           Identify three distinct sloppy programming practices and explain the
           problems they each create.
         </li>
         <li>
-          Explain the difference between a primitive, an array, and an object
-          and include an example of each.
+          1-Explain the difference between a primitive, an array, and an object
+          and include an example of each.<br />
+          Too many comments ib the code, comments are good and should be used
+          but if the code has too many comments that means the code is not
+          self-explanatory and it is hard to understand.<br />
+          2- Poor naming conventions, for variables, functions, classes, etc.
+          The variables should have short, but descriptive names so when other
+          developers look at the code they can understand what the variable is
+          for.<br />
+          3- Code without proper indentation, it is hard to read and understand
+          and can make the code look really messy. A well indented code is
+          easier to read and understand, and supports collaboration.
         </li>
         <li>
           Explain the phrase "Fractions divided by powers of 2 are exactly
@@ -39,7 +76,12 @@
           accurately represented by the binary (the numbering system the
           computer uses with values of 0 and 1)? Can all decimal fractions be
           accurately represented by the binary numbering system? Which ones can?
-          Which ones cannot?
+          Which ones cannot?<br />
+          Binary (base-2) accurately represents fractions divisible by powers of
+          2 (e.g., 0.5, 0.25). This is because they can be expressed as sums of
+          negative powers of 2. However, fractions like 0.1 cannot be
+          represented exactly due to binary limitations. These often lead to
+          repeating binary patterns.
         </li>
       </ol>
     </section>
@@ -47,138 +89,146 @@
       <p>Guilherme dos Santos WEB 114 2024</p>
     </footer>
     <script>
-      // // 1. Create a function declaration that prompts the visitor to enter two numbers and an operator (+ - * /)
-      // //  and evaluates the expression based on the numbers and the operator.
-      // // You'll want to use three different prompts for those three different pieces of information.
-      // // For example, entries of 3 5 and + would result in the expression, 3 + 5.
-      // // Console.log the result of the expression in the function.
-      // //  Run the function.  ** Do not use the eval() method in your function or ever.
-      // // It is considered a security hole given it runs the code without question which lends itself to injection attacks.
-      // // Errors created by the code running within an eval() method are also nightmares to debug. **
+      // 1. Create a function declaration that prompts the visitor to enter two numbers and an operator (+ - * /)
+      //  and evaluates the expression based on the numbers and the operator.
+      // You'll want to use three different prompts for those three different pieces of information.
+      // For example, entries of 3 5 and + would result in the expression, 3 + 5.
+      // Console.log the result of the expression in the function.
+      //  Run the function.  ** Do not use the eval() method in your function or ever.
+      // It is considered a security hole given it runs the code without question which lends itself to injection attacks.
+      // Errors created by the code running within an eval() method are also nightmares to debug. **
 
-      // function calculate() {
-      //   let num1 = prompt("Enter the first number");
-      //   let num2 = prompt("Enter the second number");
-      //   let operator = prompt("Enter the operator (+ - * / %)");
+      function calculate() {
+        let num1 = prompt("Enter the first number");
+        let num2 = prompt("Enter the second number");
+        let operator = prompt("Enter the operator (+ - * / )");
 
-      //   let result;
-      //   switch (operator) {
-      //     case "+":
-      //       result = Number(num1) + Number(num2);
-      //       break;
-      //     case "-":
-      //       result = Number(num1) - Number(num2);
-      //       break;
-      //     case "*":
-      //       result = Number(num1) * Number(num2);
-      //       break;
-      //     case "/":
-      //       result = Number(num1) / Number(num2);
-      //       break;
-      //     case "%":
-      //       result = Number(num1) % Number(num2);
-      //       break;
-      //     default:
-      //       result = "Invalid operator";
-      //   }
-      //   console.log("The result of:", num1, operator, num2, "=", result);
-      // }
-      // calculate();
+        let result;
+        switch (operator) {
+          case "+":
+            result = Number(num1) + Number(num2);
+            break;
+          case "-":
+            result = Number(num1) - Number(num2);
+            break;
+          case "*":
+            result = Number(num1) * Number(num2);
+            break;
+          case "/":
+            result = Number(num1) / Number(num2);
+            break;
+          default:
+            result = "Invalid operator";
+        }
+        console.log("The result of:", num1, operator, num2, "=", result);
+      }
+      calculate();
 
-      // // 2-Create a function expression with the variable name of cheery that uses Math.random() to randomly select and console.log a cheery message from an array of at least 5 cheery messages.
+      // 2-Create a function expression with the variable name of cheery that uses Math.random() to randomly select and console.log a cheery message from an array of at least 5 cheery messages.
 
-      // const cheery = function () {
-      //   const messages = [
-      //     "You are awesome!",
-      //     "You are doing great!",
-      //     "You are wonderful!",
-      //     "You are fantastic!",
-      //     "You are amazing!",
-      //   ];
-      //   const randomIndex = Math.floor(Math.random() * messages.length);
-      //   console.log(messages[randomIndex]);
-      // };
-      // cheery();
+      const cheery = function () {
+        const messages = [
+          "You are awesome!",
+          "You are doing great!",
+          "You are wonderful!",
+          "You are fantastic!",
+          "You are amazing!",
+        ];
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        console.log(messages[randomIndex]);
+      };
+      cheery();
 
-      // // 3.  Copy the code for the second solution to "Uppercase the first character" in the String lesson and add an explanatory comment to the end of each line.
-      // // function that accepts a string as a argument and returns the string with the first letter capitalized.
-      // function ucFirst(str) {
-      //   if (!str) return str; // if the string is empty return the string
+      // 3.  Copy the code for the second solution to "Uppercase the first character" in the String lesson and add an explanatory comment to the end of each line.
 
-      //   return str[0].toUpperCase() + str.slice(1); // return the first letter of the string capitalized and concatenate it with the rest of the string.
-      // }
+      // function that accepts a string as a argument and returns the string with the first letter capitalized.
+      function ucFirst(str) {
+        if (!str) return str; // if the string is empty return the string
 
-      // alert(ucFirst("john")); //Alert the result of the function with the string "john" as argument.
+        return str[0].toUpperCase() + str.slice(1); // return the first letter of the string capitalized and concatenate it with the rest of the string.
+      }
 
-      // //4.  Copy the code for the checkSpam function in the String lesson and add an explanatory comment to the end of each line.
-      // //Function that accepts a string as an argument and returns true if the string contains the words "viagra" or "xxx" and false otherwise.
-      // function checkSpam(str) {
-      //   let lowerStr = str.toLowerCase(); // Convert the string to lowercase and store it in the lowerStr variable.
+      alert(ucFirst("john")); //Alert the result (John) of the function with the string "john" as argument.
 
-      //   return lowerStr.includes("viagra") || lowerStr.includes("xxx"); // Return true if the string contains the words "viagra" or "xxx" and false otherwise.
-      // }
+      //4.  Copy the code for the checkSpam function in the String lesson and add an explanatory comment to the end of each line.
 
-      // alert(checkSpam("buy ViAgRA now")); //call the function with the string "buy ViAgRA now" as argument. true
-      // alert(checkSpam("free xxxxx")); //call the function with the string "free xxxxx" as argument. true
-      // alert(checkSpam("innocent rabbit")); //call the function with the string "innocent rabbit" as argument. false
+      //Function that accepts a string as an argument and returns true if the string contains the words "viagra" or "xxx" and false otherwise.
+      function checkSpam(str) {
+        let lowerStr = str.toLowerCase(); // Convert the string to lowercase and store it in the lowerStr variable.
 
-      // //5. Copy the code for the truncate function in the String lesson and add an explanatory comment to the end of each line.
-      // //Function that accepts a string and a number as arguments and returns the string truncated to the specified length.
-      // function truncate(str, maxlength) {
-      //   return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str; //Return the string truncated to the specified length if the string is longer than the specified length, otherwise return the string.
-      // }
+        return lowerStr.includes("viagra") || lowerStr.includes("xxx"); // Return true if the string contains the words "viagra" or "xxx" and false otherwise.
+      }
 
-      // alert(truncate("What I'd like to tell on this topic is:", 15)); //call the function with the string "What I'd like to tell on this topic is:" and the number 20 as arguments.
+      alert(checkSpam("buy ViAgRA now")); //call the function with the string "buy ViAgRA now" as argument. true.
+      alert(checkSpam("free xxxxx")); //call the function with the string "free xxxxx" as argument. true.
+      alert(checkSpam("innocent rabbit")); //call the function with the string "innocent rabbit" as argument. false.
+
+      //5. Copy the code for the truncate function in the String lesson and add an explanatory comment to the end of each line.
+
+      //Function that accepts a string and a number as arguments and returns the string truncated to the specified length.
+      function truncate(str, maxlength) {
+        return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str; //Return the string truncated to the specified length if the string is longer than the specified length, otherwise return the string.
+      }
+
+      alert(truncate("What I'd like to tell on this topic is:", 15)); //call the function with the string "What I'd like to tell on this topic is:" and the number 15 as arguments. What I'd like…
 
       // 6.  Modify the Sum input numbers exercise in the Array lesson to average the values vs. sum them.
       // Add code to constrain the acceptable values between 0 and 100. Modify the prompt to clarify this limitation as well.
       // Name the function averageInput.  Use a function declaration.
-      // function averageInput() {
-      //   let numbers = [];
 
-      //   while (true) {
-      //     let value = prompt("A number between 0 and 100 please?", 0);
-      //     value = Number(value);
-      //     // should we cancel?
-      //     if (
-      //       value === "" ||
-      //       value === null ||
-      //       !isFinite(value) ||
-      //       value < 0 ||
-      //       value > 100
-      //     )
-      //       break;
+      function averageInput() {
+        let numbers = [];
 
-      //     numbers.push(+value);
-      //   }
-      //   console.log(numbers);
-      //   let sum = 0;
-      //   for (let number of numbers) {
-      //     sum += number;
-      //   }
-      //   const avg = sum / numbers.length;
-      //   return avg;
-      // }
+        while (true) {
+          let value = prompt(
+            "Enter a number between 0 and 100, or cancel to finish:",
+            0
+          );
 
-      // alert(averageInput());
+          // Check if the user canceled or provided invalid input
+          if (value === "" || value === null || !isFinite(value)) {
+            break;
+          }
+
+          value = Number(value);
+
+          // Check if the value is within the acceptable range
+          if (value >= 0 && value <= 100) {
+            numbers.push(value);
+          } else {
+            alert("Please enter a number between 0 and 100.");
+          }
+        }
+
+        let sum = 0;
+        for (let number of numbers) {
+          sum += number;
+        }
+
+        // Calculate the average, handle the case where no numbers were entered
+        const average = numbers.length > 0 ? sum / numbers.length : 0;
+        return average;
+      }
+
+      alert(averageInput());
+
       // 7.  Modify the maximal subarray in the Array lesson to add the two largest numbers in the array with one argument named arr.
       // Name the function addTwo using a function expression.  Also declare two arrays:
-      // let arr1 = [0, 1, 2, 5];
-      // let arr2 = [10, 20, 4, 1];
+
       let arr1 = [0, 1, 2, 5];
       let arr2 = [10, 20, 4, 1];
 
       const addTwo = function (arr) {
         // Sort the array in descending order and take the first two elements
         let sortedArr = arr.slice().sort((a, b) => b - a);
-        let largest = sortedArr[0];
-        let secondLargest = sortedArr[1];
+        let largest = sortedArr[0]; // Get the largest number
+        let secondLargest = sortedArr[1]; // Get the second largest number
 
         return largest + secondLargest;
       };
 
-      alert(addTwo(arr1)); // Should alert 7 (5 + 2)
-      alert(addTwo(arr2)); // Should alert 30 (20 + 10)
+      alert(addTwo(arr1)); // alert 7 (5 + 2)
+      alert(addTwo(arr2)); // alert 30 (20 + 10)
 
       // 8.  Rewrite the sortByAge function in the Array methods lesson using traditional function syntax vs. arrow syntax.
       //  (This example uses the sort() function, a "higher order" callback function in that it is "called back" against every item in the array.
