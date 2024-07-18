@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./finaljs" defer></script>
+    <script src="./final.js" type="" defer></script>
     <title>Final</title>
   </head>
   <body class="dark">
@@ -15,11 +15,25 @@
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
-      <div class="flexRow" id="firstSection">
+      <div class="sectionsWrapper">
+        <section class="flexCol">
+          <div class="flexRow">
+            <h2>JavaScript game</h2>
+            <p id="player">Player:</p>
+          </div>
+          <h3>
+            Each time you got an answer right you make 1 points, if you got one
+            wrong you lost 1 point
+          </h3>
+          <div class="flexRow scoreWrapper">
+            <span class="score">Your score:</span
+            ><span class="score" id="score">0</span>
+          </div>
+        </section>
         <section>
           <h2>Compare two numbers</h2>
-          <form action="post" id="compareForm">
-            <fieldset>
+          <fieldset>
+            <form action="post" id="compareForm" class="flexColumn">
               <div class="flexColumn">
                 <label for="input1">First number:</label>
                 <input
@@ -27,8 +41,20 @@
                   type="number"
                   step="0.001"
                   required
-                  id="input1"
+                  id="compare1"
                 />
+              </div>
+              <div class="flexColumn">
+                <label for="compare">Comparison operator:</label>
+                <select data-selection name="compare" id="compare" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option value="greater">></option>
+                  <option value="greaterequal">>=</option>
+                  <option value="less">&lt;</option>
+                  <option value="lessequal">&lt;=</option>
+                  <option value="equal">==</option>
+                  <option value="notequal">!=</option>
+                </select>
               </div>
               <div class="flexColumn">
                 <label for="input2">Second number:</label>
@@ -37,23 +63,31 @@
                   type="number"
                   step="0.001"
                   required
-                  id="input2"
+                  id="compare2"
                 />
               </div>
-              <div class="flexColumn">
-                <label for="compare">Comparison operator:</label>
-                <select data-selection name="compare" id="compare">
-                  <option selected value="greater">></option>
-                  <option value="greaterequal">>=</option>
-                  <option value="less">&lt;</option>
-                  <option value="lessequal">&lt;=</option>
-                  <option value="equal">==</option>
-                  <option value="notequal">!==</option>
-                </select>
-              </div>
               <button type="submit" data-compare>Compare</button>
-            </fieldset>
-          </form>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h2>Guess the length of the string in 5 seconds</h2>
+          <fieldset>
+            <form action="post" class="flexColumn" id="guessForm">
+              <span>String here: <strong id="randomString"></strong></span>
+              <span id="timer">5 seconds</span>
+              <input
+                type="number"
+                step="1"
+                id="stringLength"
+                required
+                disabled
+              />
+              <button type="button" id="startButton">Start</button>
+              <button type="submit" id="submitButton" disabled>Guess</button>
+              <span id="rightOrWrong"></span>
+            </form>
+          </fieldset>
         </section>
       </div>
       <footer>

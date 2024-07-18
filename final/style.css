@@ -4,7 +4,7 @@
 }
 
 #mainWrapper {
-  background-color: #8b5ab9;
+  background-color: #7c0ce48e;
 }
 body {
   margin: 0;
@@ -16,17 +16,17 @@ body {
   display: flex;
   flex-direction: column;
 }
-section {
+/* section {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   transition: all 1s;
   justify-content: flex-start;
-}
+} */
 .flexColumn {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
   justify-content: flex-start;
   align-items: flex-start;
 }
@@ -34,6 +34,8 @@ section {
   display: flex;
   gap: 2rem;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .dark {
@@ -41,10 +43,23 @@ section {
   color: rgb(223, 221, 221);
 }
 
+.player,
+.scoreWrapper {
+  font-size: 1rem;
+  background: #a154a3;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  display: flex;
+  gap: 0.5rem;
+  max-width: fit-content;
+}
 .green {
   background: #0de906;
 }
-
+.sectionsWrapper {
+  padding: 1.5rem;
+}
 header {
   display: flex;
   justify-content: space-around;
@@ -100,6 +115,9 @@ input:focus {
   outline: none;
   border: 0.15rem solid rgb(124, 124, 124);
 }
+input[type="number"] {
+  max-width: 6rem;
+}
 select {
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -109,6 +127,7 @@ fieldset {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  max-width: fit-content;
 }
 #finalResult {
   font-size: 1em;
@@ -135,5 +154,8 @@ footer p {
 
   li {
     font-size: 1rem;
+  }
+  .sectionsWrapper {
+    padding: 0.5rem;
   }
 }

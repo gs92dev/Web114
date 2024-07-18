@@ -1,0 +1,110 @@
+<!-- Guilherme dos Santos 07/07/2024-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./final.js" type="" defer></script>
+    <title>Final</title>
+  </head>
+  <body class="dark">
+    <div id="mainWrapper">
+      <header>
+        <h1>Midterm/ Project-6 -- WEB 114</h1>
+        <button id="dark">Light mode</button>
+        <h2>Guilherme dos Santos</h2>
+      </header>
+      <div class="flexRow" id="firstSection">
+        <section>
+          <h2>Concat strings</h2>
+          <fieldset>
+            <form action="post">
+              <div class="flexColumn">
+                <label for="string1">First string:</label>
+                <input data-string1 type="text" required id="string1" />
+              </div>
+              <div class="flexColumn">
+                <label for="string2">Second string:</label>
+                <input data-string2 type="text" required id="string2" />
+              </div>
+              <button type="submit">Concatenate</button>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h2>Guess the length of the string in 5 seconds</h2>
+          <fieldset>
+            <form action="post" class="flexColumn" id="guessForm">
+              <span>String here: <strong id="randomString"></strong></span>
+              <span id="timer">5 seconds</span>
+              <input
+                type="number"
+                step="1"
+                id="stringLength"
+                required
+                disabled
+              />
+              <button type="button" id="startButton">Start</button>
+              <button type="submit" id="guessButton" disabled>Guess</button>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h3>Create a list with JS concepts your want to learn more about</h3>
+          <fieldset>
+            <form action="post" class="flexColumn">
+              <label for="item">Enter an item:</label>
+              <input type="text" id="item" required />
+              <div class="flexRow">
+                <button type="submit">Add concept</button>
+                <button type="reset">Clear list</button>
+              </div>
+              <div id="shoppingList"></div>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h3>Calculate the sum of the numbers from 1 to n</h3>
+          <fieldset>
+            <form action="post" class="flexColumn">
+              <label for="number">Enter a number:</label>
+              <input type="number" id="number" required />
+              <button type="submit">Calculate sum</button>
+              <span id="sum"></span>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h2>Manipulate the image</h2>
+          <div>
+            <img
+              src="./Screenshot 2024-04-05 204351.png"
+              alt="randomImage"
+              id="image"
+              style="
+                transform: rotate(0deg);
+                position: relative;
+                top: 0px;
+                left: 0px;
+                width: 200px;
+                height: 200px;
+              "
+            />
+          </div>
+          <div>
+            <button id="rotateLeft">Rotate Left</button>
+            <button id="rotateRight">Rotate Right</button>
+            <button id="moveUp">Move Up</button>
+            <button id="moveDown">Move Down</button>
+            <button id="moveLeft">Move Left</button>
+            <button id="moveRight">Move Right</button>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <p>Guilherme dos Santos WEB 114 2024</p>
+      </footer>
+    </div>
+  </body>
+</html>
