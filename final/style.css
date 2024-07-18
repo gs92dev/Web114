@@ -102,9 +102,9 @@ button {
 }
 
 button:hover {
-  background: #8b5ab9;
+  background: #b096c9;
   color: white;
-  box-shadow: 1px 0.5px 0.5px #8e41d6;
+  box-shadow: 1px 0.5px 0.5px #9f67d4;
 }
 input {
   padding: 0.5rem;
@@ -144,6 +144,9 @@ footer {
 footer p {
   font-size: 1rem;
   font-weight: 600;
+}
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {

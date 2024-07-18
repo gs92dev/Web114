@@ -81,7 +81,7 @@ compareForm.addEventListener("submit", (e) => {
   }
   setTimeout(() => {
     document.body.style.backgroundColor = "";
-  }, 1500);
+  }, 800);
   compareForm.reset();
   return score;
 });
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startButton = document.getElementById("startButton");
   const timerElement = document.getElementById("timer");
   const stringLengthInput = document.getElementById("stringLength");
-  const form = document.getElementById("guessForm");
+  const guessForm = document.getElementById("guessForm");
   const rightOrWrong = document.getElementById("rightOrWrong");
 
   const startGame = () => {
@@ -124,7 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let timeLeft = 5;
     timerElement.innerText = `${timeLeft} seconds`;
     stringLengthInput.disabled = false;
+    stringLengthInput.focus();
     rightOrWrong.textContent = "";
+    startButton.disabled = true;
+    startButton.classList.add("hidden");
+    startButton.textContent = "Try again";
 
     countdown = setInterval(() => {
       timeLeft -= 1;
@@ -132,6 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(countdown);
         timerElement.innerText = "Time is up!";
         stringLengthInput.disabled = true;
+        startButton.disabled = false;
+        startButton.classList.remove("hidden");
+        updateScore(-1);
       } else {
         timerElement.innerText = `${timeLeft} seconds`;
       }
@@ -145,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       stringLengthInput.value === "";
   });
 
-  form.addEventListener("submit", (event) => {
+  guessForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (stringLengthInput.value === "") {
@@ -157,17 +164,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const guessedLength = parseInt(stringLengthInput.value);
     const actualLength = randomString.length;
+    startButton.disabled = false;
+    startButton.classList.remove("hidden");
+    startButton.focus();
 
     if (guessedLength === actualLength) {
-      startButton.textContent = "Next word";
+      document.body.style.backgroundColor = "green";
       rightOrWrong.textContent = `Correct! You guessed the right length: ${actualLength}`;
+      updateScore(1);
     } else {
+      updateScore(-1);
       rightOrWrong.textContent = `Incorrect. The correct length is ${actualLength}.`;
+      document.body.style.backgroundColor = "red";
     }
 
     stringLengthInput.value = "";
     stringLengthInput.disabled = true;
     document.getElementById("submitButton").disabled = true;
+    setTimeout(() => {
+      document.body.style.backgroundColor = "";
+    }, 800);
   });
 });
 
