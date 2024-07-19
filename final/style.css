@@ -67,6 +67,7 @@ header {
   gap: 1rem;
   padding: 1rem;
   background-color: #e7e1e1;
+  flex-direction: row;
 }
 body.dark header {
   background-color: #474444;
@@ -124,9 +125,6 @@ select {
   border: 0.15rem solid #8e41d6;
 }
 fieldset {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
   max-width: fit-content;
 }
 #finalResult {
@@ -147,6 +145,45 @@ footer p {
 }
 .hidden {
   display: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+.deleteButton {
+  padding: 2px 6px;
+  background-color: rgb(150, 48, 190);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.imgWrapper {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+img {
+  transform: rotate(0deg);
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 200px;
+  clip-path: circle(40%);
 }
 
 @media screen and (max-width: 768px) {

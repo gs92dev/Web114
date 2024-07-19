@@ -11,7 +11,7 @@
   <body class="dark">
     <div id="mainWrapper">
       <header>
-        <h1>Midterm/ Project-6 -- WEB 114</h1>
+        <h1>Final Project -- WEB 114</h1>
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
@@ -72,10 +72,11 @@
         </section>
         <section>
           <h2>Guess the length of the string in 5 seconds</h2>
-          <fieldset>
+          <fieldset class="flexRow">
             <form action="post" class="flexColumn" id="guessForm">
               <span>String here: <strong id="randomString"></strong></span>
               <span id="timer">5 seconds</span>
+              <label for="stringLength">Length:</label>
               <input
                 type="number"
                 step="1"
@@ -88,6 +89,138 @@
               <button type="submit" id="submitButton" disabled>Guess</button>
               <span id="rightOrWrong"></span>
             </form>
+            <form class="flexColumn" action="post" id="FormLength">
+              <span>Type a string and find its length.</span>
+              <label for="inputLength">String</label>
+              <input
+                type="text"
+                name="inputLength"
+                required
+                id="inputLength"
+                title="Enter a string"
+              />
+              <button type="submit" id="submitLength">Submit</button>
+              <p id="wordLength"></p>
+            </form>
+            <form id="concatForm" class="flexColumn">
+              <div class="flexColumn">
+                <label for="string1">First string:</label>
+                <input data-string1 type="text" required id="string1" />
+              </div>
+              <div class="flexColumn">
+                <label for="string2">Second string:</label>
+                <input data-string2 type="text" required id="string2" />
+              </div>
+              <button type="submit">Concatenate</button>
+              <p id="concatenated"></p>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h3>Create a list with JS concepts you want to learn more about</h3>
+          <fieldset>
+            <form id="conceptForm" class="flexColumn">
+              <label>Select JS concepts:</label>
+              <div class="flexColumn">
+                <label><input type="checkbox" value="Arrays" /> Arrays</label>
+                <label
+                  ><input type="checkbox" value="Promises" /> Promises</label
+                >
+                <label
+                  ><input type="checkbox" value="Async/Await" />
+                  Async/Await</label
+                >
+                <label
+                  ><input type="checkbox" value="Event Loop" /> Event
+                  Loop</label
+                >
+                <label
+                  ><input type="checkbox" value="Hoisting" /> Hoisting</label
+                >
+                <label
+                  ><input type="checkbox" value="Prototypes" />
+                  Prototypes</label
+                >
+                <label><input type="checkbox" value="Modules" /> Modules</label>
+                <label
+                  ><input type="checkbox" value="Arrow Functions" /> Arrow
+                  Functions</label
+                >
+              </div>
+              <label for="customConcept">Add a custom concept:</label>
+              <input type="text" id="customConcept" />
+              <div class="flexRow">
+                <button type="submit">Add concepts</button>
+                <button type="reset" id="clearList">Clear list</button>
+              </div>
+              <ul id="conceptList"></ul>
+            </form>
+          </fieldset>
+        </section>
+        <section>
+          <h2>Calculate</h2>
+          <form action="post" id="calculator">
+            <fieldset>
+              <div class="flexColumn">
+                <label for="calculator1">Enter the first number:</label>
+                <input
+                  data-calculator1
+                  type="number"
+                  required
+                  id="calculator1"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="calculator2">Enter the second number:</label>
+                <input
+                  data-calculator2
+                  type="number"
+                  required
+                  id="calculator2"
+                />
+              </div>
+              <div class="flexColumn">
+                <label for="calculatorSelect">Choose the operator</label>
+                <select
+                  data-selectionCalc
+                  name="calculatorSelect"
+                  id="calculatorSelect"
+                  required
+                >
+                  <option selected value="" disabled>Operator</option>
+                  <option value="add">Sum +</option>
+                  <option value="subtract">Sub -</option>
+                  <option value="multiply">Mult *</option>
+                  <option value="divide">Div /</option>
+                  <option value="remainder">Rema %</option>
+                  <option value="exponent">Power **</option>
+                </select>
+              </div>
+              <div class="flexRow">
+                <button type="submit" data-calc>Calculate</button>
+                <div class="flexColumn">
+                  <span>Result:</span>
+                  <span id="finalResult"></span>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+        <section>
+          <h2>Move the earth</h2>
+          <fieldset class="flexColumn">
+            <div class="imgWrapper">
+              <img src="./earth.jpg" alt="randomImage" id="image" />
+            </div>
+            <div class="flexRow">
+              <button id="rotateLeft">Rotate Left</button>
+              <button id="rotateRight">Rotate Right</button>
+              <button id="moveUp">Move Up</button>
+              <button id="moveDown">Move Down</button>
+              <button id="moveLeft">Move Left</button>
+              <button id="moveRight">Move Right</button>
+              <button id="resetImg">Reset</button>
+            </div>
           </fieldset>
         </section>
       </div>

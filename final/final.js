@@ -54,10 +54,10 @@ const compare = (a, b, selection) => {
     case "lessequal":
       return a <= b;
     case "equal":
-      return a === b;
+      return a === b; //===
     case "notequal":
     default:
-      return a !== b;
+      return a !== b; // !==
   }
 };
 
@@ -187,39 +187,166 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// // Manipulate the image
-// document.addEventListener("DOMContentLoaded", () => {
-//   const image = document.getElementById("image");
-//   let rotation = 0;
-//   let position = { top: 0, left: 0 };
+// Find the length of the string
+const FormLength = document.getElementById("FormLength");
+console.log(FormLength);
+const inputLength = document.getElementById("inputLength");
+const wordLength = document.getElementById("wordLength");
 
-//   document.getElementById("rotateLeft").addEventListener("click", () => {
-//     rotation -= 15;
-//     image.style.transform = `rotate(${rotation}deg)`;
-//   });
+FormLength.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const stringLength = inputLength.value.length;
+  wordLength.textContent = `The length of the string is ${stringLength}`;
+  FormLength.reset();
+});
 
-//   document.getElementById("rotateRight").addEventListener("click", () => {
-//     rotation += 15;
-//     image.style.transform = `rotate(${rotation}deg)`;
-//   });
+// JS List
 
-//   document.getElementById("moveUp").addEventListener("click", () => {
-//     position.top -= 10;
-//     image.style.top = `${position.top}px`;
-//   });
+const conceptForm = document.getElementById("conceptForm");
+const conceptList = document.getElementById("conceptList");
+const customConceptInput = document.getElementById("customConcept");
+const clearList = document.getElementById("clearList");
 
-//   document.getElementById("moveDown").addEventListener("click", () => {
-//     position.top += 10;
-//     image.style.top = `${position.top}px`;
-//   });
+//querySelectorAll
+conceptForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const selectedConcepts = [];
+  const checkboxes = conceptForm.querySelectorAll(
+    'input[type="checkbox"]:checked'
+  );
+  const customConcept = customConceptInput.value.trim();
+  //for loop
+  for (let i = 0; i < checkboxes.length; i++) {
+    selectedConcepts.push(checkboxes[i].value);
+  }
 
-//   document.getElementById("moveLeft").addEventListener("click", () => {
-//     position.left -= 10;
-//     image.style.left = `${position.left}px`;
-//   });
+  if (customConcept) {
+    selectedConcepts.push(customConcept);
+  }
 
-//   document.getElementById("moveRight").addEventListener("click", () => {
-//     position.left += 10;
-//     image.style.left = `${position.left}px`;
-//   });
-// });
+  selectedConcepts.forEach((concept) => {
+    addConceptToList(concept);
+  });
+
+  // Clear the custom concept input field
+  customConceptInput.value = "";
+
+  // Uncheck all checkboxes after submission
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+});
+
+clearList.addEventListener("click", () => {
+  conceptList.innerHTML = "";
+});
+
+function addConceptToList(concept) {
+  const listItem = document.createElement("li");
+  listItem.className = "listItem";
+  listItem.textContent = concept;
+
+  const deleteButton = document.createElement("button");
+  deleteButton.className = "deleteButton";
+  deleteButton.textContent = "X";
+  deleteButton.addEventListener("click", () => {
+    conceptList.removeChild(listItem);
+  });
+
+  listItem.appendChild(deleteButton);
+  conceptList.appendChild(listItem);
+}
+
+//Concatenation
+
+const concatForm = document.getElementById("concatForm");
+const string1Input = document.getElementById("string1");
+const string2Input = document.getElementById("string2");
+const concatenatedOutput = document.getElementById("concatenated");
+
+concatForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const string1 = string1Input.value;
+  const string2 = string2Input.value;
+  concatenatedOutput.textContent = `Concatenated string: ${string1 + string2}`;
+});
+
+//Calculator
+// Define variables
+const calculator = document.querySelector("#calculator");
+const calculator1 = document.querySelector("[data-calculator1]");
+const calculator2 = document.querySelector("[data-calculator2]");
+const selectionCalc = document.querySelector("[data-selectionCalc]");
+
+const calculate = (a, b, selection) => {
+  switch (selection) {
+    case "add":
+      return a + b;
+    case "subtract":
+      return a - b;
+    case "multiply":
+      return a * b;
+    case "divide":
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a / b;
+      }
+    case "remainder":
+      if (b === 0) {
+        return "Cannot divide by zero";
+      } else {
+        return a % b;
+      }
+    case "exponent":
+      return a ** b;
+    default:
+      return false;
+  }
+};
+
+// Manipulate the image
+
+const image = document.getElementsByTagName("img")[0]; //Get the image element
+console.log(image);
+let rotation = 0;
+let position = { top: 0, left: 0 };
+
+document.getElementById("rotateLeft").addEventListener("click", () => {
+  rotation -= 15;
+  image.style.transform = `rotate(${rotation}deg)`;
+});
+
+document.getElementById("rotateRight").addEventListener("click", () => {
+  console.log("rotate right");
+  rotation += 15;
+  image.style.transform = `rotate(${rotation}deg)`;
+});
+
+document.getElementById("moveUp").addEventListener("click", () => {
+  position.top -= 10;
+  image.style.top = `${position.top}px`;
+});
+
+document.getElementById("moveDown").addEventListener("click", () => {
+  position.top += 10;
+  image.style.top = `${position.top}px`;
+});
+
+document.getElementById("moveLeft").addEventListener("click", () => {
+  position.left -= 10;
+  image.style.left = `${position.left}px`;
+});
+
+document.getElementById("moveRight").addEventListener("click", () => {
+  position.left += 10;
+  image.style.left = `${position.left}px`;
+});
+
+document.getElementById("resetImg").addEventListener("click", () => {
+  rotation = 0;
+  position = { top: 0, left: 0 };
+  image.style.transform = `rotate(${rotation}deg)`;
+  image.style.top = `${position.top}px`;
+  image.style.left = `${position.left}px`;
+});
