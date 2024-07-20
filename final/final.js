@@ -12,20 +12,21 @@ const darkMode = () => {
     : (darkBtn.textContent = "Dark mode");
 };
 darkBtn.addEventListener("click", darkMode); //click event
-let yourName = window.prompt("Hello there! What is your name?"); // Prompt
-let nameChances = 3; // Set the nameChances
-// While loop
+
+// Get the name of the user and display it on the page, if not name is provided, set it to "Unknown".
+let nameChances = 3;
+let yourName = "";
 
 while (!yourName && nameChances > 0) {
-  nameChances = --nameChances; // Decrement the nameChances variable by 1. --
+  nameChances--; // Decrement the nameChances variable by 1.
   yourName = window.prompt(
     `Let's try again ${nameChances} times, please enter your name:`
   );
   console.log(nameChances); // console.log the nameChances variable.
 }
-yourName
-  ? window.alert(`Hello ${yourName}!`)
-  : window.alert("Hello there! Unknown"); //Ternary operator
+
+console.log(yourName, "Name"); // console.log the yourName variable.
+window.alert(`Hello there ${yourName ? yourName : "Unknown"}.`);
 
 yourName = yourName || "Unknown"; // If the name variable is empty, set it to "Unknown".
 
@@ -73,10 +74,10 @@ compareForm.addEventListener("submit", (e) => {
   const compared = compare(num1, num2, selection);
   //if statement
   if (compared) {
-    document.body.style.backgroundColor = "green";
+    document.body.style.backgroundColor = "#00FF7F";
     updateScore(1); // Increment the score
   } else {
-    document.body.style.backgroundColor = "red";
+    document.body.style.backgroundColor = "#800000";
     updateScore(-1); // Decrement the score
   }
   setTimeout(() => {
@@ -169,13 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
     startButton.focus();
 
     if (guessedLength === actualLength) {
-      document.body.style.backgroundColor = "green";
+      document.body.style.backgroundColor = "#00FF7F";
       rightOrWrong.textContent = `Correct! You guessed the right length: ${actualLength}`;
       updateScore(1);
     } else {
       updateScore(-1);
       rightOrWrong.textContent = `Incorrect. The correct length is ${actualLength}.`;
-      document.body.style.backgroundColor = "red";
+      document.body.style.backgroundColor = "#800000";
     }
 
     stringLengthInput.value = "";
@@ -304,6 +305,18 @@ const calculate = (a, b, selection) => {
       return false;
   }
 };
+//Submit form
+calculator.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const result = calculate(
+    Number(calculator1.value),
+    Number(calculator2.value),
+    selectionCalc.value
+  );
+  finalResult.textContent = "";
+  calculator.reset();
+  finalResult.textContent = result;
+});
 
 // Manipulate the image
 
