@@ -7,7 +7,7 @@ let btnText = darkBtn.textContent; // Get the text content of the button element
 const darkMode = () => {
   document.body.classList.toggle("dark"); // Toggle the dark class on the body element to change the color of the page.
   darkBtn.classList.toggle("buttonLight"); // Toggle the buttonLight class on the button element to change its color.
-
+  console.log("Dark: ", document.body.classList.contains("dark")); // Log whether the body element has the dark class.
   document.body.classList.contains("dark")
     ? (darkBtn.textContent = "Light mode")
     : (darkBtn.textContent = "Dark mode");
@@ -23,10 +23,10 @@ while (!yourName && nameChances > 0) {
   yourName = window.prompt(
     `Let's try again ${nameChances} times, please enter your name:`
   );
-  console.log(nameChances); // console.log the nameChances variable.
+  console.log(nameChances, "Chances to repeat"); // console.log the nameChances variable.
 }
 
-console.log(yourName, "Name"); // console.log the yourName variable.
+console.log("Name: ", yourName); // console.log the yourName variable.
 window.alert(`Hello there ${yourName ? yourName : "Unknown"}.`);
 
 yourName = yourName || "Unknown"; // If the name variable is empty, set it to "Unknown".
@@ -42,6 +42,7 @@ const scoreElement = document.getElementById("score");
 const updateScore = (increment) => {
   score += increment;
   scoreElement.textContent = score; // Update the score display
+  console.log("Score: ", score); // Log the score
 };
 
 // Compare exercise switch statement
@@ -64,7 +65,7 @@ const compare = (a, b, selection) => {
 };
 
 const compareForm = document.getElementById("compareForm");
-
+//Handle compare form submission
 compareForm.addEventListener("submit", (e) => {
   score = score;
   e.preventDefault();
@@ -73,6 +74,7 @@ compareForm.addEventListener("submit", (e) => {
   const selection = document.querySelector("[data-selection]").value;
   // Call the compare function
   const compared = compare(num1, num2, selection);
+  console.log("Compared: ", compared); // Log the result of the comparison
   //if statement
   if (compared) {
     document.body.style.backgroundColor = "#00FF7F";
@@ -89,104 +91,107 @@ compareForm.addEventListener("submit", (e) => {
 });
 
 // Guess the length exercise
-document.addEventListener("DOMContentLoaded", () => {
-  const stringOptions = [
-    "originally",
-    "disestablishment",
-    "particular",
-    "support",
-    "opposition",
-    "government",
-    "parliament",
-    "constitution",
-    "legislation",
-    "establishment",
-    "political",
-    "representation",
-    "republican",
-    "democratic",
-    "monarchy",
-    "presidential",
-  ];
+// Array of string options
+const stringOptions = [
+  "originally",
+  "disestablishment",
+  "particular",
+  "support",
+  "opposition",
+  "government",
+  "parliament",
+  "constitution",
+  "legislation",
+  "establishment",
+  "political",
+  "representation",
+  "republican",
+  "democratic",
+  "monarchy",
+  "presidential",
+];
 
-  let randomString;
-  let countdown;
+//initialize variables
+let randomString;
+let countdown;
 
-  const startButton = document.getElementById("startButton");
-  const timerElement = document.getElementById("timer");
-  const stringLengthInput = document.getElementById("stringLength");
-  const guessForm = document.getElementById("guessForm");
-  const rightOrWrong = document.getElementById("rightOrWrong");
+// Get the elements from the DOM
+const startButton = document.getElementById("startButton");
+const timerElement = document.getElementById("timer");
+const stringLengthInput = document.getElementById("stringLength");
+const guessForm = document.getElementById("guessForm");
+const rightOrWrong = document.getElementById("rightOrWrong");
 
-  const startGame = () => {
-    randomString =
-      stringOptions[Math.floor(Math.random() * stringOptions.length)];
-    document.getElementById("randomString").innerText = randomString;
+// Function to start the game
+const startGame = () => {
+  randomString =
+    stringOptions[Math.floor(Math.random() * stringOptions.length)];
+  document.getElementById("randomString").innerText = randomString;
 
-    let timeLeft = 5;
-    timerElement.innerText = `${timeLeft} seconds`;
-    stringLengthInput.disabled = false;
-    stringLengthInput.focus();
-    rightOrWrong.textContent = "";
-    startButton.disabled = true;
-    startButton.classList.add("hidden");
-    startButton.textContent = "Try again";
+  let timeLeft = 5;
+  timerElement.innerText = `${timeLeft} seconds`;
+  stringLengthInput.disabled = false;
+  stringLengthInput.focus();
+  rightOrWrong.textContent = "";
+  startButton.disabled = true;
+  startButton.classList.add("hidden");
+  startButton.textContent = "Try again";
 
-    countdown = setInterval(() => {
-      timeLeft -= 1;
-      if (timeLeft < 0) {
-        clearInterval(countdown);
-        timerElement.innerText = "Time is up!";
-        stringLengthInput.disabled = true;
-        startButton.disabled = false;
-        startButton.classList.remove("hidden");
-        updateScore(-1);
-      } else {
-        timerElement.innerText = `${timeLeft} seconds`;
-      }
-    }, 1000);
-  };
-
-  startButton.addEventListener("click", startGame);
-
-  stringLengthInput.addEventListener("input", () => {
-    document.getElementById("submitButton").disabled =
-      stringLengthInput.value === "";
-  });
-
-  guessForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (stringLengthInput.value === "") {
-      rightOrWrong.textContent = "Please enter a guess before submitting.";
-      return;
-    }
-
-    clearInterval(countdown);
-
-    const guessedLength = parseInt(stringLengthInput.value);
-    const actualLength = randomString.length;
-    startButton.disabled = false;
-    startButton.classList.remove("hidden");
-    startButton.focus();
-
-    if (guessedLength === actualLength) {
-      document.body.style.backgroundColor = "#00FF7F";
-      rightOrWrong.textContent = `Correct! You guessed the right length: ${actualLength}`;
-      updateScore(1);
-    } else {
+  countdown = setInterval(() => {
+    timeLeft -= 1;
+    if (timeLeft < 0) {
+      clearInterval(countdown);
+      timerElement.innerText = "Time is up!";
+      stringLengthInput.disabled = true;
+      startButton.disabled = false;
+      startButton.classList.remove("hidden");
       updateScore(-1);
-      rightOrWrong.textContent = `Incorrect. The correct length is ${actualLength}.`;
-      document.body.style.backgroundColor = "#800000";
+    } else {
+      timerElement.innerText = `${timeLeft} seconds`;
     }
+  }, 1000);
+};
 
-    stringLengthInput.value = "";
-    stringLengthInput.disabled = true;
-    document.getElementById("submitButton").disabled = true;
-    setTimeout(() => {
-      document.body.style.backgroundColor = "";
-    }, 800);
-  });
+//onclick event call startGame function
+startButton.addEventListener("click", startGame);
+stringLengthInput.addEventListener("input", () => {
+  document.getElementById("submitButton").disabled =
+    stringLengthInput.value === "";
+});
+
+//Handle the guess form submission
+guessForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (stringLengthInput.value === "") {
+    rightOrWrong.textContent = "Please enter a guess before submitting.";
+    return;
+  }
+
+  clearInterval(countdown);
+
+  const guessedLength = parseInt(stringLengthInput.value);
+  const actualLength = randomString.length;
+  startButton.disabled = false;
+  startButton.classList.remove("hidden");
+  startButton.focus();
+
+  if (guessedLength === actualLength) {
+    document.body.style.backgroundColor = "#00FF7F";
+    rightOrWrong.textContent = `Correct! You guessed the right length: ${actualLength}`;
+    updateScore(1);
+  } else {
+    updateScore(-1);
+    rightOrWrong.textContent = `Incorrect. The correct length is ${actualLength}.`;
+    document.body.style.backgroundColor = "#800000";
+  }
+
+  stringLengthInput.value = "";
+  stringLengthInput.disabled = true;
+  document.getElementById("submitButton").disabled = true;
+  setTimeout(() => {
+    document.body.style.backgroundColor = "";
+  }, 800);
 });
 
 // Find the length of the string
@@ -203,7 +208,6 @@ FormLength.addEventListener("submit", (e) => {
 });
 
 // JS List
-
 const conceptForm = document.getElementById("conceptForm");
 const conceptList = document.getElementById("conceptList");
 const customConceptInput = document.getElementById("customConcept");
@@ -239,10 +243,12 @@ conceptForm.addEventListener("submit", (e) => {
   });
 });
 
+//Clear all items from the list
 clearList.addEventListener("click", () => {
   conceptList.innerHTML = "";
 });
 
+// Function to add a concept to the list
 function addConceptToList(concept) {
   const listItem = document.createElement("li");
   listItem.className = "listItem";
@@ -259,7 +265,7 @@ function addConceptToList(concept) {
   conceptList.appendChild(listItem);
 }
 
-//Concatenation
+//Concatenation strings
 
 const concatForm = document.getElementById("concatForm");
 const string1Input = document.getElementById("string1");
@@ -314,6 +320,7 @@ calculator.addEventListener("submit", (e) => {
     Number(calculator2.value),
     selectionCalc.value
   );
+  console.log(result);
   finalResult.textContent = "";
   calculator.reset();
   finalResult.textContent = result;
@@ -323,6 +330,7 @@ calculator.addEventListener("submit", (e) => {
 
 const image = document.getElementsByTagName("img")[0]; //Get the image element
 console.log(image);
+
 let rotation = 0;
 let position = { top: 0, left: 0 };
 
