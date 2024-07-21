@@ -1,3 +1,4 @@
+// Guilherme dos Santos 07/22/2024
 "use strict"; // Use strict mode to prevent errors.
 const darkBtn = document.getElementById("dark"); // Get the button element with the id dark.
 let btnText = darkBtn.textContent; // Get the text content of the button element and store it in the btnText variable.

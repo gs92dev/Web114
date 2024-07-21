@@ -1,4 +1,4 @@
-<!-- Guilherme dos Santos 07/07/2024-->
+<!-- Guilherme dos Santos 07/22/2024-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +15,9 @@
         <button id="dark">Light mode</button>
         <h2>Guilherme dos Santos</h2>
       </header>
-      <div class="sectionsWrapper">
+
+      <main class="flexRow sectionsWrapper">
+        <!-- Top and beginning of the page -->
         <section class="flexCol topWrapper">
           <div class="flexRow">
             <h2>JavaScript game</h2>
@@ -26,13 +28,14 @@
             wrong you lost 1 point
           </h3>
           <div class="flexRow scoreWrapper">
-            <span class="score">Your score:</span
-            ><span class="score" id="score">0</span>
+            <span class="score">Your score:</span>
+            <span class="score" id="score">0</span>
           </div>
         </section>
+        <!-- Compare number -->
         <section>
-          <h3>Compare two numbers</h3>
           <fieldset>
+            <h3>Compare two numbers</h3>
             <form action="post" id="compareForm" class="flexColumn">
               <div class="flexColumn">
                 <label for="compare1">First number:</label>
@@ -68,10 +71,11 @@
             </form>
           </fieldset>
         </section>
+        <!-- Calculator  -->
         <section>
-          <h3>Calculate</h3>
-          <form action="post" id="calculator">
-            <fieldset>
+          <fieldset>
+            <h3>Calculate</h3>
+            <form action="post" id="calculator">
               <div class="flexColumn">
                 <label for="calculator1">Enter the first number:</label>
                 <input
@@ -111,55 +115,10 @@
                   </div>
                 </div>
               </div>
-            </fieldset>
-          </form>
-        </section>
-        <section>
-          <h3>Guess the length in 5 seconds</h3>
-          <fieldset class="flexRow">
-            <form action="post" class="flexColumn" id="guessForm">
-              <span>String here: <strong id="randomString"></strong></span>
-              <span id="timer">5 seconds</span>
-              <label for="stringLength">Length:</label>
-              <input
-                type="number"
-                step="1"
-                id="stringLength"
-                required
-                disabled
-                title="Enter a number"
-              />
-              <button type="button" id="startButton">Start</button>
-              <button type="submit" id="submitButton" disabled>Guess</button>
-              <span id="rightOrWrong"></span>
-            </form>
-            <form class="flexColumn" action="post" id="FormLength">
-              <span>Type a string and find its length.</span>
-              <label for="inputLength">String</label>
-              <input
-                type="text"
-                name="inputLength"
-                required
-                id="inputLength"
-                title="Enter a string"
-              />
-              <button type="submit" id="submitLength">Submit</button>
-              <p id="wordLength"></p>
-            </form>
-            <form id="concatForm" class="flexColumn">
-              <div class="flexColumn">
-                <label for="string1">First string:</label>
-                <input data-string1 type="text" required id="string1" />
-              </div>
-              <div class="flexColumn">
-                <label for="string2">Second string:</label>
-                <input data-string2 type="text" required id="string2" />
-              </div>
-              <button type="submit">Concatenate</button>
-              <p id="concatenated"></p>
             </form>
           </fieldset>
         </section>
+        <!-- Create a list -->
         <section>
           <fieldset>
             <h3>Create a list with JS concepts.</h3>
@@ -201,10 +160,10 @@
             </form>
           </fieldset>
         </section>
-
+        <!-- Move the Earth -->
         <section>
-          <h3>Move the Earth</h3>
           <fieldset class="flexColumn">
+            <h3>Move the Earth</h3>
             <div class="imgWrapper">
               <img src="./earth.jpg" alt="randomImage" id="image" />
             </div>
@@ -226,7 +185,57 @@
             </div>
           </fieldset>
         </section>
-      </div>
+        <!-- Strings section -->
+        <section>
+          <fieldset class="flexColumn">
+            <h3>Guess the length in 5 seconds</h3>
+            <div class="flexRow">
+              <form action="post" class="flexColumn" id="guessForm">
+                <span>String here: <strong id="randomString"></strong></span>
+                <span id="timer">5 seconds</span>
+                <label for="stringLength">Length:</label>
+                <input
+                  type="number"
+                  step="1"
+                  id="stringLength"
+                  required
+                  disabled
+                  title="Enter a number"
+                />
+                <button type="button" id="startButton">Start</button>
+                <button type="submit" id="submitButton" disabled>Guess</button>
+                <span id="rightOrWrong"></span>
+              </form>
+              <form class="flexColumn" action="post" id="FormLength">
+                <span>Type a string and find its length.</span>
+                <label for="inputLength">String</label>
+                <input
+                  type="text"
+                  name="inputLength"
+                  required
+                  id="inputLength"
+                  title="Enter a string"
+                />
+                <button type="submit" id="submitLength">Submit</button>
+                <p id="wordLength"></p>
+              </form>
+              <form id="concatForm" class="flexColumn">
+                <div class="flexColumn">
+                  <label for="string1">First string:</label>
+                  <input data-string1 type="text" required id="string1" />
+                </div>
+                <div class="flexColumn">
+                  <label for="string2">Second string:</label>
+                  <input data-string2 type="text" required id="string2" />
+                </div>
+                <button type="submit">Concatenate</button>
+                <p id="concatenated"></p>
+              </form>
+            </div>
+          </fieldset>
+        </section>
+      </main>
+
       <footer>
         <p>Guilherme dos Santos WEB 114 2024</p>
       </footer>

@@ -1,10 +1,23 @@
-/* Guilherme dos Santos 07/07/2024 */
+/* Guilherme dos Santos 07/22/2024 */
 * {
   box-sizing: border-box;
 }
-
+/* Wrapper to hold all the sections */
 #mainWrapper {
   background-color: #2c29168e;
+}
+/* Diferent colors for the header */
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #e7e1e1;
+  flex-direction: row;
+}
+body.dark header {
+  background-color: #474444;
 }
 body {
   margin: 0;
@@ -17,27 +30,37 @@ body {
   flex-direction: column;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+/* Class applied to the body to change the color scheme */
+.dark {
+  background: #1f1e1e;
+  color: rgb(223, 221, 221);
+}
+/* Class to apply a green background color when the user answers correctly  */
+.green {
+  background: #0de906;
+}
+/* Flex column and row classes to apply in different components */
 .flexColumn {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: flex-start;
   align-items: flex-start;
 }
 .flexRow {
   display: flex;
   gap: 2rem;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.sectionsWrapper {
+  padding: 1.5rem;
+  align-items: start;
 }
 
-.dark {
-  background: #1f1e1e;
-  color: rgb(223, 221, 221);
-}
-
+/* Class to apply background color to specific elements like player and score.*/
 .player,
 .scoreWrapper {
   font-size: 1rem;
@@ -58,25 +81,8 @@ body {
   padding: 0.2rem;
   border-radius: 0.2rem;
 }
-.green {
-  background: #0de906;
-}
-.sectionsWrapper {
-  padding: 1.5rem;
-}
-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #e7e1e1;
-  flex-direction: row;
-}
-body.dark header {
-  background-color: #474444;
-}
 
+/* Links and buttons styles */
 a {
   transition: color 0.3s;
 }
@@ -90,6 +96,17 @@ a:visited {
 }
 h2 {
   text-align: center;
+}
+select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f1b204;
+  color: white;
+  background-color: transparent;
+}
+option {
+  background-color: #464444;
+  color: white;
 }
 
 button {
@@ -132,17 +149,6 @@ input[type="number"] {
   color: white;
 }
 
-select {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 0.1rem solid #f1b204;
-  color: white;
-  background-color: transparent;
-}
-option {
-  background-color: #464444;
-  color: white;
-}
 fieldset {
   max-width: fit-content;
   border-radius: 0.5rem;
@@ -163,6 +169,7 @@ footer p {
   font-size: 1rem;
   font-weight: 600;
 }
+/* Hide the element */
 .hidden {
   display: none;
 }
@@ -233,7 +240,7 @@ scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
 }
-
+/* Media queries */
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
@@ -265,5 +272,10 @@ scrollbar {
   }
   section {
     margin: 1rem 0;
+    justify-self: center;
+  }
+  /* Targest the last section of the grid */
+  section:last-of-type {
+    grid-column: span 2;
   }
 }
