@@ -149,7 +149,7 @@
           "You are amazing!",
         ];
         const randomIndex = Math.floor(Math.random() * messages.length);
-        console.log(messages[randomIndex]);
+        console.log("Cheery message: ", messages[randomIndex]);
       };
       cheery();
 
@@ -162,7 +162,7 @@
         return str[0].toUpperCase() + str.slice(1); // return the first letter of the string capitalized and concatenate it with the rest of the string.
       }
 
-      alert(ucFirst("john")); //Alert the result (John) of the function with the string "john" as argument.
+      alert("Name to upper: " + ucFirst("john")); //Alert the result (John) of the function with the string "john" as argument.
 
       //4.  Copy the code for the checkSpam function in the String lesson and add an explanatory comment to the end of each line.
 
@@ -173,9 +173,9 @@
         return lowerStr.includes("viagra") || lowerStr.includes("xxx"); // Return true if the string contains the words "viagra" or "xxx" and false otherwise.
       }
 
-      alert(checkSpam("buy ViAgRA now")); //call the function with the string "buy ViAgRA now" as argument. true.
-      alert(checkSpam("free xxxxx")); //call the function with the string "free xxxxx" as argument. true.
-      alert(checkSpam("innocent rabbit")); //call the function with the string "innocent rabbit" as argument. false.
+      alert("Spam: " + checkSpam("buy ViAgRA now")); //call the function with the string "buy ViAgRA now" as argument. true.
+      alert("Spam: " + checkSpam("free xxxxx")); //call the function with the string "free xxxxx" as argument. true.
+      alert("Spam: " + checkSpam("innocent rabbit")); //call the function with the string "innocent rabbit" as argument. false.
 
       //5. Copy the code for the truncate function in the String lesson and add an explanatory comment to the end of each line.
 
@@ -184,7 +184,9 @@
         return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str; //Return the string truncated to the specified length if the string is longer than the specified length, otherwise return the string.
       }
 
-      alert(truncate("What I'd like to tell on this topic is:", 15)); //call the function with the string "What I'd like to tell on this topic is:" and the number 15 as arguments. What I'd like…
+      alert(
+        "Truncate: " + truncate("What I'd like to tell on this topic is:", 15)
+      ); //call the function with the string "What I'd like to tell on this topic is:" and the number 15 as arguments. What I'd like…
 
       // 6.  Modify the Sum input numbers exercise in the Array lesson to average the values vs. sum them.
       // Add code to constrain the acceptable values between 0 and 100. Modify the prompt to clarify this limitation as well.
@@ -195,7 +197,7 @@
 
         while (true) {
           let value = prompt(
-            "Enter a number between 0 and 100, or cancel to finish:",
+            "Enter a number between 0 and 100 to know the average, or cancel to finish:",
             0
           );
 
@@ -224,7 +226,7 @@
         return average;
       }
 
-      alert(averageInput());
+      alert("The average is: " + averageInput());
 
       // 7.  Modify the maximal subarray in the Array lesson to add the two largest numbers in the array with one argument named arr.
       // Name the function addTwo using a function expression.  Also declare two arrays:
@@ -241,8 +243,8 @@
         return largest + secondLargest;
       };
 
-      alert(addTwo(arr1)); // alert 7 (5 + 2)
-      alert(addTwo(arr2)); // alert 30 (20 + 10)
+      alert("Sum: " + addTwo(arr1)); // alert 7 (5 + 2)
+      alert("Sum: " + addTwo(arr2)); // alert 30 (20 + 10)
 
       // 8.  Rewrite the sortByAge function in the Array methods lesson using traditional function syntax vs. arrow syntax.
       //  (This example uses the sort() function, a "higher order" callback function in that it is "called back" against every item in the array.
@@ -263,9 +265,9 @@
       sortByAge(arr);
 
       // now sorted is: [john, mary, pete]
-      alert(arr[0].name); // John
-      alert(arr[1].name); // Mary
-      alert(arr[2].name); // Pete
+      alert("Younger: " + arr[0].name); // John
+      alert("Middle: " + arr[1].name); // Mary
+      alert("Older: " + arr[2].name); // Pete
     </script>
     <script>
       const darkBtn = dark; // Get the button element with the id dark.
