@@ -27,7 +27,7 @@ while (!yourName && nameChances > 0) {
 }
 
 console.log("Name: ", yourName); // console.log the yourName variable.
-window.alert(`Hello there ${yourName ? yourName : "Unknown"}.`);
+window.alert(`Hello there, ${yourName ? yourName : "Unknown"}.`);
 
 yourName = yourName || "Unknown"; // If the name variable is empty, set it to "Unknown".
 
